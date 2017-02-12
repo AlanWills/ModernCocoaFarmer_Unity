@@ -24,15 +24,15 @@ public class CharacterControllerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //animator.SetTrigger("Walking");
+        float horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.A))
+        if (horizontal < 0)
         {
             transform.localPosition += new Vector3(-Speed * Time.deltaTime, 0, 0);
             spriteRenderer.flipX = false;
             animator.SetBool("Walk", true);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (horizontal > 0)
         {
             transform.localPosition += new Vector3(Speed * Time.deltaTime, 0, 0);
             spriteRenderer.flipX = true;
@@ -46,7 +46,8 @@ public class CharacterControllerScript : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.Space) && collision.gameObject.tag == "Pickup")
+        float pickup = Input.GetAxis("Fire1");
+        if (pickup > 0 && collision.gameObject.tag == "Pickup")
         {
             Destroy(collision.gameObject);
             PodsPickedUp++;
