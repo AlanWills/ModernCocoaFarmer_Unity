@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class ScoreScript : MonoBehaviour {
 
-    public PickupPodsScript PickupScript;
+    public CharacterControllerScript CharacterController;
 
     private Text scoreText;
 
@@ -15,6 +15,6 @@ public class ScoreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = PickupScript.PodsPickedUp.ToString();
+        scoreText.text = CharacterController.PodsPickedUp.ToString();
 	}
 }
