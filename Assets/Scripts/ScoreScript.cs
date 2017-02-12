@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ScoreScript : MonoBehaviour {
 
     public CharacterControllerScript CharacterController;
+    public int Target = 50;
 
     private Text scoreText;
 
@@ -15,6 +16,6 @@ public class ScoreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreText.text = CharacterController.PodsPickedUp.ToString();
+        scoreText.text = CharacterController.PodsPickedUp.ToString() + " / " + Target.ToString();
 	}
 }

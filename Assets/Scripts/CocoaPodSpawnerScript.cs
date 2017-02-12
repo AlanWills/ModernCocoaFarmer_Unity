@@ -34,5 +34,7 @@ public class CocoaPodSpawnerScript : MonoBehaviour {
         GameObject pod = Instantiate(Pods[podType]);
         pod.transform.SetParent(transform);
         pod.transform.localPosition = Vector3.zero;
+
+        SpawnTime += 0.5f;
     }
 }

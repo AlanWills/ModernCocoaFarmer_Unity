@@ -7,6 +7,7 @@ public class TransitionToSceneScript : MonoBehaviour {
 
     public string SceneName;
     public float Countdown = -1;
+    public string AxisToTrigger;
 
     private float currentTime = 0;
 
@@ -19,7 +20,8 @@ public class TransitionToSceneScript : MonoBehaviour {
 	void Update () {
         currentTime += Time.deltaTime;
 
-        if (Countdown > 0 && currentTime > Countdown)
+        if ((Countdown > 0 && currentTime > Countdown) ||
+            (!string.IsNullOrEmpty(AxisToTrigger)) && Input.GetAxis(AxisToTrigger) > 0)
         {
             ForceTransition();
         }
