@@ -17,13 +17,16 @@ public class TransitionToSceneScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        currentTime += Time.deltaTime;
-
-        if ((Countdown > 0 && currentTime > Countdown) ||
-            (!string.IsNullOrEmpty(AxisToTrigger)) && Input.GetAxis(AxisToTrigger) > 0)
+	void Update ()
+    {
+        if (Countdown > 0)
         {
-            ForceTransition();
+            currentTime += Time.deltaTime;
+
+            if (currentTime > Countdown || (!string.IsNullOrEmpty(AxisToTrigger)) && Input.GetAxis(AxisToTrigger) > 0)
+            {
+                ForceTransition();
+            }
         }
 	}
 
