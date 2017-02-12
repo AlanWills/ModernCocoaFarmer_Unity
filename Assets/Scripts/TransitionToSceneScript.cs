@@ -23,10 +23,14 @@ public class TransitionToSceneScript : MonoBehaviour {
         {
             currentTime += Time.deltaTime;
 
-            if (currentTime > Countdown || (!string.IsNullOrEmpty(AxisToTrigger)) && Input.GetAxis(AxisToTrigger) > 0)
+            if (currentTime > Countdown)
             {
                 ForceTransition();
             }
+        }
+        else if (!string.IsNullOrEmpty(AxisToTrigger) && Input.GetAxis(AxisToTrigger) > 0)
+        {
+            ForceTransition();
         }
 	}
 
