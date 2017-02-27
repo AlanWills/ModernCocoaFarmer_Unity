@@ -33,7 +33,7 @@ public class MenuInputScript : MonoBehaviour {
             }
         }
 
-        if (Input.GetAxis("Fire1") > 0)
+        if (Input.GetAxis("Jump") > 0)
         {
             transform.GetChild(currentSelectedItem).gameObject.GetComponent<Button>().onClick.Invoke();
         }

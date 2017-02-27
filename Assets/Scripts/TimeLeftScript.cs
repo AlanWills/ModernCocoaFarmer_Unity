@@ -27,19 +27,22 @@ public class TimeLeftScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        timer += Time.deltaTime;
-        timeLeftText.text = Mathf.RoundToInt(LevelTime - timer).ToString();
-
-        if (!finished && timer > LevelTime)
+        if (!finished)
         {
-            CharacterControllerScript controller = GameObject.Find("Worker").GetComponent<CharacterControllerScript>();
-            controller.gameObject.SetActive(false);
+            timer += Time.deltaTime;
+            timeLeftText.text = Mathf.RoundToInt(LevelTime - timer).ToString();
 
-            payslip.SetActive(true);
-            payslip.GetComponentInChildren<Text>().text = controller.PodsPickedUp.ToString();
-            transition.Countdown = 4;
+            if (timer > LevelTime)
+            {
+                CharacterControllerScript controller = GameObject.Find("Worker").GetComponent<CharacterControllerScript>();
+                controller.gameObject.SetActive(false);
 
-            finished = true;
+                payslip.SetActive(true);
+                payslip.GetComponentInChildren<Text>().text = controller.PodsPickedUp.ToString();
+                transition.Countdown = 4;
+
+                finished = true;
+            }
         }
 	}
 }
