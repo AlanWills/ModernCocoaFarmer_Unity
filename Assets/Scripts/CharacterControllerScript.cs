@@ -43,13 +43,13 @@ public class CharacterControllerScript : MonoBehaviour {
             if (horizontal < 0)
             {
                 transform.localPosition += new Vector3(-Speed * Time.deltaTime, 0, 0);
-                spriteRenderer.flipX = false;
+                spriteRenderer.flipX = true;
                 animator.SetBool("Walk", true);
             }
             else if (horizontal > 0)
             {
                 transform.localPosition += new Vector3(Speed * Time.deltaTime, 0, 0);
-                spriteRenderer.flipX = true;
+                spriteRenderer.flipX = false;
                 animator.SetBool("Walk", true);
             }
             else
@@ -65,17 +65,23 @@ public class CharacterControllerScript : MonoBehaviour {
                 canJump = false;
             }
         }
+
+        if (canCutTimer >= TimeBetweenCuts && Input.GetAxis("Fire1") > 0)
+        {
+            animator.SetTrigger("Chop");
+            canCutTimer = 0;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Pickup")
         {
-            if ((canCutTimer >= TimeBetweenCuts) && Input.GetAxis("Fire1") > 0)
+            // If we have chopped the canCutTimer will be less than TimeBetweenCuts
+            if (canCutTimer < TimeBetweenCuts)
             {
                 Destroy(collision.gameObject);
                 PodsPickedUp++;
-                canCutTimer = 0;
             }
         }
     }
