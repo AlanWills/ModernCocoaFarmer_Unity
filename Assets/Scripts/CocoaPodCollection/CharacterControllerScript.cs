@@ -22,9 +22,9 @@ public class CharacterControllerScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        spriteRenderer = GetComponentInParent<SpriteRenderer>();
-        animator = GetComponentInParent<Animator>();
-        rigidBody2D = GetComponentInParent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
 
         PodsPickedUp = 0;
     }
@@ -77,8 +77,8 @@ public class CharacterControllerScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Pickup")
         {
-            // If we have chopped the canCutTimer will be less than TimeBetweenCuts
-            if (canCutTimer < TimeBetweenCuts)
+            // Have to make sure that we are in the middle of a chop animation to collect a pod
+            if (canCutTimer < 0.25f)
             {
                 Destroy(collision.gameObject);
                 PodsPickedUp++;
