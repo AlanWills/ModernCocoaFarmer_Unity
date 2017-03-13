@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\MoneyScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventGenerator.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\TileMapScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />
   </ItemGroup>
