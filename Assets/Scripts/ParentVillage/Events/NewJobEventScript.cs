@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class ChildTraffickedScript : RandomEventScript
+public class NewJobEventScript : RandomEventScript
 {
     public override string Description
     {
         get
         {
-            return "Child taken.";
+            return "You have gained a new job.";
         }
     }
 

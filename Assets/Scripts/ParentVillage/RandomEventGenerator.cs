@@ -8,7 +8,9 @@ public class RandomEventGenerator : MonoBehaviour {
 
     private List<RandomEventScript> events = new List<RandomEventScript>()
     {
-        new ChildTraffickedScript()
+        new ChildTraffickedEventScript(),
+        new LostJobEventScript(),
+        new NewJobEventScript(),
     };
 
 	// Use this for initialization
