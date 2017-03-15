@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class LostJobEventScript : RandomEventScript
+public class SendChildToSchoolEventScript : RandomEventScript
 {
     public override string Description
     {
         get
         {
-            return "You have lost your job.";
+            return "You send your child to school.";
         }
     }
 
-    public override float EducationYes { get { return 0; } }
-    public override float IncomeYes { get { return 0; } }
-    public override float HealthYes { get { return 0; } }
-    public override float SafetyYes { get { return 0; } }
-    public override float HappinessYes { get { return 0; } }
+    public override float EducationYes { get { return 10; } }
+    public override float IncomeYes { get { return -7; } }
+    public override float HealthYes { get { return 10; } }
+    public override float SafetyYes { get { return 50; } }
+    public override float HappinessYes { get { return 25; } }
 
     public override float EducationNo { get { return 0; } }
     public override float IncomeNo { get { return 0; } }

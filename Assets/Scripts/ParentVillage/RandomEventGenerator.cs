@@ -11,6 +11,10 @@ public class RandomEventGenerator : MonoBehaviour {
         new ChildTraffickedEventScript(),
         new LostJobEventScript(),
         new NewJobEventScript(),
+        new PayBillsEventScript(),
+        new SendChildToSchoolEventScript(),
+        new SendChildToWorkEventScript(),
+        new UpgradeHouseScript(),
     };
 
 	// Use this for initialization

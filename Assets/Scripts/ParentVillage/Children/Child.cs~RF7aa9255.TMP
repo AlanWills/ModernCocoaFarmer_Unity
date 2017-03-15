@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+public class Child : IData
+{
+    public float Education { get; set; }
+
+    public float Income { get; set; }
+
+    public float Health
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public float Safety
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public float Happiness
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public float 
+}
