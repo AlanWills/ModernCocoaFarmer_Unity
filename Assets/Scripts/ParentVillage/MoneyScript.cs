@@ -15,7 +15,7 @@ public class MoneyScript : MonoBehaviour {
         Money = StartingMoney;
 
         moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
-        moneyText.text = Money.ToString();
+        moneyText.text = "$ " + Money.ToString();
 	}
 	
 	// Update is called once per frame
