@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
@@ -25,11 +23,16 @@ public class ChildUIScript : MonoBehaviour {
             animator.SetBool("Animate", false);
             dataDialog.SetActive(false);
         }
-	}
+    }
 
-    public void ToggleAnimate()
+    public void Animate()
     {
         dataDialog.SetActive(true);
         animator.SetBool("Animate", true);
+    }
+
+    private void OnMouseDown()
+    {
+
     }
 }

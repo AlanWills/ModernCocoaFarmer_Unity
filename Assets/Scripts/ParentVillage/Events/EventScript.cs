@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class RandomEventScript
+public abstract class EventScript
 {
     public abstract string Description { get; }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class UpgradeHouseScript : RandomEventScript
+public class UpgradeHouseEventScript : EventScript
 {
     public override string Description
     {

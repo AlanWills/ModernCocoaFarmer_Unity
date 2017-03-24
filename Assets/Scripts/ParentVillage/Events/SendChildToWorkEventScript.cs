@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SendChildToWorkEventScript : RandomEventScript
+public class SendChildToWorkEventScript : EventScript
 {
     public override string Description
     {

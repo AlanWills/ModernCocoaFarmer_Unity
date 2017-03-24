@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class TakeChildToHospitalEventScript : RandomEventScript
+public class SendChildToMosqueEventScript : EventScript
 {
     public override string Description
     {
         get
         {
-            return "You take your child to hospital.";
+            return "You take your family to church.";
         }
     }
 
