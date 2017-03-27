@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventGenerator.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\ShowEventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\TileMapScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\TimeManager.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />
   </ItemGroup>

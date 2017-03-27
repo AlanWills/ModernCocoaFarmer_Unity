@@ -12,7 +12,7 @@ public class ShowEventDialogScript : MonoBehaviour {
 
     void Awake()
     {
-        dialog = GameObject.Find(EventDialogScript.EventDialog);
+        dialog = GameObject.Find(EventDialogScript.EventDialogName);
     }
 
     // Use this for initialization
@@ -29,6 +29,6 @@ public class ShowEventDialogScript : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        dialog.GetComponent<EventDialogScript>().Show(eventScript);
+        dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
     }
 }

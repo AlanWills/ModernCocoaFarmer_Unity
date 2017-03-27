@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class EventDialogScript : MonoBehaviour
 {
-    public const string EventDialog = "EventDialog";
+    public const string EventDialogName = "EventDialog";
     
     private Text description;
-    private EventScript RandomEvent { get; set; }
+    private EventScript CurrentEvent { get; set; }
+
+    private Queue<EventScript> events;
 
     public void Start()
     {
+        events = new Queue<EventScript>();
         Hide();
     }
 
@@ -21,28 +24,45 @@ public class EventDialogScript : MonoBehaviour
         description = GameObject.Find("Description").GetComponent<Text>();
     }
 
-    public void Show(EventScript eventScript)
+    public void Update()
     {
-        RandomEvent = eventScript;
+        if (CurrentEvent == null && events.Count > 0)
+        {
+            ShowEvent();
+        }
+    }
 
-        description.text = RandomEvent.Description;
-        gameObject.SetActive(true);
+    public void QueueEvent(EventScript eventScript)
+    {
+        events.Enqueue(eventScript);
+    }
+
+    private void ShowEvent()
+    {
+        if (events.Count > 0)
+        {
+            CurrentEvent = events.Dequeue();
+
+            description.text = CurrentEvent.Description;
+            gameObject.SetActive(true);
+        }
     }
 
     private void Hide()
     {
         gameObject.SetActive(false);
+        CurrentEvent = null;
     }
 
     public void Yes()
     {
-        RandomEvent.Yes();
+        CurrentEvent.Yes();
         Hide();
     }
 
     public void No()
     {
-        RandomEvent.No();
+        CurrentEvent.No();
         Hide();
     }
 }
