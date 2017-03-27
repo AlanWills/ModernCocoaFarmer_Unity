@@ -17,7 +17,7 @@ public class RandomEventGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Awake ()
     {
-        dialog = GameObject.Find(EventDialogScript.EventDialog);
+        dialog = GameObject.Find(EventDialogScript.EventDialogName);
 	}
 	
 	// Update is called once per frame
@@ -32,6 +32,6 @@ public class RandomEventGenerator : MonoBehaviour {
     private void CreateEventDialog()
     {
         int eventIndex = Random.Range(0, events.Count);
-        dialog.GetComponent<EventDialogScript>().Show(events[eventIndex]);
+        dialog.GetComponent<EventDialogScript>().QueueEvent(events[eventIndex]);
     }
 }
