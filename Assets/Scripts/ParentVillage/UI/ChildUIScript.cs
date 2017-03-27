@@ -5,19 +5,21 @@ using UnityEngine.UI;
 public class ChildUIScript : MonoBehaviour {
 
     private Animator animator;
-    private static GameObject dataDialog;
+    private static DataDialogScript dataDialog;
 
-    public Child Child;
+    public Child Child { get; set; }
 
-	// Use this for initialization
-	void Start () {
-        animator = GetComponent<Animator>();
-
+    // Use this for initialization
+    private void Awake()
+    {
         if (dataDialog == null)
         {
-            dataDialog = GameObject.Find("DataDialog");
-            dataDialog.SetActive(false);
+            dataDialog = GameObject.Find(DataDialogScript.DataDialogName).GetComponent<DataDialogScript>();
         }
+    }
+    
+	void Start () {
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -27,13 +29,12 @@ public class ChildUIScript : MonoBehaviour {
             !GetComponent<Button>().GetComponent<Collider2D>().bounds.Contains(Input.mousePosition))
         {
             animator.SetBool("Animate", false);
-            dataDialog.SetActive(false);
+            dataDialog.Hide();
         }
     }
 
     public void Animate()
     {
-        dataDialog.SetActive(true);
         dataDialog.GetComponent<DataDialogScript>().Show(Child);
         animator.SetBool("Animate", true);
     }

@@ -7,15 +7,22 @@ using UnityEngine.UI;
 public class EventDialogScript : MonoBehaviour
 {
     public const string EventDialogName = "EventDialog";
-    
-    public Text DescriptionUI;
+
+    private GameObject eventDialogUI;
+    private Text descriptionUI;
     private EventScript CurrentEvent { get; set; }
 
-    private Queue<EventScript> events;
+    private Queue<EventScript> events = new Queue<EventScript>();
+
+    public void Awake()
+    {
+        eventDialogUI = GameObject.Find("EventDialogUI");
+        descriptionUI = GameObject.Find("Description").GetComponent<Text>();
+    }
 
     public void Start()
     {
-        events = new Queue<EventScript>();
+        eventDialogUI.SetActive(false);
         Hide();
     }
     
@@ -38,7 +45,7 @@ public class EventDialogScript : MonoBehaviour
         {
             CurrentEvent = events.Dequeue();
 
-            DescriptionUI.text = CurrentEvent.Description;
+            descriptionUI.text = CurrentEvent.Description;
             gameObject.SetActive(true);
         }
     }

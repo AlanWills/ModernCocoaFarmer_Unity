@@ -9,7 +9,7 @@ public class BarScript : MonoBehaviour
     public float Min;
     public float Max;
 
-    private float _value;
+    private float _value = 0;
     public float Value
     {
         get { return _value; }
@@ -19,13 +19,7 @@ public class BarScript : MonoBehaviour
             transform.localScale = new Vector3((_value - Min) / (Max - Min), 1, 1);
         }
     }
-
-	// Use this for initialization
-	void Start ()
-    {
-        Value = 0;
-	}
-	
+    
 	// Update is called once per frame
 	void Update () {
 		
