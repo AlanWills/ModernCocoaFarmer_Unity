@@ -13,7 +13,7 @@ public class SendChildToWorkEventScript : EventScript
         }
     }
 
-    public override float EducationYes { get { return 10; } }
+    public override float EducationYes { get { return -10; } }
     public override float IncomeYes { get { return 7; } }
     public override float HealthYes { get { return -15; } }
     public override float SafetyYes { get { return -50; } }

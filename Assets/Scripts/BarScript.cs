@@ -8,7 +8,6 @@ public class BarScript : MonoBehaviour
 {
     public float Min;
     public float Max;
-    public float StartingValue;
 
     private float _value;
     public float Value
@@ -21,12 +20,10 @@ public class BarScript : MonoBehaviour
         }
     }
 
-    private Image image;
-
 	// Use this for initialization
 	void Start ()
     {
-        Value = StartingValue;
+        Value = 0;
 	}
 	
 	// Update is called once per frame

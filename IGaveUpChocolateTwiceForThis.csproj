@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -93,12 +99,10 @@
     <Compile Include="Assets\Scripts\CocoaPodCollection\TimeLeftScript.cs" />
     <Compile Include="Assets\Scripts\MathUtils.cs" />
     <Compile Include="Assets\Scripts\MenuInputScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\ChildUIScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\Child.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\ChildManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\DataPacket.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\IData.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\EventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\LostJobEventScript.cs" />
@@ -113,6 +117,10 @@
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventGenerator.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\ShowEventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\TileMapScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\ChildManagerUIScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\ChildUIScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\DataDialogScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\EventDialogScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />
   </ItemGroup>
