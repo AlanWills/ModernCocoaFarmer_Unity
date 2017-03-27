@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -92,6 +94,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\EventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\GiveBirthToChildEvent.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\LostJobEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\NewJobEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PayBillsEventScript.cs" />

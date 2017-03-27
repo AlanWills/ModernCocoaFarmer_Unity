@@ -20,13 +20,27 @@ public abstract class EventScript
 
     public void Yes()
     {
+        OnYes();
+
         ChildManager.ApplyEvent(
             new DataPacket(EducationYes, IncomeYes, HealthYes, SafetyYes, HappinessYes));
     }
 
+    protected virtual void OnYes()
+    {
+
+    }
+
     public void No()
     {
+        OnNo();
+
         ChildManager.ApplyEvent(
             new DataPacket(EducationNo, IncomeNo, HealthNo, SafetyNo, HappinessNo));
+    }
+
+    protected virtual void OnNo()
+    {
+
     }
 }

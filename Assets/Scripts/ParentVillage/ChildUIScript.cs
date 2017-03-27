@@ -10,7 +10,7 @@ public class ChildUIScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
-        dataDialog = GameObject.Find("DataDialog");
+        dataDialog = GameObject.Find("DataDialogUI");
         dataDialog.SetActive(false);
 	}
 	

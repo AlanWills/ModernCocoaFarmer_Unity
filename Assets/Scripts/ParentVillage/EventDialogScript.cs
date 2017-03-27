@@ -8,7 +8,7 @@ public class EventDialogScript : MonoBehaviour
 {
     public const string EventDialogName = "EventDialog";
     
-    private Text description;
+    public Text DescriptionUI;
     private EventScript CurrentEvent { get; set; }
 
     private Queue<EventScript> events;
@@ -18,12 +18,7 @@ public class EventDialogScript : MonoBehaviour
         events = new Queue<EventScript>();
         Hide();
     }
-
-    public void Awake()
-    {
-        description = GameObject.Find("Description").GetComponent<Text>();
-    }
-
+    
     public void Update()
     {
         if (CurrentEvent == null && events.Count > 0)
@@ -43,14 +38,13 @@ public class EventDialogScript : MonoBehaviour
         {
             CurrentEvent = events.Dequeue();
 
-            description.text = CurrentEvent.Description;
+            DescriptionUI.text = CurrentEvent.Description;
             gameObject.SetActive(true);
         }
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
         CurrentEvent = null;
     }
 
