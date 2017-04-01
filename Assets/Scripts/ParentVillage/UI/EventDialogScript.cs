@@ -46,13 +46,14 @@ public class EventDialogScript : MonoBehaviour
             CurrentEvent = events.Dequeue();
 
             descriptionUI.text = CurrentEvent.Description;
-            gameObject.SetActive(true);
+            eventDialogUI.SetActive(true);
         }
     }
 
     private void Hide()
     {
         CurrentEvent = null;
+        eventDialogUI.SetActive(false);
     }
 
     public void Yes()

@@ -13,7 +13,8 @@ public class TimeManager : MonoBehaviour
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-	}
+        currentTimeInYear = SecondsPerYear;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -28,6 +29,7 @@ public class TimeManager : MonoBehaviour
 
     private void NewYear()
     {
-        //dialogScript.QueueEvent(null);
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new PayBillsEventScript());
     }
 }

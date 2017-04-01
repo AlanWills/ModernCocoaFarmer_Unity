@@ -10,8 +10,6 @@ public class ChildManagerUIScript : MonoBehaviour {
 	void Start ()
     {
         ChildManager.ChildAdded += ChildManager_ChildAdded;
-        ChildManager.AddChild();
-        ChildManager.AddChild();
     }
 
     private void ChildManager_ChildAdded(Child child)
