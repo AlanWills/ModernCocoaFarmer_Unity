@@ -8,6 +8,8 @@ public static class ChildManager
     public delegate void ChildAddedHandler(Child child);
 
     public static event ChildAddedHandler ChildAdded;
+    
+    // Add fixed 7 child cap - this is the average in real life
 
     public static int ChildCount { get { return Children.Count; } }
 

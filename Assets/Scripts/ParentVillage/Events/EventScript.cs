@@ -28,6 +28,7 @@ public abstract class EventScript
     // You can also send any number of children anywhere - i.e. send all your children to the mosque.
 
     // Yes No button enabled flags (some events will not need both or either)
+    // 614.79 CFA francs = 1 US.
 
     public void Yes()
     {

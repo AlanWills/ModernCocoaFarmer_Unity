@@ -13,7 +13,10 @@ public class SendChildToWorkEventScript : EventScript
         }
     }
 
-    // Child gets money at the end, but also chance of injury = serious health impact and slim change of trafficking
+    // Child gets money at the end, but also always happiness cost, always health cost and slim chance of trafficking
+    // Child earns $190 per year
+    // 5% are actually paid - see how this fits with the game
+    // Child locked in for a year
 
     public override float EducationYes { get { return -10; } }
     public override float IncomeYes { get { return 7; } }

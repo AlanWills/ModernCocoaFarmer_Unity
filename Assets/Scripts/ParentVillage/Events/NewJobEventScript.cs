@@ -15,6 +15,7 @@ public class NewJobEventScript : EventScript
 
     // 4 tiers of salary - start on third highest and new job and lost job just makes you go up and down these tiers.
     // Will need enum and strings for different enum
+    // 750 dollars = tier 3.
 
     public override float EducationYes { get { return 0; } }
     public override float IncomeYes { get { return 0; } }

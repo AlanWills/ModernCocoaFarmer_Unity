@@ -18,6 +18,9 @@ public class SendChildToHospitalEventScript : EventScript
     // This event fires if you click on the hospital
     // It will also fire once if a child's health moves below a critical value, but ONLY if you have money to pay for it
 
+    // $20 to visit doctor
+    // $200 to get treated
+
     public override float EducationYes { get { return 0; } }
     public override float IncomeYes { get { return 0; } }
     public override float HealthYes { get { return 0; } }
