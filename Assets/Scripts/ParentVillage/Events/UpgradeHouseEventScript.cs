@@ -13,6 +13,10 @@ public class UpgradeHouseEventScript : EventScript
         }
     }
 
+    // Different upgrades for your house in unlockable tiers - electricity, well, toilet
+    // Child health deteriorates every year based on current health
+    // These upgrades provide a passive health bonus (and maybe safety) every year and will eventually negate deterioration and even surpass it
+
     public override float EducationYes { get { return 10; } }
     public override float IncomeYes { get { return 7; } }
     public override float HealthYes { get { return -15; } }

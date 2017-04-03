@@ -9,9 +9,12 @@ public class NewJobEventScript : EventScript
     {
         get
         {
-            return "You have gained a new job.";
+            return "Your husband has been promoted have gained a new job.";
         }
     }
+
+    // 4 tiers of salary - start on third highest and new job and lost job just makes you go up and down these tiers.
+    // Will need enum and strings for different enum
 
     public override float EducationYes { get { return 0; } }
     public override float IncomeYes { get { return 0; } }

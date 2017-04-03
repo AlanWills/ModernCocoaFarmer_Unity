@@ -9,9 +9,11 @@ public class SendChildToWorkEventScript : EventScript
     {
         get
         {
-            return "You send your child to work.";
+            return "Do you wish to send your child to work to earn money for the family.";
         }
     }
+
+    // Child gets money at the end, but also chance of injury = serious health impact and slim change of trafficking
 
     public override float EducationYes { get { return -10; } }
     public override float IncomeYes { get { return 7; } }

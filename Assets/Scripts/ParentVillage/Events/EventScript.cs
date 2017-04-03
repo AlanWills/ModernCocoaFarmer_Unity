@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class EventScript
 {
     public abstract string Description { get; }
+    public virtual string YesButtonText { get { return "Yes"; } }
+    public virtual string NoButtonText { get { return "No"; } }
+    public virtual bool YesButtonEnabled { get { return true; } }
+    public virtual bool NoButtonEnabled { get { return true; } }
 
     public abstract float EducationYes { get; }
     public abstract float IncomeYes { get; }
@@ -17,6 +21,13 @@ public abstract class EventScript
     public abstract float HealthNo { get; }
     public abstract float SafetyNo { get; }
     public abstract float HappinessNo { get; }
+
+    // Each building event will 'lock' in the child you send for a set amount of time
+    // Once this time elapses, you will be free to send the child elsewhere, or maybe instead they automatically return home
+    // I also want the values to be applied at the end of the time, but is this appropriate for all the events?  I think so.
+    // You can also send any number of children anywhere - i.e. send all your children to the mosque.
+
+    // Yes No button enabled flags (some events will not need both or either)
 
     public void Yes()
     {

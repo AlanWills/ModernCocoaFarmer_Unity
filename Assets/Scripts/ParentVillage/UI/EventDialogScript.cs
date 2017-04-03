@@ -10,6 +10,10 @@ public class EventDialogScript : MonoBehaviour
 
     private GameObject eventDialogUI;
     private Text descriptionUI;
+    private GameObject yesButton;
+    private GameObject noButton;
+    private Text yesText;
+    private Text noText;
     private EventScript CurrentEvent { get; set; }
 
     private Queue<EventScript> events = new Queue<EventScript>();
@@ -18,6 +22,10 @@ public class EventDialogScript : MonoBehaviour
     {
         eventDialogUI = GameObject.Find("EventDialogUI");
         descriptionUI = GameObject.Find("Description").GetComponent<Text>();
+        yesButton = GameObject.Find("YesButton");
+        noButton = GameObject.Find("NoButton");
+        yesText = GameObject.Find("YesText").GetComponent<Text>();
+        noText = GameObject.Find("NoText").GetComponent<Text>();
     }
 
     public void Start()
@@ -46,7 +54,11 @@ public class EventDialogScript : MonoBehaviour
             CurrentEvent = events.Dequeue();
 
             descriptionUI.text = CurrentEvent.Description;
+            yesText.text = CurrentEvent.YesButtonText;
+            noText.text = CurrentEvent.NoButtonText;
             eventDialogUI.SetActive(true);
+            yesButton.SetActive(CurrentEvent.YesButtonEnabled);
+            noButton.SetActive(CurrentEvent.NoButtonEnabled);
         }
     }
 

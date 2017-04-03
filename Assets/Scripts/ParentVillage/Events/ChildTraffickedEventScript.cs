@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-public class ChildTraffickedEventScript : EventScript
+﻿public class ChildTraffickedEventScript : EventScript
 {
     public override string Description
     {
         get
         {
-            return "Child taken.";
+            return "One of your children has been taken by an illegal trafficker.  Do you want to inform the Police? ( $" + IncomeYes.ToString() + " )";
         }
     }
+
+    // Yes = pay income for die-roll chance of recovering child; mention income cost in description
+    // No = no-op
 
     public override float EducationYes { get { return 0; } }
     public override float IncomeYes { get { return 0; } }

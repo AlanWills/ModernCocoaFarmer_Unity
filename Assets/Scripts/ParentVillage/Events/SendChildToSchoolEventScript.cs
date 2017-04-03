@@ -9,7 +9,7 @@ public class SendChildToSchoolEventScript : EventScript
     {
         get
         {
-            return "You send your child to school.";
+            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( $" + EducationYes.ToString() + " )";
         }
     }
 
