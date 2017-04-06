@@ -18,24 +18,20 @@ public class ChildUIScript : MonoBehaviour {
         }
     }
     
-	void Start () {
+	void Start ()
+    {
+        ChildManager.ChildSelected += ChildManager_ChildSelected;
         animator = GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
+    
+    public void Select()
     {
-        if (Input.GetMouseButtonDown(0) &&
-            !GetComponent<Button>().GetComponent<Collider2D>().bounds.Contains(Input.mousePosition))
-        {
-            animator.SetBool("Animate", false);
-            dataDialog.Hide();
-        }
+        ChildManager.SelectChild(Child);
+        //dataDialog.GetComponent<DataDialogScript>().Show(Child);
     }
 
-    public void Animate()
+    private void ChildManager_ChildSelected(Child child)
     {
-        dataDialog.GetComponent<DataDialogScript>().Show(Child);
-        animator.SetBool("Animate", true);
+        animator.SetBool("Animate", child == Child);
     }
 }

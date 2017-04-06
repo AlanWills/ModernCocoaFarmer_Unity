@@ -9,7 +9,7 @@ public class SendChildToSchoolEventScript : EventScript
     {
         get
         {
-            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( $" + EducationYes.ToString() + " for books, equipment and uniform )";
+            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( CFA " + Math.Abs(IncomeYes).ToString() + " for books, equipment and uniform )";
         }
     }
 
@@ -19,7 +19,7 @@ public class SendChildToSchoolEventScript : EventScript
     // 70 children in class per average
 
     public override float EducationYes { get { return 10; } }
-    public override float IncomeYes { get { return 3075; } }
+    public override float IncomeYes { get { return -3075; } }
     public override float HealthYes { get { return 10; } }
     public override float SafetyYes { get { return 50; } }
     public override float HappinessYes { get { return 25; } }

@@ -67,6 +67,7 @@
             default:
                 break;
         }
+    }
 
     public static void DecreaseIncomeLevel()
     {

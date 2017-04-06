@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\GiveBirthToChildEvent.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\InteractableBuildingEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\LostJobEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\NewJobEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PayBillsEventScript.cs" />

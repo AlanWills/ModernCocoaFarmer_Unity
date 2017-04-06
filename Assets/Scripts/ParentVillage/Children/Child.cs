@@ -18,6 +18,8 @@ public class Child : IData
 
     public float Happiness { get; private set; }
 
+    public bool IsSelected { get; set; }
+
     public Child()
     {
         Education = 0;

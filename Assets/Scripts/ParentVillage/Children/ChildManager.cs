@@ -7,9 +7,11 @@ public static class ChildManager
 {
     public delegate void ChildAddedHandler(Child child);
     public delegate void ChildRemovedHandler(Child child);
+    public delegate void ChildSelectedHandler(Child child);
 
     public static event ChildAddedHandler ChildAdded;
     public static event ChildRemovedHandler ChildRemoved;
+    public static event ChildSelectedHandler ChildSelected;
 
     public const int MaxChildCount = 7;
     public static int ChildCount { get { return Children.Count; } }
@@ -41,6 +43,21 @@ public static class ChildManager
     public static Child FindChild(Predicate<Child> predicate)
     {
         return Children.Find(predicate);
+    }
+
+    public static void SelectChild(Child child)
+    {
+        foreach (Child c in Children)
+        {
+            c.IsSelected = false;
+        }
+
+        child.IsSelected = true;
+
+        if (ChildSelected != null)
+        {
+            ChildSelected.Invoke(child);
+        }
     }
 
     public static void ApplyEvent(DataPacket data)

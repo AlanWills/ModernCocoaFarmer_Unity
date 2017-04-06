@@ -9,7 +9,7 @@ public class UpgradeHouseEventScript : EventScript
     {
         get
         {
-            return "Do you wish to upgrade your house? ( CFA " + IncomeYes.ToString() + " )";
+            return "Do you wish to upgrade your house? ( CFA " + Math.Abs(IncomeYes).ToString() + " )";
         }
     }
 

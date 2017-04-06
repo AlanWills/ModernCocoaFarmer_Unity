@@ -11,7 +11,7 @@ public class SendChildToHospitalEventScript : EventScript
         {
             if (IncomeManager.Money >= Cost)
             {
-                return "Your child is ill.  Do you wish to pay for treatment?";
+                return "Your child is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(IncomeYes).ToString() + " )";
             }
 
             return "Your child is ill.";

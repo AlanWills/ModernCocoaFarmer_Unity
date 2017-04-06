@@ -9,7 +9,7 @@ public class PayBillsEventScript : EventScript
     {
         get
         {
-            return "Your bills are due.  Do you wish to pay them? ( $" + IncomeYes.ToString() + " )";
+            return "Your bills are due.  Do you wish to pay them? ( $" + Math.Abs(IncomeYes).ToString() + " )";
         }
     }
 
