@@ -17,11 +17,11 @@ public class SendChildToMosqueEventScript : EventScript
     // When one child completes some time here
     // Hopefully inspires the player to keep sending a child here to keep getting benefits to the family.
 
-    public override float EducationYes { get { return 0; } }
+    public override float EducationYes { get { return 2; } }
     public override float IncomeYes { get { return 0; } }
     public override float HealthYes { get { return 0; } }
-    public override float SafetyYes { get { return 0; } }
-    public override float HappinessYes { get { return 0; } }
+    public override float SafetyYes { get { return 3; } }
+    public override float HappinessYes { get { return 5; } }
 
     public override float EducationNo { get { return 0; } }
     public override float IncomeNo { get { return 0; } }

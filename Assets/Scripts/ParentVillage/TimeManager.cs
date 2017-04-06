@@ -29,6 +29,7 @@ public class TimeManager : MonoBehaviour
 
     private void NewYear()
     {
+        dialogScript.QueueEvent(new ReceiveIncomeEventScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new PayBillsEventScript());
     }

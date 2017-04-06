@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoneyScript : MonoBehaviour {
-
-    public int StartingMoney = 100;
-    public int Money { get; set; }
-
+public class MoneyScript : MonoBehaviour
+{
     private Text moneyText;
 
 	// Use this for initialization
-	void Start () {
-        Money = StartingMoney;
-
+	void Start ()
+    {
         moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
-        moneyText.text = "$ " + Money.ToString();
+        moneyText.text = "CFA " + IncomeManager.Money.ToString();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        moneyText.text = "CFA " + IncomeManager.Money.ToString();
+    }
 }

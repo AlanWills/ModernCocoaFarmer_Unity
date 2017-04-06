@@ -9,6 +9,11 @@ public class SendChildToHospitalEventScript : EventScript
     {
         get
         {
+            if (IncomeManager.Money >= Cost)
+            {
+                return "Your child is ill.  Do you wish to pay for treatment?";
+            }
+
             return "Your child is ill.";
         }
     }
@@ -21,8 +26,20 @@ public class SendChildToHospitalEventScript : EventScript
     // $20 to visit doctor
     // $200 to get treated
 
+    private const float Cost = 135300;
+    public const float HealthThreshold = 10;
+
+    public override string YesButtonText
+    {
+        get
+        {
+            return IncomeManager.Money >= Cost ? "Yes" : "OK";
+        }
+    }
+    public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+
     public override float EducationYes { get { return 0; } }
-    public override float IncomeYes { get { return 0; } }
+    public override float IncomeYes { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     public override float HealthYes { get { return 0; } }
     public override float SafetyYes { get { return 0; } }
     public override float HappinessYes { get { return 0; } }
@@ -32,4 +49,16 @@ public class SendChildToHospitalEventScript : EventScript
     public override float SafetyNo { get { return 0; } }
     public override float HealthNo { get { return 0; } }
     public override float HappinessNo { get { return 0; } }
+
+    protected override void OnYes()
+    {
+        base.OnYes();
+
+        if (IncomeManager.Money >= IncomeYes)
+        {
+            // Heal child which was critical
+            Child child = ChildManager.FindChild(x => x.Health < HealthThreshold);
+            child.Apply(new DataPacket(0, Child.MaxHealth - child.Health, 0, 0));
+        }
+    }
 }

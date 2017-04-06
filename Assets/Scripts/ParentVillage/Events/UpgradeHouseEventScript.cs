@@ -9,7 +9,7 @@ public class UpgradeHouseEventScript : EventScript
     {
         get
         {
-            return "You upgrade your house.";
+            return "Do you wish to upgrade your house? ( CFA " + IncomeYes.ToString() + " )";
         }
     }
 
@@ -20,7 +20,7 @@ public class UpgradeHouseEventScript : EventScript
     // House upgrade = $75?
 
     public override float EducationYes { get { return 10; } }
-    public override float IncomeYes { get { return 7; } }
+    public override float IncomeYes { get { return 46125; } }
     public override float HealthYes { get { return -15; } }
     public override float SafetyYes { get { return -50; } }
     public override float HappinessYes { get { return -25; } }

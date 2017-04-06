@@ -12,8 +12,6 @@ public class Child : IData
 
     public float Education { get; private set; }
 
-    public float Income { get; private set; }
-
     public float Health { get; private set; }
 
     public float Safety { get; private set; }
@@ -31,7 +29,6 @@ public class Child : IData
     public void Apply(DataPacket data)
     {
         Education = MathUtils.Clamp(Education + data.Education, 0, MaxEducation);
-        Income = MathUtils.Clamp(Income + data.Income, 0, 1);
         Health = MathUtils.Clamp(Health + data.Health, 0, MaxHealth);
         Safety = MathUtils.Clamp(Safety + data.Safety, 0, MaxSafety);
         Happiness = MathUtils.Clamp(Happiness + data.Happiness, 0, MaxHappiness);

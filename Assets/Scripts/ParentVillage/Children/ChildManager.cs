@@ -6,11 +6,12 @@ using System.Text;
 public static class ChildManager
 {
     public delegate void ChildAddedHandler(Child child);
+    public delegate void ChildRemovedHandler(Child child);
 
     public static event ChildAddedHandler ChildAdded;
-    
-    // Add fixed 7 child cap - this is the average in real life
+    public static event ChildRemovedHandler ChildRemoved;
 
+    public const int MaxChildCount = 7;
     public static int ChildCount { get { return Children.Count; } }
 
     private static List<Child> Children = new List<Child>();
@@ -24,6 +25,22 @@ public static class ChildManager
         {
             ChildAdded.Invoke(child);
         }
+    }
+
+    public static void RemoveChild(int index)
+    {
+        Child child = Children[index];
+        Children.RemoveAt(index);
+
+        if (ChildRemoved != null)
+        {
+            ChildRemoved.Invoke(child);
+        }
+    }
+
+    public static Child FindChild(Predicate<Child> predicate)
+    {
+        return Children.Find(predicate);
     }
 
     public static void ApplyEvent(DataPacket data)

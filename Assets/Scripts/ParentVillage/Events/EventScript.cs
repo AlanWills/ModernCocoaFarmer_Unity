@@ -26,16 +26,17 @@ public abstract class EventScript
     // Once this time elapses, you will be free to send the child elsewhere, or maybe instead they automatically return home
     // I also want the values to be applied at the end of the time, but is this appropriate for all the events?  I think so.
     // You can also send any number of children anywhere - i.e. send all your children to the mosque.
-
-    // Yes No button enabled flags (some events will not need both or either)
-    // 614.79 CFA francs = 1 US.
+    // Add another base class for building specific events
+    // It has a child which it locks in and has a function it calls at the end of a lock in time which applies stuff like OnYes
 
     public void Yes()
     {
         OnYes();
 
         ChildManager.ApplyEvent(
-            new DataPacket(EducationYes, IncomeYes, HealthYes, SafetyYes, HappinessYes));
+            new DataPacket(EducationYes, HealthYes, SafetyYes, HappinessYes));
+
+        IncomeManager.AddMoney(IncomeYes);
     }
 
     protected virtual void OnYes()
@@ -48,7 +49,9 @@ public abstract class EventScript
         OnNo();
 
         ChildManager.ApplyEvent(
-            new DataPacket(EducationNo, IncomeNo, HealthNo, SafetyNo, HappinessNo));
+            new DataPacket(EducationNo, HealthNo, SafetyNo, HappinessNo));
+
+        IncomeManager.AddMoney(IncomeNo);
     }
 
     protected virtual void OnNo()

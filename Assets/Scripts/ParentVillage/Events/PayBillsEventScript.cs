@@ -19,7 +19,7 @@ public class PayBillsEventScript : EventScript
     // $170 a month for 85 m2 apartment
 
     public override float EducationYes { get { return 0; } }
-    public override float IncomeYes { get { return -3.5f; } }
+    public override float IncomeYes { get { return -(430500 + 31980 * ChildManager.ChildCount); } }
     public override float HealthYes { get { return 40; } }
     public override float SafetyYes { get { return 35; } }
     public override float HappinessYes { get { return 15; } }
