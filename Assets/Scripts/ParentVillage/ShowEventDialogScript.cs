@@ -7,7 +7,7 @@ public class ShowEventDialogScript : MonoBehaviour {
 
     public string EventName;
 
-    private EventScript eventScript;
+    private InteractableBuildingEventScript eventScript;
     private GameObject dialog;
 
     void Awake()
@@ -19,12 +19,13 @@ public class ShowEventDialogScript : MonoBehaviour {
     void Start ()
     {
         Type type = Assembly.GetExecutingAssembly().GetType(EventName);
-        eventScript = Activator.CreateInstance(type) as EventScript;
+        eventScript = Activator.CreateInstance(type) as InteractableBuildingEventScript;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        eventScript.Update();
 	}
 
     private void OnMouseDown()

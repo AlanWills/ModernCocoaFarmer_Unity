@@ -60,7 +60,7 @@ public static class ChildManager
         }
     }
 
-    public static void ApplyEvent(DataPacket data)
+    public static void ApplyEventToAllChildren(DataPacket data)
     {
         foreach (Child child in Children)
         {

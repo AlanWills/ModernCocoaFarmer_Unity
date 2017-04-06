@@ -20,6 +20,8 @@ public class Child : IData
 
     public bool IsSelected { get; set; }
 
+    public bool IsLocked { get; set; }
+
     public Child()
     {
         Education = 0;

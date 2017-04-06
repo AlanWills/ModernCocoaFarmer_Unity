@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SendChildToSchoolEventScript : EventScript
+public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 {
     public override string Description
     {
         get
         {
-            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( CFA " + Math.Abs(IncomeYes).ToString() + " for books, equipment and uniform )";
+            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( CFA " + CostToPerform.ToString() + " for books, equipment and uniform )";
         }
     }
 
@@ -18,15 +18,18 @@ public class SendChildToSchoolEventScript : EventScript
     // Child locked in for an entire year
     // 70 children in class per average
 
-    public override float EducationYes { get { return 10; } }
-    public override float IncomeYes { get { return -3075; } }
-    public override float HealthYes { get { return 10; } }
-    public override float SafetyYes { get { return 50; } }
-    public override float HappinessYes { get { return 25; } }
+    public override float CostToPerform { get { return 3075; } }
+    protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
+    public override string OnCompleteDescription
+    {
+        get
+        {
+            return "Your child has studied hard all year.";
+        }
+    }
 
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return 0; } }
-    public override float SafetyNo { get { return 0; } }
-    public override float HealthNo { get { return 0; } }
-    public override float HappinessNo { get { return 0; } }
+    protected override void OnTimeComplete(Child child)
+    {
+        child.Apply(new DataPacket(10, 10, 50, 25));
+    }
 }

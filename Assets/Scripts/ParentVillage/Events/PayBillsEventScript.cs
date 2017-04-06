@@ -9,7 +9,7 @@ public class PayBillsEventScript : EventScript
     {
         get
         {
-            return "Your bills are due.  Do you wish to pay them? ( CFA " + Math.Abs(IncomeYes).ToString() + " )";
+            return "Your bills are due.  Do you wish to pay them? ( CFA " + Cost.ToString() + " )";
         }
     }
 
@@ -18,15 +18,15 @@ public class PayBillsEventScript : EventScript
     // $52 a year for food per person
     // $170 a month for 85 m2 apartment
 
-    public override float EducationYes { get { return 0; } }
-    public override float IncomeYes { get { return -(430500 + 31980 * ChildManager.ChildCount); } }
-    public override float HealthYes { get { return 40; } }
-    public override float SafetyYes { get { return 35; } }
-    public override float HappinessYes { get { return 15; } }
+    public override string YesButtonText { get { return "Yes"; } }
+    public override bool NoButtonEnabled { get { return true; } }
 
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return 0; } }
-    public override float SafetyNo { get { return -60; } }
-    public override float HealthNo { get { return -50; } }
-    public override float HappinessNo { get { return -75; } }
+    public float Cost { get { return 430500 + 31980 * ChildManager.ChildCount; } }
+
+    protected override void OnYes()
+    {
+        base.OnYes();
+
+        IncomeManager.AddMoney(-Cost);
+    }
 }

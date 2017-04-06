@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SendChildToHospitalEventScript : EventScript
+public class SendChildToHospitalEventScript : InteractableBuildingEventScript
 {
     public override string Description
     {
@@ -11,7 +11,7 @@ public class SendChildToHospitalEventScript : EventScript
         {
             if (IncomeManager.Money >= Cost)
             {
-                return "Your child is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(IncomeYes).ToString() + " )";
+                return "Your child is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
             }
 
             return "Your child is ill.";
@@ -37,28 +37,27 @@ public class SendChildToHospitalEventScript : EventScript
         }
     }
     public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
-
-    public override float EducationYes { get { return 0; } }
-    public override float IncomeYes { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
-    public override float HealthYes { get { return 0; } }
-    public override float SafetyYes { get { return 0; } }
-    public override float HappinessYes { get { return 0; } }
-
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return 0; } }
-    public override float SafetyNo { get { return 0; } }
-    public override float HealthNo { get { return 0; } }
-    public override float HappinessNo { get { return 0; } }
+    public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
+    protected override float LockTime { get { return 40; } }
+    public override string OnCompleteDescription
+    {
+        get
+        {
+            return "Your child has been completely cured.";
+        }
+    }
 
     protected override void OnYes()
     {
-        base.OnYes();
-
-        if (IncomeManager.Money >= IncomeYes)
+        if (IncomeManager.Money >= CostToPerform)
         {
-            // Heal child which was critical
-            Child child = ChildManager.FindChild(x => x.Health < HealthThreshold);
-            child.Apply(new DataPacket(0, Child.MaxHealth - child.Health, 0, 0));
+            base.OnYes();
         }
+    }
+
+    protected override void OnTimeComplete(Child child)
+    {
+        // Heal child which was critical
+        child.Apply(new DataPacket(0, Child.MaxHealth - child.Health, 0, 0));
     }
 }

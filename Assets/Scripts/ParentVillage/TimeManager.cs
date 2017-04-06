@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public float SecondsPerYear = 120;
+    public const float SecondsPerYear = 120;
 
     private float currentTimeInYear = 0;
     private EventDialogScript dialogScript;
@@ -30,6 +30,7 @@ public class TimeManager : MonoBehaviour
     private void NewYear()
     {
         dialogScript.QueueEvent(new ReceiveIncomeEventScript());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new PayBillsEventScript());
     }

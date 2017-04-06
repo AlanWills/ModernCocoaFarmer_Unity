@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class UpgradeHouseEventScript : EventScript
+public class UpgradeHouseEventScript : InteractableBuildingEventScript
 {
     public override string Description
     {
         get
         {
-            return "Do you wish to upgrade your house? ( CFA " + Math.Abs(IncomeYes).ToString() + " )";
+            return "Do you wish for your child to build an upgrade on your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
         }
     }
 
@@ -19,15 +19,18 @@ public class UpgradeHouseEventScript : EventScript
 
     // House upgrade = $75?
 
-    public override float EducationYes { get { return 10; } }
-    public override float IncomeYes { get { return 46125; } }
-    public override float HealthYes { get { return -15; } }
-    public override float SafetyYes { get { return -50; } }
-    public override float HappinessYes { get { return -25; } }
+    public override float CostToPerform { get { return 46125; } }
+    protected override float LockTime { get { return 40; } }
+    public override string OnCompleteDescription
+    {
+        get
+        {
+            return "Your child has finished upgrading your house with some cool stuff.";
+        }
+    }
 
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return -20; } }
-    public override float SafetyNo { get { return 30; } }
-    public override float HealthNo { get { return 35; } }
-    public override float HappinessNo { get { return 15; } }
+    protected override void OnTimeComplete(Child child)
+    {
+        // Upgrade house somehow?
+    }
 }

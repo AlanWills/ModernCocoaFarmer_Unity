@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToMosqueEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToSchoolEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToWorkEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\TaskCompleteScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\UpgradeHouseEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\IncomeManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\MoneyScript.cs" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SendChildToMosqueEventScript : EventScript
+public class SendChildToMosqueEventScript : InteractableBuildingEventScript
 {
     public override string Description
     {
@@ -17,15 +17,20 @@ public class SendChildToMosqueEventScript : EventScript
     // When one child completes some time here
     // Hopefully inspires the player to keep sending a child here to keep getting benefits to the family.
 
-    public override float EducationYes { get { return 2; } }
-    public override float IncomeYes { get { return 0; } }
-    public override float HealthYes { get { return 0; } }
-    public override float SafetyYes { get { return 3; } }
-    public override float HappinessYes { get { return 5; } }
+    public override string YesButtonText { get { return "Send Child"; } }
+    public override string NoButtonText { get { return "Leave"; } }
+    public override float CostToPerform { get { return 0; } }
+    protected override float LockTime { get { return 30; } }
+    public override string OnCompleteDescription
+    {
+        get
+        {
+            return "Your child leaves the mosque and spreads happiness and wisdom to your family.";
+        }
+    }
 
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return 0; } }
-    public override float SafetyNo { get { return 0; } }
-    public override float HealthNo { get { return 0; } }
-    public override float HappinessNo { get { return 0; } }
+    protected override void OnTimeComplete(Child child)
+    {
+        ChildManager.ApplyEventToAllChildren(new DataPacket(2, 0, 3, 5));
+    }
 }

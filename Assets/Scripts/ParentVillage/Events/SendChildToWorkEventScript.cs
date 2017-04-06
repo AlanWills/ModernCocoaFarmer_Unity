@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SendChildToWorkEventScript : EventScript
+public class SendChildToWorkEventScript : InteractableBuildingEventScript
 {
     public override string Description
     {
@@ -19,23 +19,19 @@ public class SendChildToWorkEventScript : EventScript
     // Child locked in for a year
 
     private const float Salary = 116850;
-
-    public override float EducationYes { get { return -10; } }
-    public override float IncomeYes { get { return 0; } }
-    public override float HealthYes { get { return -15; } }
-    public override float SafetyYes { get { return -50; } }
-    public override float HappinessYes { get { return -25; } }
-
-    public override float EducationNo { get { return 0; } }
-    public override float IncomeNo { get { return 0; } }
-    public override float SafetyNo { get { return 0; } }
-    public override float HealthNo { get { return 0; } }
-    public override float HappinessNo { get { return 0; } }
-
-    protected override void OnYes()
+    
+    public override float CostToPerform { get { return 0; } }
+    protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
+    public override string OnCompleteDescription
     {
-        base.OnYes();
+        get
+        {
+            return "Your child completes a hard year at the cocoa farm.";
+        }
+    }
 
+    protected override void OnTimeComplete(Child child)
+    {
         Random random = new Random();
         if (random.NextDouble() >= 0.95f)
         {
