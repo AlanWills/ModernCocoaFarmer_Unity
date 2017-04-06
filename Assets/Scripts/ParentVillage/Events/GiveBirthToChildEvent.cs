@@ -8,7 +8,7 @@ public class GiveBirthToChildEvent : EventScript
         {
             if (ChildManager.ChildCount <= 5)
             {
-                return "You've had a baby lol.";
+                return "You've had a baby.";
             }
 
             return "You have become pregnant, do you wish to keep the child?";
