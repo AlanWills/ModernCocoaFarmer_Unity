@@ -9,8 +9,8 @@ public class RandomEventGenerator : MonoBehaviour {
     private List<EventScript> events = new List<EventScript>()
     {
         new ChildTraffickedEventScript(),
-        new LostJobEventScript(),
-        new NewJobEventScript(),
+        new SalaryDecreasedEventScript(),
+        new SalaryIncreasedEventScript(),
         new PayBillsEventScript(),
     };
 

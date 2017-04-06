@@ -29,4 +29,11 @@ public class PayBillsEventScript : EventScript
 
         IncomeManager.AddMoney(-Cost);
     }
+
+    protected override void OnNo()
+    {
+        base.OnNo();
+
+        ChildManager.ApplyEventToAllChildren(new DataPacket(0, -30, -20, -50));
+    }
 }

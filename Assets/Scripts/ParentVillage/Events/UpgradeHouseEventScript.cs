@@ -9,7 +9,7 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Do you wish for your child to build an upgrade on your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+            return "Do you wish for your child to build an upgrade for your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
         }
     }
 
@@ -25,7 +25,7 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Your child has finished upgrading your house with some cool stuff.";
+            return "Your child has finished improving your house.";
         }
     }
 

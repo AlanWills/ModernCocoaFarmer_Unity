@@ -15,6 +15,9 @@ public class GiveBirthToChildEvent : EventScript
         }
     }
 
+    public override string YesButtonText { get { return ChildManager.ChildCount <= 5 ? "OK" : "Yes"; } }
+    public override bool NoButtonEnabled { get { return ChildManager.ChildCount <= 5 ? false : true; } }
+
     protected override void OnYes()
     {
         ChildManager.AddChild();

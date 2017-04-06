@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class LostJobEventScript : EventScript
+public class SalaryIncreasedEventScript : EventScript
 {
     public override string Description
     {
         get
         {
-            return "Your husband's pay has been decreased.";
+            return "Your husband's pay has been increased.";
         }
     }
 
@@ -17,6 +17,6 @@ public class LostJobEventScript : EventScript
     {
         base.OnYes();
 
-        IncomeManager.DecreaseIncomeLevel();
+        IncomeManager.IncreaseIncomeLevel();
     }
 }

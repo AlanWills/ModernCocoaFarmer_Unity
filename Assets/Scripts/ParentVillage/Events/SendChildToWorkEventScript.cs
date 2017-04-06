@@ -32,6 +32,8 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
     protected override void OnTimeComplete(Child child)
     {
+        child.Apply(new DataPacket(0, -50, -50, -50));
+
         Random random = new Random();
         if (random.NextDouble() >= 0.95f)
         {
