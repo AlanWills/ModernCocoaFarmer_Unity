@@ -9,18 +9,15 @@ public class GraveCreatorScript : MonoBehaviour {
 
     private Vector3 spacing;
 
-    void OnStart()
-    {
-        spacing = Grave.GetComponent<SpriteRenderer>().sprite.bounds.extents * 2;
-    }
-    
     public void CreateGrave()
     {
         int currentCount = transform.childCount;
         int row = currentCount / ColumnCount;
         int column = currentCount % ColumnCount;
 
+        Vector3 spacing = Grave.GetComponent<SpriteRenderer>().bounds.extents * 2;
+
         GameObject newGrave = Instantiate(Grave, transform);
-        newGrave.transform.localPosition = new Vector3(spacing.x * column, spacing.y * row, 0);
+        newGrave.transform.localPosition = new Vector3((spacing.x + 0.025f) * column, -(spacing.y + 0.05f) * row, 0);
     }
 }
