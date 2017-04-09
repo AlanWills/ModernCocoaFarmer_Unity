@@ -16,10 +16,10 @@ public class PayBillsEventScript : EventScript
         {
             if (IncomeManager.Money < Cost)
             {
-                return "You do not have enough money to pay your bills.";
+                return "Your bills are due ( CFA " + Cost.ToString() + " ).  You do not have enough money to pay them.";
             }
 
-            return "Your bills are due.  Do you wish to pay them? ( CFA " + Cost.ToString() + " )";
+            return "Your bills are due ( CFA " + Cost.ToString() + " ).  Do you wish to pay them?";
         }
     }
 

@@ -25,12 +25,20 @@ public class TimeManager : MonoBehaviour
             currentTimeInYear = 0;
             NewYear();
         }
+        else if (currentTimeInYear > SecondsPerYear * 0.5f)
+        {
+            MidYear();
+        }
 	}
 
     private void NewYear()
     {
         dialogScript.QueueEvent(new ReceiveIncomeEventScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
+    }
+
+    private void MidYear()
+    {
         dialogScript.QueueEvent(new PayBillsEventScript());
     }
 }
