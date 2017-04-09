@@ -4,7 +4,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public class ChildUIScript : MonoBehaviour
 {
-    public Sprite IdleIcon;
     public Sprite HomeIcon;
     public Sprite SchoolIcon;
     public Sprite WorkIcon;

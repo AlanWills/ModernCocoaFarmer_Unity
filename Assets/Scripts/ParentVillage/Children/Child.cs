@@ -50,7 +50,7 @@ public class Child : IData
 
     public void LockIn(BuildingType buildingType)
     {
-        Assert.AreEqual(BuildingType.Idle, BuildingType);
+        Assert.IsTrue(buildingType == BuildingType.Idle || BuildingType == BuildingType.Idle);
         BuildingType = buildingType;
 
         if (OnLockedIn != null)
