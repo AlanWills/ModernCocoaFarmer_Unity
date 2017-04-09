@@ -14,12 +14,18 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     {
         get
         {
-            if (IncomeManager.Money >= Cost)
+            Child selectedChild = ChildManager.SelectedChild;
+
+            if (selectedChild.Health == Child.MaxHealth)
             {
-                return ChildManager.SelectedChild.Name + " is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+                return selectedChild.Name + " is perfectly healthy";
+            }
+            else if (IncomeManager.Money >= Cost)
+            {
+                return selectedChild.Name + " is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
             }
 
-            return ChildManager.SelectedChild.Name + " is ill.";
+            return selectedChild.Name + " is ill.";
         }
     }
 
