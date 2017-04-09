@@ -22,7 +22,7 @@ public class EventDialogScript : MonoBehaviour
     public void Awake()
     {
         eventDialogUI = GameObject.Find("EventDialogUI");
-        nameUI = GameObject.Find("Name").GetComponent<Text>();
+        nameUI = GameObject.Find("EventName").GetComponent<Text>();
         descriptionUI = GameObject.Find("Description").GetComponent<Text>();
         yesButton = GameObject.Find("YesButton");
         noButton = GameObject.Find("NoButton");
