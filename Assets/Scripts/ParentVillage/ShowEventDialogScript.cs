@@ -39,7 +39,7 @@ public class ShowEventDialogScript : MonoBehaviour {
         Child selectedChild = ChildManager.FindChild(x => x.IsSelected);
         if (selectedChild == null)
         {
-            dialog.GetComponent<EventDialogScript>().QueueEvent(new NoSelectedChildEventScript());
+            dialog.GetComponent<EventDialogScript>().QueueEvent(new NoChildSelectedEventScript());
         }
         else if (selectedChild.BuildingType != BuildingType.Idle)
         {

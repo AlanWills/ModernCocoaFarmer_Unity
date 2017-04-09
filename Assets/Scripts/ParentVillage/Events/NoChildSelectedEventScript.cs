@@ -1,10 +1,10 @@
 ﻿using System;
 
-public class NoSelectedChildEventScript : EventScript
+public class NoChildSelectedEventScript : EventScript
 {
     public override string Name
     {
-        get { return "No Selected Child"; }
+        get { return "No Child Selected"; }
     }
 
     public override string Description
