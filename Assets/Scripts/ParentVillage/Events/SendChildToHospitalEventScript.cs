@@ -44,13 +44,6 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return 40; } }
-    public override string OnCompleteDescription
-    {
-        get
-        {
-            return "Your child has been completely cured.";
-        }
-    }
 
     protected override void OnYes()
     {
@@ -58,6 +51,11 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         {
             base.OnYes();
         }
+    }
+
+    public override string GetOnCompleteDescription(Child child)
+    {
+        return child.Name + " has been completely cured.";
     }
 
     protected override void OnTimeComplete(Child child)

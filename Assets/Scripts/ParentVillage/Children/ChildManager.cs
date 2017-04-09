@@ -15,6 +15,7 @@ public static class ChildManager
 
     public const int MaxChildCount = 7;
     public static int ChildCount { get { return Children.Count; } }
+    public static Child SelectedChild { get { return Children.Find(x => x.IsSelected); } }
 
     private static List<Child> Children = new List<Child>();
 
@@ -48,13 +49,22 @@ public static class ChildManager
 
     public static void RemoveChild(int index)
     {
-        Child child = Children[index];
-        Children.RemoveAt(index);
+        RemoveChild(Children[index]);
+    }
+
+    public static void RemoveChild(Child child)
+    {
+        Children.Remove(child);
 
         if (ChildRemoved != null)
         {
             ChildRemoved.Invoke(child);
         }
+    }
+
+    public static Child GetChild(int index)
+    {
+        return Children[index];
     }
 
     public static Child FindChild(Predicate<Child> predicate)

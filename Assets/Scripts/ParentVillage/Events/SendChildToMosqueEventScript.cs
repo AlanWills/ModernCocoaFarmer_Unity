@@ -26,12 +26,10 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     public override string NoButtonText { get { return "Leave"; } }
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return 30; } }
-    public override string OnCompleteDescription
+
+    public override string GetOnCompleteDescription(Child child)
     {
-        get
-        {
-            return "Your child leaves the mosque and spreads happiness and wisdom to your family.";
-        }
+        return child.Name + " leaves the mosque and spreads happiness and wisdom to your family.";
     }
 
     protected override void OnTimeComplete(Child child)

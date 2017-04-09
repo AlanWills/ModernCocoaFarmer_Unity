@@ -31,16 +31,14 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
-    public override string OnCompleteDescription
+
+    public override string GetOnCompleteDescription(Child child)
     {
-        get
+        if (childPaid)
         {
-            if (childPaid)
-            {
-                return "Your child completes a hard year at the cocoa farm and is paid CFA " + Salary.ToString() + ".";
-            }
-            return "Your child completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
+            return child.Name + " completes a hard year at the cocoa farm and is paid CFA " + Salary.ToString() + ".";
         }
+        return child.Name + " completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
     }
 
     protected override void OnTimeComplete(Child child)

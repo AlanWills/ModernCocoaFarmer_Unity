@@ -26,12 +26,10 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
-    public override string OnCompleteDescription
+
+    public override string GetOnCompleteDescription(Child child)
     {
-        get
-        {
-            return "Your child has finished improving your house.";
-        }
+        return "The upgrade to your house has been completed.";
     }
 
     protected override void OnTimeComplete(Child child)

@@ -11,7 +11,7 @@ public class ChildTraffickedEventScript : EventScript
     {
         get
         {
-            return "One of your children has been taken by an illegal trafficker.  Do you want to inform the Police? ( CFA " + Cost.ToString() + " )";
+            return childThatWillBeTaken.Name + " has been taken by an illegal trafficker.  Do you want to inform the Police? ( CFA " + Cost.ToString() + " )";
         }
     }
 
@@ -19,9 +19,16 @@ public class ChildTraffickedEventScript : EventScript
     public override bool NoButtonEnabled { get { return true; } }
 
     private const float Cost = 615000;
+    private Child childThatWillBeTaken;
 
     // Yes = pay income for die-roll chance of recovering child; mention income cost in description
     // No = no-op
+
+    public ChildTraffickedEventScript()
+    {
+        Random random = new Random();
+        childThatWillBeTaken = ChildManager.GetChild(random.Next(0, ChildManager.ChildCount));
+    }
 
     protected override void OnYes()
     {
@@ -32,7 +39,7 @@ public class ChildTraffickedEventScript : EventScript
         Random random = new Random();
         if (random.NextDouble() >= 0.2)
         {
-            ChildManager.RemoveChild(random.Next(0, ChildManager.ChildCount));
+            ChildManager.RemoveChild(childThatWillBeTaken);
         }
     }
 
@@ -40,7 +47,6 @@ public class ChildTraffickedEventScript : EventScript
     {
         base.OnNo();
 
-        Random random = new Random();
-        ChildManager.RemoveChild(random.Next(0, ChildManager.ChildCount));
+        ChildManager.RemoveChild(childThatWillBeTaken);
     }
 }

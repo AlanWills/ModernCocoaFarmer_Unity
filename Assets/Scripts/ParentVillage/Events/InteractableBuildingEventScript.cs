@@ -8,22 +8,21 @@ public abstract class InteractableBuildingEventScript : EventScript
     public override bool NoButtonEnabled { get { return true; } }
 
     public abstract float CostToPerform { get; }
-    public abstract string OnCompleteDescription { get; }
 
     protected abstract float LockTime { get; }
     protected List<Child> LockedInChildren = new List<Child>();
     protected List<float> Timers = new List<float>();
-
+    
     protected override void OnYes()
     {
         base.OnYes();
 
         IncomeManager.AddMoney(-CostToPerform);
 
-        Child child = ChildManager.FindChild(x => x.IsSelected);
+        Child child = ChildManager.SelectedChild;
         child.IsLocked = true;
 
-        LockedInChildren.Add(ChildManager.FindChild(x => x.IsSelected));
+        LockedInChildren.Add(child);
         Timers.Add(0);
     }
     
@@ -50,9 +49,10 @@ public abstract class InteractableBuildingEventScript : EventScript
             Timers.RemoveAt(childIndex);
 
             OnTimeComplete(child);
-            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(OnCompleteDescription));
+            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(GetOnCompleteDescription(child)));
         }
     }
 
+    public abstract string GetOnCompleteDescription(Child child);
     protected abstract void OnTimeComplete(Child child);
 }
