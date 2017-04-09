@@ -31,15 +31,19 @@ public class ChildUIScript : MonoBehaviour {
 
     private void ChildManager_ChildSelected(Child child)
     {
-        // If the dialog is not visible, the current child will be null, so this will fail anyway
-        if (dataDialog.CurrentChild == child)
+        // Only deal with the data dialog if this ChildUI's child is the selected one
+        if (child == Child)
         {
-            // Toggles the dialog if we have already selected the child
-            dataDialog.Hide();
-        }
-        else
-        {
-            dataDialog.Show(Child);
+            // If the dialog is not visible, the current child will be null, so this will fail anyway
+            if (dataDialog.CurrentChild == child)
+            {
+                // Toggles the dialog if we have already selected the child
+                dataDialog.Hide();
+            }
+            else
+            {
+                dataDialog.Show(Child);
+            }
         }
 
         animator.SetBool("Animate", child == Child);
