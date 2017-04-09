@@ -37,7 +37,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         if (childPaid)
         {
-            return child.Name + " completes a hard year at the cocoa farm and is paid CFA " + (Salary * (1 + (child.Education * 0.01f))).ToString() + ".";
+            return child.Name + " completes a hard year at the cocoa farm and is paid CFA " + ((int)(Salary * (1 + (child.Education * 0.01f)))).ToString() + ".";
         }
         return child.Name + " completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
     }
@@ -58,7 +58,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
         if (childPaid)
         {
-            IncomeManager.AddMoney(Salary * (1 + (child.Education * 0.01f)));
+            IncomeManager.AddMoney((int)(Salary * (1 + (child.Education * 0.01f))));
         }
     }
 }
