@@ -33,4 +33,11 @@ public class GiveBirthToChildEvent : EventScript
             GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new ChildLeftHomeEventScript());
         }
     }
+
+    protected override void OnNo()
+    {
+        base.OnNo();
+
+        GameObject.Find("Graves").GetComponent<GraveCreatorScript>().CreateGrave();
+    }
 }
