@@ -16,10 +16,10 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         {
             if (IncomeManager.Money >= Cost)
             {
-                return "Your child is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+                return ChildManager.SelectedChild.Name + " is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
             }
 
-            return "Your child is ill.";
+            return ChildManager.SelectedChild.Name + " is ill.";
         }
     }
 

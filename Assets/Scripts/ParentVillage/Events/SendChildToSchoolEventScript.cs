@@ -16,10 +16,10 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
         {
             if (IncomeManager.Money < CostToPerform)
             {
-                return "You do not have enough money to send your child to school.";
+                return "You do not have enough money to send " + ChildManager.SelectedChild.Name + " to school.";
             }
 
-            return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( CFA " + CostToPerform.ToString() + " for books, equipment and uniform )";
+            return "Do you wish to send " + ChildManager.SelectedChild.Name + " to school so they will be more likely to earn money in the future? ( CFA " + CostToPerform.ToString() + " for books, equipment and uniform )";
         }
     }
 

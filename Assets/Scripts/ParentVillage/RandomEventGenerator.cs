@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +7,12 @@ public class RandomEventGenerator : MonoBehaviour {
 
     private GameObject dialog;
 
-    private List<EventScript> events = new List<EventScript>()
+    private List<Type> events = new List<Type>()
     {
-        new ChildTraffickedEventScript(),
-        new SalaryDecreasedEventScript(),
-        new SalaryIncreasedEventScript(),
-        new PayBillsEventScript(),
+        typeof(ChildTraffickedEventScript),
+        typeof(SalaryDecreasedEventScript),
+        typeof(SalaryIncreasedEventScript),
+        typeof(PayBillsEventScript),
     };
 
 	// Use this for initialization
@@ -23,7 +24,7 @@ public class RandomEventGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (!dialog.activeSelf && Random.Range(0.0f, 1.0f) > 1)
+		if (!dialog.activeSelf && UnityEngine.Random.Range(0.0f, 1.0f) > 1)
         {
             CreateEventDialog();
         }
@@ -31,7 +32,7 @@ public class RandomEventGenerator : MonoBehaviour {
 
     private void CreateEventDialog()
     {
-        int eventIndex = Random.Range(0, events.Count);
-        dialog.GetComponent<EventDialogScript>().QueueEvent(events[eventIndex]);
+        int eventIndex = UnityEngine.Random.Range(0, events.Count);
+        dialog.GetComponent<EventDialogScript>().QueueEvent(Activator.CreateInstance(events[eventIndex]) as EventScript);
     }
 }
