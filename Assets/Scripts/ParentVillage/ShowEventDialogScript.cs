@@ -30,6 +30,18 @@ public class ShowEventDialogScript : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+        Child selectedChild = ChildManager.FindChild(x => x.IsSelected);
+        if (selectedChild == null)
+        {
+            dialog.GetComponent<EventDialogScript>().QueueEvent(new NoSelectedChildEventScript());
+        }
+        else if (selectedChild.IsLocked)
+        {
+            // Add child already locked in event here
+        }
+        else
+        {
+            dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+        }
     }
 }
