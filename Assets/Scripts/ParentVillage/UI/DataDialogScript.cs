@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DataDialogScript : MonoBehaviour {
 
+    public Child CurrentChild { get; private set; }
+
     public const string DataDialogName = "DataDialog";
 
     private BarScript healthBar;
@@ -35,6 +37,8 @@ public class DataDialogScript : MonoBehaviour {
 
     public void Show(Child child)
     {
+        CurrentChild = child;
+
         healthBar.Value = child.Health;
         safetyBar.Value = child.Safety;
         educationBar.Value = child.Education;
@@ -46,6 +50,7 @@ public class DataDialogScript : MonoBehaviour {
 
     public void Hide()
     {
+        CurrentChild = null;
         dataDialogUI.SetActive(false);
     }
 }

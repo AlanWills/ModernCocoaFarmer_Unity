@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EventScript
 {
+    public abstract string Name { get; }
     public abstract string Description { get; }
     public virtual string YesButtonText { get { return "OK"; } }
     public virtual string NoButtonText { get { return "No"; } }

@@ -5,11 +5,16 @@ using System.Text;
 
 public class UpgradeHouseEventScript : InteractableBuildingEventScript
 {
+    public override string Name
+    {
+        get { return "Home"; }
+    }
+
     public override string Description
     {
         get
         {
-            return "Do you wish for your child to build an upgrade for your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+            return "Would you like to upgrade your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
         }
     }
 

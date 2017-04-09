@@ -1,5 +1,10 @@
 ﻿public class ReceiveIncomeEventScript : EventScript
 {
+    public override string Name
+    {
+        get { return "Income Received"; }
+    }
+
     public override string Description
     {
         get

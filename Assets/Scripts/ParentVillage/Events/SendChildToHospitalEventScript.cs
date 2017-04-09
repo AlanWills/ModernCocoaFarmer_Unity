@@ -5,6 +5,11 @@ using System.Text;
 
 public class SendChildToHospitalEventScript : InteractableBuildingEventScript
 {
+    public override string Name
+    {
+        get { return "Hospital"; }
+    }
+
     public override string Description
     {
         get

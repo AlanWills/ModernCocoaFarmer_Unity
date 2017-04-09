@@ -5,6 +5,11 @@ using System.Text;
 
 public class PayBillsEventScript : EventScript
 {
+    public override string Name
+    {
+        get { return "Bills"; }
+    }
+
     public override string Description
     {
         get

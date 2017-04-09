@@ -2,6 +2,11 @@
 
 public class ChildTraffickedEventScript : EventScript
 {
+    public override string Name
+    {
+        get { return "Child Trafficked"; }
+    }
+
     public override string Description
     {
         get

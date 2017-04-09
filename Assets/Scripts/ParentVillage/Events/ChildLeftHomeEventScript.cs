@@ -2,6 +2,11 @@
 
 public class ChildLeftHomeEventScript : EventScript
 {
+    public override string Name
+    {
+        get { return "Child Left Home"; }
+    }
+
     public override string Description
     {
         get

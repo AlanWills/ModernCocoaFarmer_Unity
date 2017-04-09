@@ -5,6 +5,11 @@ using System.Text;
 
 public class SendChildToWorkEventScript : InteractableBuildingEventScript
 {
+    public override string Name
+    {
+        get { return "Farm"; }
+    }
+
     public override string Description
     {
         get

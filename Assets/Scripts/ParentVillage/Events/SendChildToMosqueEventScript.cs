@@ -5,6 +5,11 @@ using System.Text;
 
 public class SendChildToMosqueEventScript : InteractableBuildingEventScript
 {
+    public override string Name
+    {
+        get { return "Mosque"; }
+    }
+
     public override string Description
     {
         get

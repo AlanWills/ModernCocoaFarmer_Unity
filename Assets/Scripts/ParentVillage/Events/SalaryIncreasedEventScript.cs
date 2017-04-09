@@ -5,6 +5,11 @@ using System.Text;
 
 public class SalaryIncreasedEventScript : EventScript
 {
+    public override string Name
+    {
+        get { return "Pay Increase"; }
+    }
+
     public override string Description
     {
         get

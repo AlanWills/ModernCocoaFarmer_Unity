@@ -9,8 +9,6 @@ public class ChildUIScript : MonoBehaviour {
 
     public Child Child { get; set; }
 
-    private float timeHeld = 0;
-
     // Use this for initialization
     private void Awake()
     {
@@ -25,27 +23,7 @@ public class ChildUIScript : MonoBehaviour {
         ChildManager.ChildSelected += ChildManager_ChildSelected;
         animator = GetComponent<Animator>();
 	}
-
-    public void Update()
-    {
-        if (Child.IsSelected)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                timeHeld += Time.deltaTime;
-                if (timeHeld > 0.5f)
-                {
-                    dataDialog.GetComponent<DataDialogScript>().Show(Child);
-                }
-            }
-            else
-            {
-                timeHeld = 0;
-                dataDialog.GetComponent<DataDialogScript>().Hide();
-            }
-        }
-    }   
-     
+    
     public void Select()
     {
         ChildManager.SelectChild(Child);
@@ -53,7 +31,17 @@ public class ChildUIScript : MonoBehaviour {
 
     private void ChildManager_ChildSelected(Child child)
     {
-        timeHeld = 0;
+        // If the dialog is not visible, the current child will be null, so this will fail anyway
+        if (dataDialog.CurrentChild == child)
+        {
+            // Toggles the dialog if we have already selected the child
+            dataDialog.Hide();
+        }
+        else
+        {
+            dataDialog.Show(Child);
+        }
+
         animator.SetBool("Animate", child == Child);
     }
 }

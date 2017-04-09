@@ -2,6 +2,11 @@
 
 public class GiveBirthToChildEvent : EventScript
 {
+    public override string Name
+    {
+        get { return ChildManager.ChildCount <= 5 ? "Birth" : "Pregnancy"; }
+    }
+
     public override string Description
     {
         get

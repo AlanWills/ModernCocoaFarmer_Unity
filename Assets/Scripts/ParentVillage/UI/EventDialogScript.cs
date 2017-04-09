@@ -9,6 +9,7 @@ public class EventDialogScript : MonoBehaviour
     public const string EventDialogName = "EventDialog";
 
     private GameObject eventDialogUI;
+    private Text nameUI;
     private Text descriptionUI;
     private GameObject yesButton;
     private GameObject noButton;
@@ -21,6 +22,7 @@ public class EventDialogScript : MonoBehaviour
     public void Awake()
     {
         eventDialogUI = GameObject.Find("EventDialogUI");
+        nameUI = GameObject.Find("Name").GetComponent<Text>();
         descriptionUI = GameObject.Find("Description").GetComponent<Text>();
         yesButton = GameObject.Find("YesButton");
         noButton = GameObject.Find("NoButton");
@@ -53,6 +55,7 @@ public class EventDialogScript : MonoBehaviour
         {
             CurrentEvent = events.Dequeue();
 
+            nameUI.text = CurrentEvent.Name;
             descriptionUI.text = CurrentEvent.Description;
             yesText.text = CurrentEvent.YesButtonText;
             noText.text = CurrentEvent.NoButtonText;
