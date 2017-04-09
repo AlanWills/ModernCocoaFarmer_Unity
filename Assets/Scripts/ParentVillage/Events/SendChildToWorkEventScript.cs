@@ -14,7 +14,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Do you wish to send " + ChildManager.SelectedChild + " to work to earn money for the family.";
+            return "Do you wish to send " + ChildManager.SelectedChild.Name + " to work to earn money for the family.";
         }
     }
 
@@ -32,6 +32,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     public override BuildingType BuildingType { get { return BuildingType.Work; } }
+    protected override string OnShowAudioClipPath { get { return "Audio/Work"; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

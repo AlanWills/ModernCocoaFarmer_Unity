@@ -4,10 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class EventDialogScript : MonoBehaviour
 {
     public const string EventDialogName = "EventDialog";
 
+    private AudioSource audioSource;
     private GameObject eventDialogUI;
     private Text nameUI;
     private Text descriptionUI;
@@ -21,6 +23,7 @@ public class EventDialogScript : MonoBehaviour
 
     public void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         eventDialogUI = GameObject.Find("EventDialogUI");
         nameUI = GameObject.Find("EventName").GetComponent<Text>();
         descriptionUI = GameObject.Find("Description").GetComponent<Text>();
@@ -55,6 +58,12 @@ public class EventDialogScript : MonoBehaviour
         {
             CurrentEvent = events.Dequeue();
 
+            if (CurrentEvent.OnShowAudioClip != null)
+            {
+                audioSource.clip = CurrentEvent.OnShowAudioClip;
+                audioSource.Play();
+            }
+
             nameUI.text = CurrentEvent.Name;
             descriptionUI.text = CurrentEvent.Description;
             yesText.text = CurrentEvent.YesButtonText;
@@ -74,12 +83,26 @@ public class EventDialogScript : MonoBehaviour
     public void Yes()
     {
         CurrentEvent.Yes();
+
+        if (CurrentEvent.OnYesAudioClip != null)
+        {
+            audioSource.clip = CurrentEvent.OnYesAudioClip;
+            audioSource.Play();
+        }
+
         Hide();
     }
 
     public void No()
     {
         CurrentEvent.No();
+
+        if (CurrentEvent.OnNoAudioClip != null)
+        {
+            audioSource.clip = CurrentEvent.OnNoAudioClip;
+            audioSource.Play();
+        }
+
         Hide();
     }
 }

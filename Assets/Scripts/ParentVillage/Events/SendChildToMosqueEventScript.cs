@@ -27,6 +27,7 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return 30; } }
     public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
+    protected override string OnShowAudioClipPath { get { return "Audio/Mosque"; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

@@ -13,6 +13,8 @@
         }
     }
 
+    protected override string OnShowAudioClipPath { get { return "Audio/Money"; } }
+
     protected override void OnYes()
     {
         base.OnYes();

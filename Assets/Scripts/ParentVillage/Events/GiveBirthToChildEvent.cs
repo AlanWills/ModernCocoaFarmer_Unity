@@ -22,6 +22,9 @@ public class GiveBirthToChildEvent : EventScript
 
     public override string YesButtonText { get { return ChildManager.ChildCount <= 5 ? "OK" : "Yes"; } }
     public override bool NoButtonEnabled { get { return ChildManager.ChildCount <= 5 ? false : true; } }
+    protected override string OnShowAudioClipPath { get { return ChildManager.ChildCount <= 5 ? "Audio/Birth" : null; } }
+    protected override string OnYesAudioClipPath { get { return ChildManager.ChildCount > 5 ? "Audio/Birth" : null; } }
+    protected override string OnNoAudioClipPath { get { return ChildManager.ChildCount > 5 ? "Audio/Death" : null; } }
 
     protected override void OnYes()
     {

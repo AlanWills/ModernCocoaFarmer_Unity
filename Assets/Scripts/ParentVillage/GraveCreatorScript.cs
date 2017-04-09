@@ -7,8 +7,6 @@ public class GraveCreatorScript : MonoBehaviour {
     public GameObject Grave;
     public int ColumnCount;
 
-    private Vector3 spacing;
-
     public void CreateGrave()
     {
         int currentCount = transform.childCount;
