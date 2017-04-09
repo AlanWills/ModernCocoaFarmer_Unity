@@ -44,4 +44,9 @@ public class ChildUIScript : MonoBehaviour {
 
         animator.SetBool("Animate", child == Child);
     }
+
+    public void OnDestroy()
+    {
+        ChildManager.ChildSelected -= ChildManager_ChildSelected;
+    }
 }

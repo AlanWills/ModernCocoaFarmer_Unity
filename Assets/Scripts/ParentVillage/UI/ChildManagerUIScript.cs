@@ -7,6 +7,7 @@ public class ChildManagerUIScript : MonoBehaviour {
     public GameObject ChildUI;
 
     private List<GameObject> childUIs = new List<GameObject>();
+    private const float Spacing = 80;
 
 	// Use this for initialization
 	void Start ()
@@ -19,19 +20,21 @@ public class ChildManagerUIScript : MonoBehaviour {
     {
         GameObject ui = Instantiate(ChildUI, transform, false);
         ui.GetComponent<ChildUIScript>().Child = child;
-        ui.transform.localPosition = new Vector3(100 * (ChildManager.ChildCount - 1), 0, 0);
+        ui.transform.localPosition = new Vector3(Spacing * (ChildManager.ChildCount - 1), 0, 0);
 
         childUIs.Add(ui);
     }
 
     private void ChildManager_ChildRemoved(Child child)
     {
-        Destroy(childUIs.Find(x => x.GetComponent<ChildUIScript>().Child == child));
+        GameObject childUIToDestroy = childUIs.Find(x => x.GetComponent<ChildUIScript>().Child == child);
+        childUIs.Remove(childUIToDestroy);
+        Destroy(childUIToDestroy);
 
         // Fixup the positions of the other UI
         for (int i = 0; i < childUIs.Count; ++i)
         {
-            childUIs[i].transform.localPosition = new Vector3(100 * i, 0, 0);
+            childUIs[i].transform.localPosition = new Vector3(Spacing * i, 0, 0);
         }
     }
 }

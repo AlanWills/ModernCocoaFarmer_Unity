@@ -31,6 +31,13 @@ public class TimeManager : MonoBehaviour
     {
         dialogScript.QueueEvent(new ReceiveIncomeEventScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new PayBillsEventScript());
     }
 }

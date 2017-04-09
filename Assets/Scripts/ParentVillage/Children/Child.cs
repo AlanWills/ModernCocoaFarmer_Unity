@@ -22,8 +22,12 @@ public class Child : IData
 
     public bool IsLocked { get; set; }
 
-    public Child()
+    public const string Surname = "Keita";
+    public string Name { get; private set; }
+
+    public Child(string name)
     {
+        Name = name;
         Education = 0;
         Health = MaxHealth;
         Safety = MaxSafety;

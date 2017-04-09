@@ -49,8 +49,8 @@ public abstract class InteractableBuildingEventScript : EventScript
             LockedInChildren.RemoveAt(childIndex);
             Timers.RemoveAt(childIndex);
 
-            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(OnCompleteDescription));
             OnTimeComplete(child);
+            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(OnCompleteDescription));
         }
     }
 

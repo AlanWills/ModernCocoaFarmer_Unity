@@ -18,9 +18,26 @@ public static class ChildManager
 
     private static List<Child> Children = new List<Child>();
 
+    private static List<string> names = new List<string>()
+    {
+        "Adama",
+        "Oumar",
+        "Mohamed",
+        "Ousmane",
+        "Mamadou",
+        "Bintou",
+        "Mariam",
+        "Sali",
+    };
+
     public static void AddChild()
     {
-        Child child = new Child();
+        List<string> allFreeNames = names.Where(x => !Children.Exists(y => y.Name == x)).ToList();
+
+        Random random = new Random();
+        string freeName = allFreeNames[random.Next(0, allFreeNames.Count)];
+
+        Child child = new Child(freeName);
         Children.Add(child);
 
         if (ChildAdded != null)

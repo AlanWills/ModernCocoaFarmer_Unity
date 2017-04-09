@@ -24,6 +24,10 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     // Child locked in for a year
 
     private const float Salary = 116850;
+
+    // Every 20 times, the player is guaranteed a pay out
+    private static int numberOfTimesSent = 0;
+    private static bool childPaid = false;
     
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
@@ -31,16 +35,29 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Your child completes a hard year at the cocoa farm.";
+            if (childPaid)
+            {
+                return "Your child completes a hard year at the cocoa farm and is paid CFA " + Salary.ToString() + ".";
+            }
+            return "Your child completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
         }
     }
 
     protected override void OnTimeComplete(Child child)
     {
+        numberOfTimesSent++;
         child.Apply(new DataPacket(0, -50, -50, -50));
 
         Random random = new Random();
-        if (random.NextDouble() >= 0.95f)
+        childPaid = random.NextDouble() >= 0.95f;
+
+        if (numberOfTimesSent == 20)
+        {
+            childPaid = true;
+            numberOfTimesSent = 0;
+        }
+
+        if (childPaid)
         {
             IncomeManager.AddMoney(Salary);
         }
