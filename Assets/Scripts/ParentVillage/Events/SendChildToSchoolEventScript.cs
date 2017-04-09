@@ -9,6 +9,11 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     {
         get
         {
+            if (IncomeManager.Money < CostToPerform)
+            {
+                return "You do not have enough money to send your child to school.";
+            }
+
             return "Do you wish to send your child to school so they will be more likely to earn money in the future? ( CFA " + CostToPerform.ToString() + " for books, equipment and uniform )";
         }
     }
@@ -17,6 +22,9 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     // Paid at beginning of year
     // Child locked in for an entire year
     // 70 children in class per average
+
+    public override string YesButtonText { get { return IncomeManager.Money >= CostToPerform ? "Yes" : "OK"; } }
+    public override bool NoButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
 
     public override float CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }

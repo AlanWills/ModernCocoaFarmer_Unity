@@ -32,7 +32,10 @@ public class PayBillsEventScript : EventScript
     {
         base.OnYes();
 
-        IncomeManager.AddMoney(-Cost);
+        if (IncomeManager.Money >= Cost)
+        {
+            IncomeManager.AddMoney(-Cost);
+        }
     }
 
     protected override void OnNo()

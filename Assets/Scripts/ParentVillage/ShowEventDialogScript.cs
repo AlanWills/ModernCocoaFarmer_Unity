@@ -37,7 +37,7 @@ public class ShowEventDialogScript : MonoBehaviour {
         }
         else if (selectedChild.IsLocked)
         {
-            // Add child already locked in event here
+            dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript());
         }
         else
         {
