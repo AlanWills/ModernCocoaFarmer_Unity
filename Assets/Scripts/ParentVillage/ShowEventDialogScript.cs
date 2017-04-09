@@ -35,9 +35,9 @@ public class ShowEventDialogScript : MonoBehaviour {
         {
             dialog.GetComponent<EventDialogScript>().QueueEvent(new NoSelectedChildEventScript());
         }
-        else if (selectedChild.IsLocked)
+        else if (selectedChild.BuildingType != BuildingType.Idle)
         {
-            dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript());
+            dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript(selectedChild.BuildingType));
         }
         else
         {

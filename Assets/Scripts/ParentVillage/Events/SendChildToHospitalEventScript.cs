@@ -44,6 +44,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return 40; } }
+    public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
 
     protected override void OnYes()
     {

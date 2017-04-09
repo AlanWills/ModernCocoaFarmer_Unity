@@ -33,10 +33,11 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 
     public override float CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
+    public override BuildingType BuildingType { get { return BuildingType.School; } }
 
     public override string GetOnCompleteDescription(Child child)
     {
-        return child.Name + " has studied hard all year.";
+        return child.Name + " has studied hard all year and is closer towards a full education.";
     }
 
     protected override void OnTimeComplete(Child child)

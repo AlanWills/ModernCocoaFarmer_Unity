@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BuildingType
+{
+    Idle,
+    Home,
+    Mosque,
+    Work,
+    School,
+    Hospital,
+}
+
 public abstract class InteractableBuildingEventScript : EventScript
 {
     public override string YesButtonText { get { return "Yes"; } }
     public override bool NoButtonEnabled { get { return true; } }
 
     public abstract float CostToPerform { get; }
+    public abstract BuildingType BuildingType { get; }
 
     protected abstract float LockTime { get; }
     protected List<Child> LockedInChildren = new List<Child>();
@@ -20,7 +31,7 @@ public abstract class InteractableBuildingEventScript : EventScript
         IncomeManager.AddMoney(-CostToPerform);
 
         Child child = ChildManager.SelectedChild;
-        child.IsLocked = true;
+        child.LockIn(BuildingType);
 
         LockedInChildren.Add(child);
         Timers.Add(0);
@@ -37,7 +48,7 @@ public abstract class InteractableBuildingEventScript : EventScript
 
             if (Timers[i] > LockTime)
             {
-                LockedInChildren[i].IsLocked = false;
+                LockedInChildren[i].LockIn(BuildingType.Idle);
                 childrenToRemoveIndexes.Add(i);
             }
         }

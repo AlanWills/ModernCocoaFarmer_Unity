@@ -31,6 +31,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
+    public override BuildingType BuildingType { get { return BuildingType.Work; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

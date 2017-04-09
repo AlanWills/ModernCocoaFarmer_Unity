@@ -26,6 +26,7 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
+    public override BuildingType BuildingType { get { return BuildingType.Home; } }
 
     public override string GetOnCompleteDescription(Child child)
     {
