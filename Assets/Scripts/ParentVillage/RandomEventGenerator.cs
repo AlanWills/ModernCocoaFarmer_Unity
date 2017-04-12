@@ -5,26 +5,25 @@ using UnityEngine;
 
 public class RandomEventGenerator : MonoBehaviour {
 
-    private GameObject dialog;
+    private EventDialogScript dialog;
 
     private List<Type> events = new List<Type>()
     {
         typeof(ChildTraffickedEventScript),
         typeof(SalaryDecreasedEventScript),
         typeof(SalaryIncreasedEventScript),
-        typeof(PayBillsEventScript),
     };
 
 	// Use this for initialization
 	void Awake ()
     {
-        dialog = GameObject.Find(EventDialogScript.EventDialogName);
+        dialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if (!dialog.activeSelf && UnityEngine.Random.Range(0.0f, 1.0f) > 1)
+		if (!dialog.DialogOpen && UnityEngine.Random.Range(0.0f, 1.0f) > 0.99f)
         {
             CreateEventDialog();
         }
@@ -33,6 +32,6 @@ public class RandomEventGenerator : MonoBehaviour {
     private void CreateEventDialog()
     {
         int eventIndex = UnityEngine.Random.Range(0, events.Count);
-        dialog.GetComponent<EventDialogScript>().QueueEvent(Activator.CreateInstance(events[eventIndex]) as EventScript);
+        dialog.QueueEvent(Activator.CreateInstance(events[eventIndex]) as EventScript);
     }
 }
