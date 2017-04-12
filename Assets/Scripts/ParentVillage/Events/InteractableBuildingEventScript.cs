@@ -26,7 +26,7 @@ public abstract class InteractableBuildingEventScript : EventScript
     protected List<float> Tickers = new List<float>();
 
     public abstract string GetOnCompleteDescription(Child child);
-    protected abstract DataPacket GetDataPacketPerSecond(Child child, int currentSecondsIntoEvent);
+    protected abstract DataPacket GetDataPacketPerSecond(Child child);
     protected virtual void OnTimeComplete(Child child) { }
 
     protected override void OnYes()
@@ -56,7 +56,7 @@ public abstract class InteractableBuildingEventScript : EventScript
             if (Tickers[i] >= 1)
             {
                 Tickers[i] = 0;
-                LockedInChildren[i].Apply(GetDataPacketPerSecond(LockedInChildren[i], (int)Timers[i]));
+                LockedInChildren[i].Apply(GetDataPacketPerSecond(LockedInChildren[i]));
             }
 
             if (Timers[i] > LockTime)

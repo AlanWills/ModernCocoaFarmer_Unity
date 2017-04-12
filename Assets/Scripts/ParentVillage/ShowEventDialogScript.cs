@@ -34,20 +34,24 @@ public class ShowEventDialogScript : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        click.Play();
+        // Only do this if there isn't a dialog open already
+        if (!dialog.GetComponent<EventDialogScript>().DialogOpen)
+        {
+            click.Play();
 
-        Child selectedChild = ChildManager.FindChild(x => x.IsSelected);
-        if (selectedChild == null)
-        {
-            dialog.GetComponent<EventDialogScript>().QueueEvent(new NoChildSelectedEventScript());
-        }
-        else if (selectedChild.BuildingType != BuildingType.Idle)
-        {
-            dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript(selectedChild.BuildingType));
-        }
-        else
-        {
-            dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+            Child selectedChild = ChildManager.FindChild(x => x.IsSelected);
+            if (selectedChild == null)
+            {
+                dialog.GetComponent<EventDialogScript>().QueueEvent(new NoChildSelectedEventScript());
+            }
+            else if (selectedChild.BuildingType != BuildingType.Idle)
+            {
+                dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript(selectedChild.BuildingType));
+            }
+            else
+            {
+                dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+            }
         }
     }
 }

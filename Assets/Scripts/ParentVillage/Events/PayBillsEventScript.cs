@@ -28,9 +28,9 @@ public class PayBillsEventScript : EventScript
     // $52 a year for food per person
     // $170 a month for 85 m2 apartment
 
-    public override string YesButtonText { get { return IncomeManager.Money >= Cost ? "Yes" : "OK"; } }
-    public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
-    protected override string OnYesAudioClipPath { get { return IncomeManager.Money >= Cost ? "Audio/Money" : null; } }
+    public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+    public override string NoButtonText { get { return IncomeManager.Money >= Cost ? "No" : "OK"; } }
+    protected override string OnYesAudioClipPath { get { return "Audio/Money"; } }
 
     public float Cost { get { return 430500 + 31980 * ChildManager.ChildCount; } }
 

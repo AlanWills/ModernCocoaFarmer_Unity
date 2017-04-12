@@ -15,10 +15,10 @@ public class ChildTraffickedEventScript : EventScript
         }
     }
 
-    public override string YesButtonText { get { return IncomeManager.Money >= Cost ? "Yes" : "OK"; } }
-    public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+    public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+    public override string NoButtonText { get { return IncomeManager.Money >= Cost ? "No" : "OK"; } }
     protected override string OnShowAudioClipPath { get { return IncomeManager.Money < Cost ? "Audio/Death" : null; } }
-    protected override string OnYesAudioClipPath { get { return IncomeManager.Money >= Cost ? "Audio/Money" : null; } }
+    protected override string OnYesAudioClipPath { get { return "Audio/Money"; } }
     protected override string OnNoAudioClipPath { get { return "Audio/Death"; } }
 
     private const float Cost = 615000;

@@ -28,8 +28,8 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     // Child locked in for an entire year
     // 70 children in class per average
 
-    public override string YesButtonText { get { return IncomeManager.Money >= CostToPerform ? "Yes" : "OK"; } }
-    public override bool NoButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
+    public override bool YesButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
+    public override string NoButtonText { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
 
     public override float CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
@@ -41,8 +41,12 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
         return child.Name + " has studied hard all year and is closer towards a full education.";
     }
 
-    protected override void OnTimeComplete(Child child)
+    protected override DataPacket GetDataPacketPerSecond(Child child)
     {
-        child.Apply(new DataPacket(10, 10, 50, 25));
+        return new DataPacket(
+            Math.Min(10, child.Education) / LockTime,
+            Math.Min(10, child.Health) / LockTime,
+            Math.Min(50, child.Safety) / LockTime,
+            Math.Min(25, child.Happiness) / LockTime);
     }
 }

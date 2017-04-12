@@ -20,10 +20,10 @@ public class GiveBirthToChildEvent : EventScript
         }
     }
 
-    public override string YesButtonText { get { return ChildManager.ChildCount <= 5 ? "OK" : "Yes"; } }
-    public override bool NoButtonEnabled { get { return ChildManager.ChildCount <= 5 ? false : true; } }
+    public override bool YesButtonEnabled { get { return ChildManager.ChildCount > 5; } }
+    public override string NoButtonText { get { return ChildManager.ChildCount > 5 ? "No" : "OK"; } }
     protected override string OnShowAudioClipPath { get { return ChildManager.ChildCount <= 5 ? "Audio/Birth" : null; } }
-    protected override string OnYesAudioClipPath { get { return ChildManager.ChildCount > 5 ? "Audio/Birth" : null; } }
+    protected override string OnYesAudioClipPath { get { return "Audio/Birth"; } }
     protected override string OnNoAudioClipPath { get { return ChildManager.ChildCount > 5 ? "Audio/Death" : null; } }
 
     protected override void OnYes()
@@ -39,8 +39,15 @@ public class GiveBirthToChildEvent : EventScript
 
     protected override void OnNo()
     {
-        base.OnNo();
+        if (!YesButtonEnabled)
+        {
+            OnYes();
+        }
+        else
+        {
+            base.OnNo();
 
-        GameObject.Find("Graves").GetComponent<GraveCreatorScript>().CreateGrave();
+            GameObject.Find("Graves").GetComponent<GraveCreatorScript>().CreateGrave();
+        }
     }
 }

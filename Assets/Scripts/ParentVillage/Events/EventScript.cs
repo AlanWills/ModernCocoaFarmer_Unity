@@ -6,10 +6,10 @@ public abstract class EventScript
 {
     public abstract string Name { get; }
     public abstract string Description { get; }
-    public virtual string YesButtonText { get { return "OK"; } }
-    public virtual string NoButtonText { get { return "No"; } }
-    public virtual bool YesButtonEnabled { get { return true; } }
-    public virtual bool NoButtonEnabled { get { return false; } }
+    public virtual string YesButtonText { get { return "Yes"; } }
+    public virtual string NoButtonText { get { return "OK"; } }
+    public virtual bool YesButtonEnabled { get { return false; } }
+    public virtual bool NoButtonEnabled { get { return true; } }
 
     private AudioClip onShowAudio;
     public AudioClip OnShowAudioClip

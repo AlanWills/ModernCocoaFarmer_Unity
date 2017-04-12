@@ -24,6 +24,8 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     // House upgrade = $75?
 
+    public override bool YesButtonEnabled { get { return true; } }
+    public override string NoButtonText { get { return "No"; } }
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
     public override BuildingType BuildingType { get { return BuildingType.Home; } }
@@ -32,6 +34,11 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     public override string GetOnCompleteDescription(Child child)
     {
         return "The upgrade to your house has been completed.";
+    }
+
+    protected override DataPacket GetDataPacketPerSecond(Child child)
+    {
+        return new DataPacket(0, 0, 0, 0);
     }
 
     protected override void OnTimeComplete(Child child)

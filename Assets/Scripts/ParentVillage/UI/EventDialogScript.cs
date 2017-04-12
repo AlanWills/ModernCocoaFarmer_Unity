@@ -7,6 +7,8 @@ public class EventDialogScript : MonoBehaviour
 {
     public const string EventDialogName = "EventDialog";
 
+    public bool DialogOpen { get { return eventDialogUI.activeSelf; } }
+
     private AudioSource audioSource;
     private GameObject eventDialogUI;
     private Text nameUI;

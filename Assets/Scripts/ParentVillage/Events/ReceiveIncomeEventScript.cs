@@ -15,10 +15,11 @@
 
     protected override string OnShowAudioClipPath { get { return "Audio/Money"; } }
 
-    protected override void OnYes()
+    protected override void OnNo()
     {
-        base.OnYes();
+        base.OnNo();
 
+        // It's weird I know, but No is used for OK
         IncomeManager.AddMoney(IncomeManager.CurrentIncome);
     }
 }

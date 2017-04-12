@@ -34,8 +34,19 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
         return child.Name + " leaves the mosque and spreads happiness and wisdom to your family.";
     }
 
+    protected override DataPacket GetDataPacketPerSecond(Child child)
+    {
+        return new DataPacket(
+            Math.Min(2, child.Education) / LockTime,
+            0,
+            Math.Min(3, child.Safety) / LockTime,
+            Math.Min(5, child.Happiness) / LockTime);
+    }
+
     protected override void OnTimeComplete(Child child)
     {
+        // Undo the incremental changes on this child
+        child.Apply(new DataPacket(-2, 0, -3, -5));
         ChildManager.ApplyEventToAllChildren(new DataPacket(2, 0, 3, 5));
     }
 }

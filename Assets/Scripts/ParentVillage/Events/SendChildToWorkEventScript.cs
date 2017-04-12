@@ -28,7 +28,9 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     // Every 20 times, the player is guaranteed a pay out
     private static int numberOfTimesSent = 0;
     private static bool childPaid = false;
-    
+
+    public override bool YesButtonEnabled { get { return true; } }
+    public override string NoButtonText { get { return "No"; } }
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     public override BuildingType BuildingType { get { return BuildingType.Work; } }
@@ -43,9 +45,13 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
         return child.Name + " completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
     }
 
-    protected override DataPacket GetDataPacketPerSecond(Child child, int secondsIntoEvent)
+    protected override DataPacket GetDataPacketPerSecond(Child child)
     {
-        child.Apply(new DataPacket(0, -50, -50, -50));
+        return new DataPacket(
+            0, 
+            -Math.Min(50, child.Health) / LockTime, 
+            -Math.Min(50, child.Safety) / LockTime, 
+            -Math.Min(50, child.Happiness) / LockTime);
     }
 
     protected override void OnTimeComplete(Child child)

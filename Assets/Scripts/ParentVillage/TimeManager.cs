@@ -7,6 +7,7 @@ public class TimeManager : MonoBehaviour
     public const float SecondsPerYear = 120;
 
     private float currentTimeInYear = 0;
+    bool midYearReached = false;
     private EventDialogScript dialogScript;
 
 	// Use this for initialization
@@ -25,7 +26,7 @@ public class TimeManager : MonoBehaviour
             currentTimeInYear = 0;
             NewYear();
         }
-        else if (currentTimeInYear > SecondsPerYear * 0.5f)
+        else if (!midYearReached && currentTimeInYear > SecondsPerYear * 0.5f)
         {
             MidYear();
         }
@@ -35,10 +36,12 @@ public class TimeManager : MonoBehaviour
     {
         dialogScript.QueueEvent(new ReceiveIncomeEventScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        midYearReached = false;
     }
 
     private void MidYear()
     {
         dialogScript.QueueEvent(new PayBillsEventScript());
+        midYearReached = true;
     }
 }

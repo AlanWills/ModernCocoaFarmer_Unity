@@ -40,35 +40,30 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     private const float Cost = 135300;
     public const float HealthThreshold = 10;
 
-    public override string YesButtonText
+    public override string NoButtonText
     {
         get
         {
-            return IncomeManager.Money >= Cost ? "Yes" : "OK";
+            return IncomeManager.Money >= Cost ? "No" : "OK";
         }
     }
-    public override bool NoButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+    public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return 40; } }
     public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
-
-    protected override void OnYes()
-    {
-        if (IncomeManager.Money >= CostToPerform)
-        {
-            base.OnYes();
-        }
-    }
-
+    
     public override string GetOnCompleteDescription(Child child)
     {
         return child.Name + " has been completely cured.";
     }
 
-    protected override void OnTimeComplete(Child child)
+    protected override DataPacket GetDataPacketPerSecond(Child child)
     {
-        // Heal child which was critical
-        child.Apply(new DataPacket(0, Child.MaxHealth - child.Health, 0, 0));
+        return new DataPacket(
+            0,
+            Child.MaxHealth - child.Health / LockTime,
+            0,
+            0);
     }
 }
