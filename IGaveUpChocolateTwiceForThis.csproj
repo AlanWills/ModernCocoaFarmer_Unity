@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\Children\IData.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\DragCameraScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildAlreadyLockedInEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildDiedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildLeftHomeEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\UI\ChildUIScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\DataDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\EventDialogScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\TimeTextScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\ToolTipScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />

@@ -15,7 +15,19 @@ public class Child : IData
 
     public float Education { get; private set; }
 
-    public float Health { get; private set; }
+    private float health;
+    public float Health
+    {
+        get { return health; }
+        private set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                ChildManager.RemoveChild(this);
+            }
+        }
+    }
 
     public float Safety { get; private set; }
 

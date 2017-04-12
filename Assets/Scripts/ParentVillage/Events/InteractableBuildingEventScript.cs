@@ -73,8 +73,12 @@ public abstract class InteractableBuildingEventScript : EventScript
             Timers.RemoveAt(childIndex);
             Tickers.RemoveAt(childIndex);
 
-            OnTimeComplete(child);
-            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(GetOnCompleteDescription(child)));
+            if (child.Health > 0)
+            {
+                // If they are still alive, we should trigger the on complete behaviour
+                OnTimeComplete(child);
+                GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(GetOnCompleteDescription(child)));
+            }
         }
     }
 }

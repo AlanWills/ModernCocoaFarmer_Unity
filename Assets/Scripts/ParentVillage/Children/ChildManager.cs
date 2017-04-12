@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public static class ChildManager
 {
@@ -12,6 +13,7 @@ public static class ChildManager
     public static event ChildAddedHandler ChildAdded;
     public static event ChildRemovedHandler ChildRemoved;
     public static event ChildSelectedHandler ChildSelected;
+    public static event ChildSelectedHandler ChildDeselected;
 
     public const int MaxChildCount = 7;
     public static int ChildCount { get { return Children.Count; } }
@@ -28,7 +30,7 @@ public static class ChildManager
         "Mamadou",
         "Bintou",
         "Mariam",
-        "Sali",
+        "Salif",
     };
 
     public static void AddChild()
@@ -54,11 +56,17 @@ public static class ChildManager
 
     public static void RemoveChild(Child child)
     {
+        DeselectChild(child);
         Children.Remove(child);
 
         if (ChildRemoved != null)
         {
             ChildRemoved.Invoke(child);
+        }
+
+        if (ChildCount == 0)
+        {
+            SceneManager.LoadScene("LoseMenu");
         }
     }
 
@@ -84,6 +92,16 @@ public static class ChildManager
         if (ChildSelected != null)
         {
             ChildSelected.Invoke(child);
+        }
+    }
+
+    public static void DeselectChild(Child child)
+    {
+        child.IsSelected = false;
+
+        if (ChildDeselected != null)
+        {
+            ChildDeselected.Invoke(child);
         }
     }
 

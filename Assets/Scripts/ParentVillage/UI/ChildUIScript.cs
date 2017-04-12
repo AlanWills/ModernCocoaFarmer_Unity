@@ -28,15 +28,23 @@ public class ChildUIScript : MonoBehaviour
 	void Start ()
     {
         ChildManager.ChildSelected += ChildManager_ChildSelected;
+        ChildManager.ChildDeselected += ChildManager_ChildDeselected;
         Child.OnLockedIn += Child_OnLockedIn;
         animator = GetComponent<Animator>();
         buildingTypeIcon = GameObject.Find("BuildingTypeIcon").GetComponent<Image>();
         Child_OnLockedIn(Child);
 	}
 
-    public void Select()
+    public void ToggleSelect()
     {
-        ChildManager.SelectChild(Child);
+        if (Child.IsSelected)
+        {
+            ChildManager.DeselectChild(Child);
+        }
+        else
+        {
+            ChildManager.SelectChild(Child);
+        }
     }
     
     private void ChildManager_ChildSelected(Child child)
@@ -44,19 +52,19 @@ public class ChildUIScript : MonoBehaviour
         // Only deal with the data dialog if this ChildUI's child is the selected one
         if (child == Child)
         {
-            // If the dialog is not visible, the current child will be null, so this will fail anyway
-            if (dataDialog.CurrentChild == child)
-            {
-                // Toggles the dialog if we have already selected the child
-                dataDialog.Hide();
-            }
-            else
-            {
-                dataDialog.Show(Child);
-            }
+            dataDialog.Show(Child);
+            animator.SetBool("Animate", true);
         }
+    }
 
-        animator.SetBool("Animate", child == Child);
+    private void ChildManager_ChildDeselected(Child child)
+    {
+        // Only deal with the data dialog if this ChildUI's child is the selected one
+        if (child == Child)
+        {
+            dataDialog.Hide();
+            animator.SetBool("Animate", false);
+        }
     }
 
     private void Child_OnLockedIn(Child child)
@@ -96,5 +104,6 @@ public class ChildUIScript : MonoBehaviour
     public void OnDestroy()
     {
         ChildManager.ChildSelected -= ChildManager_ChildSelected;
+        ChildManager.ChildDeselected -= ChildManager_ChildDeselected;
     }
 }

@@ -13,7 +13,7 @@ public class ChildManagerUIScript : MonoBehaviour {
 	void Start ()
     {
         ChildManager.ChildAdded += ChildManager_ChildAdded;
-        ChildManager.ChildRemoved += ChildManager_ChildRemoved; ;
+        ChildManager.ChildRemoved += ChildManager_ChildRemoved;
     }
 
     private void ChildManager_ChildAdded(Child child)
@@ -27,6 +27,8 @@ public class ChildManagerUIScript : MonoBehaviour {
 
     private void ChildManager_ChildRemoved(Child child)
     {
+        GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new ChildDiedEventScript(child));
+
         GameObject childUIToDestroy = childUIs.Find(x => x.GetComponent<ChildUIScript>().Child == child);
         childUIs.Remove(childUIToDestroy);
         Destroy(childUIToDestroy);
@@ -36,5 +38,11 @@ public class ChildManagerUIScript : MonoBehaviour {
         {
             childUIs[i].transform.localPosition = new Vector3(Spacing * i, 0, 0);
         }
+    }
+
+    private void OnDestroy()
+    {
+        ChildManager.ChildAdded -= ChildManager_ChildAdded;
+        ChildManager.ChildRemoved -= ChildManager_ChildRemoved; ;
     }
 }

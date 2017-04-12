@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DataDialogScript : MonoBehaviour {
-
-    public Child CurrentChild { get; private set; }
-
+public class DataDialogScript : MonoBehaviour
+{
     public const string DataDialogName = "DataDialog";
 
     private Text childName;
@@ -36,20 +34,20 @@ public class DataDialogScript : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (CurrentChild != null)
+        Child currentSelectedChild = ChildManager.SelectedChild;
+
+        if (currentSelectedChild != null)
         {
-            childName.text = CurrentChild.Name;
-            healthBar.Value = CurrentChild.Health;
-            safetyBar.Value = CurrentChild.Safety;
-            educationBar.Value = CurrentChild.Education;
-            happinessBar.Value = CurrentChild.Happiness;
+            childName.text = currentSelectedChild.Name;
+            healthBar.Value = currentSelectedChild.Health;
+            safetyBar.Value = currentSelectedChild.Safety;
+            educationBar.Value = currentSelectedChild.Education;
+            happinessBar.Value = currentSelectedChild.Happiness;
         }
     }
 
     public void Show(Child child)
-    {
-        CurrentChild = child;
-
+    { 
         childName.text = child.Name;
         healthBar.Value = child.Health;
         safetyBar.Value = child.Safety;
@@ -62,7 +60,6 @@ public class DataDialogScript : MonoBehaviour {
 
     public void Hide()
     {
-        CurrentChild = null;
         dataDialogUI.SetActive(false);
     }
 }

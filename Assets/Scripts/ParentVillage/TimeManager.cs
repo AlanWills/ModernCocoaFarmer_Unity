@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     public const float SecondsPerYear = 120;
 
-    private float currentTimeInYear = 0;
+    public float CurrentTimeInYear { get; private set; }
     bool midYearReached = false;
     private EventDialogScript dialogScript;
 
@@ -14,19 +14,19 @@ public class TimeManager : MonoBehaviour
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-        currentTimeInYear = SecondsPerYear;
+        CurrentTimeInYear = SecondsPerYear;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        currentTimeInYear += Time.deltaTime;
-        if (currentTimeInYear > SecondsPerYear)
+        CurrentTimeInYear += Time.deltaTime;
+        if (CurrentTimeInYear > SecondsPerYear)
         {
-            currentTimeInYear = 0;
+            CurrentTimeInYear = 0;
             NewYear();
         }
-        else if (!midYearReached && currentTimeInYear > SecondsPerYear * 0.5f)
+        else if (!midYearReached && CurrentTimeInYear > SecondsPerYear * 0.5f)
         {
             MidYear();
         }
