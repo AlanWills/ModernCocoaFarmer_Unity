@@ -43,10 +43,16 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
         return child.Name + " completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
     }
 
+    protected override DataPacket GetDataPacketPerSecond(Child child, int secondsIntoEvent)
+    {
+        child.Apply(new DataPacket(0, -50, -50, -50));
+    }
+
     protected override void OnTimeComplete(Child child)
     {
+        base.OnTimeComplete(child);
+
         numberOfTimesSent++;
-        child.Apply(new DataPacket(0, -50, -50, -50));
 
         Random random = new Random();
         childPaid = random.NextDouble() >= 0.95f;

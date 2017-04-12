@@ -34,9 +34,17 @@ public class DataDialogScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update ()
+    {
+        if (CurrentChild != null)
+        {
+            childName.text = CurrentChild.Name;
+            healthBar.Value = CurrentChild.Health;
+            safetyBar.Value = CurrentChild.Safety;
+            educationBar.Value = CurrentChild.Education;
+            happinessBar.Value = CurrentChild.Happiness;
+        }
+    }
 
     public void Show(Child child)
     {

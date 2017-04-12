@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class DataPacket : IData
+public struct DataPacket : IData
 {
     public float Education { get; private set; }
     public float Health { get; private set; }

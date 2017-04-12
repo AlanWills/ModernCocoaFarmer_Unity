@@ -23,7 +23,12 @@ public abstract class InteractableBuildingEventScript : EventScript
     protected abstract float LockTime { get; }
     protected List<Child> LockedInChildren = new List<Child>();
     protected List<float> Timers = new List<float>();
-    
+    protected List<float> Tickers = new List<float>();
+
+    public abstract string GetOnCompleteDescription(Child child);
+    protected abstract DataPacket GetDataPacketPerSecond(Child child, int currentSecondsIntoEvent);
+    protected virtual void OnTimeComplete(Child child) { }
+
     protected override void OnYes()
     {
         base.OnYes();
@@ -35,6 +40,7 @@ public abstract class InteractableBuildingEventScript : EventScript
 
         LockedInChildren.Add(child);
         Timers.Add(0);
+        Tickers.Add(0);
     }
     
     public void Update()
@@ -45,6 +51,13 @@ public abstract class InteractableBuildingEventScript : EventScript
         for (int i = 0; i < Timers.Count; ++i)
         {
             Timers[i] += Time.deltaTime;
+            Tickers[i] += Time.deltaTime;
+
+            if (Tickers[i] >= 1)
+            {
+                Tickers[i] = 0;
+                LockedInChildren[i].Apply(GetDataPacketPerSecond(LockedInChildren[i], (int)Timers[i]));
+            }
 
             if (Timers[i] > LockTime)
             {
@@ -58,12 +71,10 @@ public abstract class InteractableBuildingEventScript : EventScript
             Child child = LockedInChildren[childIndex];
             LockedInChildren.RemoveAt(childIndex);
             Timers.RemoveAt(childIndex);
+            Tickers.RemoveAt(childIndex);
 
             OnTimeComplete(child);
             GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new TaskCompleteScript(GetOnCompleteDescription(child)));
         }
     }
-
-    public abstract string GetOnCompleteDescription(Child child);
-    protected abstract void OnTimeComplete(Child child);
 }
