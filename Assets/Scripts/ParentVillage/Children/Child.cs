@@ -13,7 +13,19 @@ public class Child : IData
     public const float MaxSafety = 100;
     public const float MaxHappiness = 100;
 
-    public float Education { get; private set; }
+    private float education;
+    public float Education
+    {
+        get { return education; }
+        private set
+        {
+            education = value;
+            if (education >= MaxEducation)
+            {
+                ChildManager.GraduateChild(this);
+            }
+        }
+    }
 
     private float health;
     public float Health

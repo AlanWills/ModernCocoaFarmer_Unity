@@ -32,8 +32,10 @@
                 default:
                     return 0;
             }
+
         }
     }
+    public static float IncomeFromChildren { get { return 615000 * ChildManager.ChildrenGraduated; } }
 
     static IncomeManager()
     {

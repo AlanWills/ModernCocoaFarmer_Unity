@@ -9,7 +9,13 @@
     {
         get
         {
-            return "Your annual salary of CFA " + IncomeManager.CurrentIncome.ToString() + " has been paid";
+            string income = "Your annual salary of CFA " + IncomeManager.CurrentIncome.ToString() + " has been paid.";
+            if (ChildManager.ChildrenGraduated > 0)
+            {
+                income += "  You children send you back CFA " + IncomeManager.IncomeFromChildren.ToString();
+            }
+
+            return income;
         }
     }
 
@@ -20,6 +26,6 @@
         base.OnNo();
 
         // It's weird I know, but No is used for OK
-        IncomeManager.AddMoney(IncomeManager.CurrentIncome);
+        IncomeManager.AddMoney(IncomeManager.CurrentIncome + IncomeManager.IncomeFromChildren);
     }
 }

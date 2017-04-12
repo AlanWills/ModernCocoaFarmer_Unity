@@ -38,15 +38,19 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 
     public override string GetOnCompleteDescription(Child child)
     {
+        if (child.Education == Child.MaxEducation)
+        {
+            return child.Name + " has completed education and left for a new a job in the city.  Money will be sent back to help out your family.";
+        }
         return child.Name + " has studied hard all year and is closer towards a full education.";
     }
 
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
-            Math.Min(10, child.Education) / LockTime,
+            Math.Min(50, Child.MaxEducation - child.Education) / LockTime,
             Math.Min(10, child.Health) / LockTime,
-            Math.Min(50, child.Safety) / LockTime,
+            Math.Min(10, child.Safety) / LockTime,
             Math.Min(25, child.Happiness) / LockTime);
     }
 }

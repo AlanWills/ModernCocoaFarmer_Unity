@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 
 public static class ChildManager
 {
-    public delegate void ChildAddedHandler(Child child);
-    public delegate void ChildRemovedHandler(Child child);
-    public delegate void ChildSelectedHandler(Child child);
+    public delegate void ChildEventHandler(Child child);
 
-    public static event ChildAddedHandler ChildAdded;
-    public static event ChildRemovedHandler ChildRemoved;
-    public static event ChildSelectedHandler ChildSelected;
-    public static event ChildSelectedHandler ChildDeselected;
+    public static event ChildEventHandler ChildAdded;
+    public static event ChildEventHandler ChildRemoved;
+    public static event ChildEventHandler ChildSelected;
+    public static event ChildEventHandler ChildDeselected;
+    public static event ChildEventHandler ChildGraduated;
 
     public const int MaxChildCount = 7;
     public static int ChildCount { get { return Children.Count; } }
+    public static int ChildrenGraduated { get; private set; }
     public static Child SelectedChild { get { return Children.Find(x => x.IsSelected); } }
 
     private static List<Child> Children = new List<Child>();
@@ -102,6 +102,19 @@ public static class ChildManager
         if (ChildDeselected != null)
         {
             ChildDeselected.Invoke(child);
+        }
+    }
+
+    public static void GraduateChild(Child child)
+    {
+        ChildrenGraduated++;
+
+        DeselectChild(child);
+        Children.Remove(child);
+
+        if (ChildGraduated != null)
+        {
+            ChildGraduated.Invoke(child);
         }
     }
 
