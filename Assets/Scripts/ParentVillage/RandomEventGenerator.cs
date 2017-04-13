@@ -23,7 +23,7 @@ public class RandomEventGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (!dialog.DialogOpen && UnityEngine.Random.Range(0.0f, 1.0f) > 0.99f)
+		if (!dialog.DialogOpen && UnityEngine.Random.Range(0.0f, 1.0f) > 1)
         {
             CreateEventDialog();
         }
