@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -86,29 +84,43 @@
     <Compile Include="Assets\Scripts\CocoaPodCollection\TimeLeftScript.cs" />
     <Compile Include="Assets\Scripts\MathUtils.cs" />
     <Compile Include="Assets\Scripts\MenuInputScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\ChildUIScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\Child.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\ChildManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\DataPacket.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\IData.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\EventDialogScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\DragCameraScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildAlreadyLockedInEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildDiedEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildLeftHomeEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\GiveBirthToChildEvent.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\Events\LostJobEventScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\Events\NewJobEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\InteractableBuildingEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\NoChildSelectedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PayBillsEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ReceiveIncomeEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\SalaryDecreasedEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\SalaryIncreasedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToHospitalEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToMosqueEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToSchoolEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToWorkEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\TaskCompleteScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\UpgradeHouseEventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\GraveCreatorScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\IncomeManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\MoneyScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventGenerator.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\ShowEventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\TileMapScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\ChildManagerUIScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\ChildUIScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\DataDialogScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\EventDialogScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\TimeTextScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
+    <Compile Include="Assets\Scripts\ToolTipScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
