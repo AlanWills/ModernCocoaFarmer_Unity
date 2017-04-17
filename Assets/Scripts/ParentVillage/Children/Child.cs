@@ -49,8 +49,6 @@ public class Child : IData
 
     public BuildingType BuildingType { get; private set; }
 
-    public event LockedInHandler OnLockedIn;
-
     public const string Surname = "Keita";
     public string Name { get; private set; }
 
@@ -76,10 +74,5 @@ public class Child : IData
     {
         Assert.IsTrue(buildingType == BuildingType.Idle || BuildingType == BuildingType.Idle);
         BuildingType = buildingType;
-
-        if (OnLockedIn != null)
-        {
-            OnLockedIn.Invoke(this);
-        }
     }
 }

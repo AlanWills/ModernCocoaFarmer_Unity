@@ -13,7 +13,6 @@ public class ChildUIScript : MonoBehaviour
 
     private Animator animator;
     private static DataDialogScript dataDialog;
-    private Image buildingTypeIcon;
 
     public Child Child { get; set; }
 
@@ -30,10 +29,7 @@ public class ChildUIScript : MonoBehaviour
     {
         ChildManager.ChildSelected += ChildManager_ChildSelected;
         ChildManager.ChildDeselected += ChildManager_ChildDeselected;
-        Child.OnLockedIn += Child_OnLockedIn;
         animator = GetComponent<Animator>();
-        buildingTypeIcon = GameObject.Find("BuildingTypeIcon").GetComponent<Image>();
-        Child_OnLockedIn(Child);
 	}
 
     public void ToggleSelect()
@@ -56,6 +52,10 @@ public class ChildUIScript : MonoBehaviour
             dataDialog.Show(Child);
             animator.SetBool("Animate", true);
         }
+        else
+        {
+            animator.SetBool("Animate", false);
+        }
     }
 
     private void ChildManager_ChildDeselected(Child child)
@@ -67,45 +67,7 @@ public class ChildUIScript : MonoBehaviour
             animator.SetBool("Animate", false);
         }
     }
-
-    private void Child_OnLockedIn(Child child)
-    {
-        buildingTypeIcon.gameObject.SetActive(true);
-
-        switch (child.BuildingType)
-        {
-            case BuildingType.Home:
-                buildingTypeIcon.sprite = HomeIcon;
-                break;
-
-            case BuildingType.Work:
-                buildingTypeIcon.sprite = WorkIcon;
-                break;
-
-            case BuildingType.School:
-                buildingTypeIcon.sprite = SchoolIcon;
-                break;
-
-            case BuildingType.Hospital:
-                buildingTypeIcon.sprite = HospitalIcon;
-                break;
-
-            case BuildingType.Mosque:
-                buildingTypeIcon.sprite = MosqueIcon;
-                break;
-
-            case BuildingType.Market:
-                buildingTypeIcon.sprite = MarketIcon;
-                break;
-
-            case BuildingType.Idle:
-            default:
-                buildingTypeIcon.gameObject.SetActive(false);
-                buildingTypeIcon.sprite = null;
-                break;
-        }
-    }
-
+    
     public void OnDestroy()
     {
         ChildManager.ChildSelected -= ChildManager_ChildSelected;
