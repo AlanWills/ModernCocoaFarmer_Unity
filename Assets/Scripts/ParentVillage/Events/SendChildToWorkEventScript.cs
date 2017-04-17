@@ -8,7 +8,12 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
         get { return "Farm"; }
     }
 
-    public override string Description
+    protected override string BuildingDescription
+    {
+        get { return "The fields stretch for miles under the burning sun."; }
+    }
+
+    protected override string ChildSelectedDescription
     {
         get
         {
@@ -27,8 +32,8 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     private static int numberOfTimesSent = 0;
     private static bool childPaid = false;
 
-    public override bool YesButtonEnabled { get { return true; } }
-    public override string NoButtonText { get { return "No"; } }
+    protected override bool YesButtonEnabledImpl { get { return true; } }
+    protected override string NoButtonTextImpl { get { return "No"; } }
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Work"; } }

@@ -11,7 +11,12 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
         get { return "Home"; }
     }
 
-    public override string Description
+    protected override string BuildingDescription
+    {
+        get { return "No place like it."; }
+    }
+
+    protected override string ChildSelectedDescription
     {
         get
         {
@@ -25,8 +30,8 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     // House upgrade = $75?
 
-    public override bool YesButtonEnabled { get { return true; } }
-    public override string NoButtonText { get { return "No"; } }
+    protected override bool YesButtonEnabledImpl { get { return true; } }
+    protected override string NoButtonTextImpl { get { return "No"; } }
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Home"; } }

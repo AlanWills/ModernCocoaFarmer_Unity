@@ -11,7 +11,12 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
         get { return "School"; }
     }
 
-    public override string Description
+    protected override string BuildingDescription
+    {
+        get { return "1 x 5 is 5.  2 x 5 is 10.  3 x 5 is..."; }
+    }
+
+    protected override string ChildSelectedDescription
     {
         get
         {
@@ -29,8 +34,8 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     // Child locked in for an entire year
     // 70 children in class per average
 
-    public override bool YesButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
-    public override string NoButtonText { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
+    protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }
+    protected override string NoButtonTextImpl { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
 
     public override float CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }

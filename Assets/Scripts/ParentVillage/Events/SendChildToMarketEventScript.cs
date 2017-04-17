@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class SendChildToMarketEventScript : InteractableBuildingEventScript
 {
-    public override BuildingType BuildingType { get { return BuildingType.Market; } }
-    protected override Vector3 BuildingLocation { get { return GameObject.Find("Market").transform.position; } }
+    public override string Name { get { return "Market"; } }
 
-    // $52 a year for food per person
-    public override float CostToPerform { get { return 31980 * ChildManager.ChildCount; } }
+    protected override string BuildingDescription
+    {
+        get
+        {
+            return "All manner of food can be bought here.";
+        }
+    }
 
-    public override string Description
+    protected override string ChildSelectedDescription
     {
         get
         {
@@ -19,15 +23,19 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
             {
                 return "Here you can buy food for your family.";
             }
-            return  "Do you wish to send " + ChildManager.SelectedChild.Name + " to the market to buy food for the family? ( CFA " + CostToPerform.ToString() + " )";
+            return "Do you wish to send " + ChildManager.SelectedChild.Name + " to the market to buy food for the family? ( CFA " + CostToPerform.ToString() + " )";
         }
     }
 
-    public override string Name { get { return "Market"; } }
+    public override BuildingType BuildingType { get { return BuildingType.Market; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Market").transform.position; } }
+
+    // $52 a year for food per person
+    public override float CostToPerform { get { return 31980 * ChildManager.ChildCount; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear * 0.25f; } }
 
-    public override bool YesButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
-    public override string NoButtonText { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
+    protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }
+    protected override string NoButtonTextImpl { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
 
     protected override string OnShowAudioClipPath { get { return "Audio/Market"; } }
 

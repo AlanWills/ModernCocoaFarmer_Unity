@@ -11,7 +11,15 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         get { return "Hospital"; }
     }
 
-    public override string Description
+    protected override string BuildingDescription
+    {
+        get
+        {
+            return "A place of healing if you can pay.";
+        }
+    }
+
+    protected override string ChildSelectedDescription
     {
         get
         {
@@ -41,14 +49,14 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     private const float Cost = 135300;
     public const float HealthThreshold = 10;
 
-    public override string NoButtonText
+    protected override string NoButtonTextImpl
     {
         get
         {
             return IncomeManager.Money >= Cost ? "No" : "OK";
         }
     }
-    public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
+    protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }

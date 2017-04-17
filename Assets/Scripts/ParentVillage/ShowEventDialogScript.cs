@@ -40,11 +40,7 @@ public class ShowEventDialogScript : MonoBehaviour {
             click.Play();
 
             Child selectedChild = ChildManager.FindChild(x => x.IsSelected);
-            if (selectedChild == null)
-            {
-                dialog.GetComponent<EventDialogScript>().QueueEvent(new NoChildSelectedEventScript());
-            }
-            else if (selectedChild.BuildingType != BuildingType.Idle)
+            if (selectedChild != null && selectedChild.BuildingType != BuildingType.Idle)
             {
                 dialog.GetComponent<EventDialogScript>().QueueEvent(new ChildAlreadyLockedInEventScript(selectedChild.BuildingType));
             }

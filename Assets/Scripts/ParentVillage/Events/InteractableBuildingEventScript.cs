@@ -15,8 +15,37 @@ public enum BuildingType
 
 public abstract class InteractableBuildingEventScript : EventScript
 {
-    public override string YesButtonText { get { return "Yes"; } }
-    public override bool NoButtonEnabled { get { return true; } }
+    public sealed override string Description
+    {
+        get
+        {
+            return ChildManager.SelectedChild == null ? BuildingDescription + "\n\nSelect a child using the icons at the top and click on this building to send them here."
+                : ChildSelectedDescription;
+        }
+    }
+
+    protected abstract string ChildSelectedDescription { get; }
+    protected abstract string BuildingDescription { get; }
+
+    public sealed override bool YesButtonEnabled
+    {
+        get
+        {
+            return ChildManager.SelectedChild == null ? false : YesButtonEnabledImpl;
+        }
+    }
+
+    protected abstract bool YesButtonEnabledImpl { get; }
+
+    public sealed override string NoButtonText
+    {
+        get
+        {
+            return ChildManager.SelectedChild == null ? "OK" : NoButtonTextImpl;
+        }
+    }
+
+    protected abstract string NoButtonTextImpl { get; }
 
     public abstract float CostToPerform { get; }
     public abstract BuildingType BuildingType { get; }
