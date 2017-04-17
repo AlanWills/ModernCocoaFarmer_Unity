@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChildVillagerScript : MonoBehaviour
 {
+    public const float Threshold = 1;
     public float Speed = 0.5f;
     public Vector3 Destination { private get; set; }
 
@@ -12,7 +13,7 @@ public class ChildVillagerScript : MonoBehaviour
     {
         Vector3 diff = Destination - transform.position;
 
-		if (diff.sqrMagnitude <= 1)
+		if (diff.sqrMagnitude <= Threshold)
         {
             Destroy(gameObject);
         }
