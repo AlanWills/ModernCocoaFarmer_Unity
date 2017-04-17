@@ -8,6 +8,7 @@ public class DataDialogScript : MonoBehaviour
     public const string DataDialogName = "DataDialog";
 
     private Text childName;
+    private Text childLocation;
     private BarScript healthBar;
     private BarScript safetyBar;
     private BarScript educationBar;
@@ -20,6 +21,7 @@ public class DataDialogScript : MonoBehaviour
     {
         dataDialogUI = GameObject.Find(DataDialogName + "UI");
         childName = GameObject.Find("ChildName").GetComponent<Text>();
+        childLocation = GameObject.Find("ChildLocation").GetComponent<Text>();
         healthBar = GameObject.Find("HealthBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
         safetyBar = GameObject.Find("SafetyBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
         educationBar = GameObject.Find("EducationBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
@@ -39,6 +41,7 @@ public class DataDialogScript : MonoBehaviour
         if (currentSelectedChild != null)
         {
             childName.text = currentSelectedChild.Name;
+            childLocation.text = currentSelectedChild.BuildingType.ToString();
             healthBar.Value = currentSelectedChild.Health;
             safetyBar.Value = currentSelectedChild.Safety;
             educationBar.Value = currentSelectedChild.Education;
@@ -49,6 +52,7 @@ public class DataDialogScript : MonoBehaviour
     public void Show(Child child)
     { 
         childName.text = child.Name;
+        childLocation.text = child.BuildingType.ToString();
         healthBar.Value = child.Health;
         safetyBar.Value = child.Safety;
         educationBar.Value = child.Education;

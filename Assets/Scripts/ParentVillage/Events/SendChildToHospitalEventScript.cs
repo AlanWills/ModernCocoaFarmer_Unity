@@ -49,7 +49,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     }
     public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
-    protected override float LockTime { get { return 40; } }
+    protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
     public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
     

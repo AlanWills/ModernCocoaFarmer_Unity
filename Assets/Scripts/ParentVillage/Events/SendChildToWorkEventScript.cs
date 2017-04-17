@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 public class SendChildToWorkEventScript : InteractableBuildingEventScript
 {
@@ -31,8 +28,8 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
     public override bool YesButtonEnabled { get { return true; } }
     public override string NoButtonText { get { return "No"; } }
-    public override float CostToPerform { get { return TimeManager.SecondsPerYear; } }
-    protected override float LockTime { get { return 1; } }
+    public override float CostToPerform { get { return 0; } }
+    protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     public override BuildingType BuildingType { get { return BuildingType.Work; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Work"; } }
 

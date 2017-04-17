@@ -25,7 +25,7 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     public override string YesButtonText { get { return "Send Child"; } }
     public override string NoButtonText { get { return "Leave"; } }
     public override float CostToPerform { get { return 0; } }
-    protected override float LockTime { get { return 30; } }
+    protected override float LockTime { get { return TimeManager.SecondsPerYear * 0.25f; } }
     public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Mosque"; } }
 

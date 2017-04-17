@@ -9,6 +9,7 @@ public class ChildUIScript : MonoBehaviour
     public Sprite WorkIcon;
     public Sprite MosqueIcon;
     public Sprite HospitalIcon;
+    public Sprite MarketIcon;
 
     private Animator animator;
     private static DataDialogScript dataDialog;
@@ -91,6 +92,10 @@ public class ChildUIScript : MonoBehaviour
 
             case BuildingType.Mosque:
                 buildingTypeIcon.sprite = MosqueIcon;
+                break;
+
+            case BuildingType.Market:
+                buildingTypeIcon.sprite = MarketIcon;
                 break;
 
             case BuildingType.Idle:

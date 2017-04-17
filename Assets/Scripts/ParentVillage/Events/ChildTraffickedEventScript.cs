@@ -11,7 +11,7 @@ public class ChildTraffickedEventScript : EventScript
     {
         get
         {
-            if (IncomeManager.Money >= Cost)
+            if (IncomeManager.Money < Cost)
             {
                 return childThatWillBeTaken.Name + " has been taken by an illegal trafficker.  You will never see him again.";
             }

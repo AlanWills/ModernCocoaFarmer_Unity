@@ -10,6 +10,7 @@ public enum BuildingType
     Work,
     School,
     Hospital,
+    Market
 }
 
 public abstract class InteractableBuildingEventScript : EventScript
