@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public const float SecondsPerYear = 120;
+    public const float SecondsPerYear = 60;
 
     public float CurrentTimeInYear { get; private set; }
     bool midYearReached = false;
