@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class UpgradeHouseEventScript : InteractableBuildingEventScript
 {
@@ -28,8 +29,10 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     public override string NoButtonText { get { return "No"; } }
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
-    public override BuildingType BuildingType { get { return BuildingType.Home; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Home"; } }
+
+    public override BuildingType BuildingType { get { return BuildingType.Home; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Home").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class SendChildToWorkEventScript : InteractableBuildingEventScript
 {
@@ -30,8 +31,10 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     public override string NoButtonText { get { return "No"; } }
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
-    public override BuildingType BuildingType { get { return BuildingType.Work; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Work"; } }
+
+    public override BuildingType BuildingType { get { return BuildingType.Work; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Farm").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {
@@ -57,7 +60,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
         numberOfTimesSent++;
 
-        Random random = new Random();
+        System.Random random = new System.Random();
         childPaid = random.NextDouble() >= 0.95f;
 
         if (numberOfTimesSent == 20)

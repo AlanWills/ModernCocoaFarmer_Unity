@@ -93,6 +93,8 @@
     <Compile Include="Assets\Scripts\CocoaPodCollection\TimeLeftScript.cs" />
     <Compile Include="Assets\Scripts\MathUtils.cs" />
     <Compile Include="Assets\Scripts\MenuInputScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\ChildVillagerCreatorScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\ChildVillagerScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\Child.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\ChildManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\DataPacket.cs" />

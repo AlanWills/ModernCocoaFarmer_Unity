@@ -20,6 +20,7 @@ public abstract class InteractableBuildingEventScript : EventScript
 
     public abstract float CostToPerform { get; }
     public abstract BuildingType BuildingType { get; }
+    protected abstract Vector3 BuildingLocation { get; }
 
     protected abstract float LockTime { get; }
     protected List<Child> LockedInChildren = new List<Child>();
@@ -42,6 +43,8 @@ public abstract class InteractableBuildingEventScript : EventScript
         LockedInChildren.Add(child);
         Timers.Add(0);
         Tickers.Add(0);
+
+        GameObject.Find("Home").GetComponent<ChildVillagerCreatorScript>().CreateChildVillager(BuildingLocation);
     }
     
     public void Update()

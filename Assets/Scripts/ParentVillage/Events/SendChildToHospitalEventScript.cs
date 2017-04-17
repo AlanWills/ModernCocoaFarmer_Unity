@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class SendChildToHospitalEventScript : InteractableBuildingEventScript
 {
@@ -50,8 +51,10 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     public override bool YesButtonEnabled { get { return IncomeManager.Money >= Cost; } }
     public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
-    public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
+
+    public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Hospital").transform.position; } }
     
     public override string GetOnCompleteDescription(Child child)
     {

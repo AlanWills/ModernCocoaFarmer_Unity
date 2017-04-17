@@ -6,6 +6,7 @@ using UnityEngine;
 public class SendChildToMarketEventScript : InteractableBuildingEventScript
 {
     public override BuildingType BuildingType { get { return BuildingType.Market; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Market").transform.position; } }
 
     // $52 a year for food per person
     public override float CostToPerform { get { return 31980 * ChildManager.ChildCount; } }
@@ -27,6 +28,8 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
 
     public override bool YesButtonEnabled { get { return IncomeManager.Money >= CostToPerform; } }
     public override string NoButtonText { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
+
+    protected override string OnShowAudioClipPath { get { return "Audio/Market"; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

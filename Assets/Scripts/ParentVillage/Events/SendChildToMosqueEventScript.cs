@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class SendChildToMosqueEventScript : InteractableBuildingEventScript
 {
@@ -26,8 +27,10 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     public override string NoButtonText { get { return "Leave"; } }
     public override float CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear * 0.25f; } }
-    public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Mosque"; } }
+
+    public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("Mosque").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

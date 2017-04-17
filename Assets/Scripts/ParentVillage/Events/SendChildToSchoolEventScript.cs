@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 {
@@ -33,8 +34,10 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 
     public override float CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
-    public override BuildingType BuildingType { get { return BuildingType.School; } }
     protected override string OnShowAudioClipPath { get { return "Audio/School"; } }
+
+    public override BuildingType BuildingType { get { return BuildingType.School; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("School").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {
