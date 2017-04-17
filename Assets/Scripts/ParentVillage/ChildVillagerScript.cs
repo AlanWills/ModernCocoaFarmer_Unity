@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChildVillagerScript : MonoBehaviour
 {
     public const float Threshold = 1;
-    public float Speed = 0.5f;
+    public float Speed = 0.1f;
     public Vector3 Destination { private get; set; }
 
 	// Update is called once per frame
