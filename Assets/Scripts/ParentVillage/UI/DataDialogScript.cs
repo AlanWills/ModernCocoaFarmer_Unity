@@ -16,6 +16,10 @@ public class DataDialogScript : MonoBehaviour
 
     private GameObject dataDialogUI;
 
+    private const float Timer = 2;
+    private float currentTimer = 0;
+    private bool shown = false;
+
     // Use this for initialization
     void Awake ()
     {
@@ -30,7 +34,7 @@ public class DataDialogScript : MonoBehaviour
 
     private void Start()
     {
-        dataDialogUI.SetActive(false);
+        Hide();
     }
 
     // Update is called once per frame
@@ -47,6 +51,15 @@ public class DataDialogScript : MonoBehaviour
             educationBar.Value = currentSelectedChild.Education;
             happinessBar.Value = currentSelectedChild.Happiness;
         }
+
+        if (shown)
+        {
+            currentTimer += Time.deltaTime;
+            if (currentTimer > Timer)
+            {
+                Hide();
+            }
+        }
     }
 
     public void Show(Child child)
@@ -60,10 +73,13 @@ public class DataDialogScript : MonoBehaviour
 
         // Set active after setting values so UI is updated
         dataDialogUI.SetActive(true);
+        shown = true;
     }
 
     public void Hide()
     {
+        currentTimer = 0;
+        shown = false;
         dataDialogUI.SetActive(false);
     }
 }
