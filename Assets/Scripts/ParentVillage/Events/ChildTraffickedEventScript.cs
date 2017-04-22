@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class ChildTraffickedEventScript : EventScript
 {
@@ -28,6 +29,8 @@ public class ChildTraffickedEventScript : EventScript
     private const float Cost = 615000;
     private Child childThatWillBeTaken;
 
+    private static int childrenTrafficked = 0;
+
     // Yes = pay income for die-roll chance of recovering child; mention income cost in description
     // No = no-op
 
@@ -42,10 +45,9 @@ public class ChildTraffickedEventScript : EventScript
 
         IncomeManager.AddMoney(-Cost);
 
-        Random random = new Random();
-        if (random.NextDouble() >= 0.2)
+        if (UnityEngine.Random.Range(0.0f, 1.0f) >= 0.2)
         {
-            ChildManager.RemoveChild(childThatWillBeTaken);
+            TrafficChild(childThatWillBeTaken);
         }
     }
 
@@ -53,6 +55,17 @@ public class ChildTraffickedEventScript : EventScript
     {
         base.OnNo();
 
+        TrafficChild(childThatWillBeTaken);
+    }
+
+    private void TrafficChild(Child child)
+    {
+        childrenTrafficked++;
         ChildManager.RemoveChild(childThatWillBeTaken);
+
+        if (childrenTrafficked == 3)
+        {
+            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new UNPeaceKeepersArriveEventScript());
+        }
     }
 }

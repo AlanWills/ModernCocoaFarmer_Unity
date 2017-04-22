@@ -15,29 +15,37 @@ public class RandomEventGenerator : MonoBehaviour {
     {
 		if (!dialog.DialogOpen)
         {
+            float value = Random.Range(0.0f, 10.0f);
+
             // Only trial income random events if no dialog is open
-            if (IncomeManager.CurrentIncomeLevel == IncomeManager.IncomeLevel.kExcellent)
+            if (IncomeManager.CurrentIncomeLevel != IncomeManager.IncomeLevel.kExcellent)
             {
-                if (Random.Range(0, 1) > 0.995f)
+                if (value > 9.995f)
+                {
+                    dialog.QueueEvent(new SalaryIncreasedEventScript());
+                    return;
+                }
+            }
+            else if (IncomeManager.CurrentIncomeLevel != IncomeManager.IncomeLevel.kLow)
+            {
+                if (value > 9.995f)
                 {
                     dialog.QueueEvent(new SalaryDecreasedEventScript());
                     return;
                 }
             }
-            else if (IncomeManager.CurrentIncomeLevel == IncomeManager.IncomeLevel.kLow)
+
+            if (value > 9.99f)
             {
-                if (Random.Range(0, 1) > 0.995f)
-                {
-                    dialog.QueueEvent(new SalaryIncreasedEventScript());
-                    return;
-                }
+                dialog.QueueEvent(new FightingBreaksOutEventScript());
+                return;
             }
         }
 	}
     
     public static bool IsChildTrafficked(Child child)
     {
-        float value = Random.Range(0, 100);
+        float value = Random.Range(0.0f, 100.0f);
         if (child.Safety + child.Happiness < value)
         {
             dialog.QueueEvent(new ChildTraffickedEventScript(child));

@@ -44,7 +44,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     public override bool ConfirmEventQueued()
     {
         // 1 in 4 chance to perform a trafficking check
-        if (UnityEngine.Random.Range(0, 1) > 0.75f && RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
+        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.75f && RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
         {
             return false;
         }
@@ -74,10 +74,17 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         base.OnTimeComplete(child);
 
+        if (UnityEngine.Random.Range(0.0f, 1.0f) >= 0.9f)
+        {
+            // Dont increment number of times sent, and don't pay the child
+            childPaid = false;
+            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new PlagueOfBlackPodEventScript(child));
+            return;
+        }
+
         numberOfTimesSent++;
 
-        System.Random random = new System.Random();
-        childPaid = random.NextDouble() >= 0.95f;
+        childPaid = UnityEngine.Random.Range(0.0f, 1.0f) >= 0.95f;
 
         if (numberOfTimesSent == 20)
         {

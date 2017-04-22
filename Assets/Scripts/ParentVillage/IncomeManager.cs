@@ -39,6 +39,7 @@
 
     static IncomeManager()
     {
+        CurrentIncomeLevel = IncomeLevel.kHigh;
         Money = StartingMoney;
     }
 
@@ -52,18 +53,18 @@
         switch (CurrentIncomeLevel)
         {
             case IncomeLevel.kExcellent:
-                CurrentIncomeLevel = IncomeLevel.kHigh;
                 break;
 
             case IncomeLevel.kHigh:
-                CurrentIncomeLevel = IncomeLevel.kMedium;
+                CurrentIncomeLevel = IncomeLevel.kExcellent;
                 break;
 
             case IncomeLevel.kMedium:
-                CurrentIncomeLevel = IncomeLevel.kLow;
+                CurrentIncomeLevel = IncomeLevel.kHigh;
                 break;
 
             case IncomeLevel.kLow:
+                CurrentIncomeLevel = IncomeLevel.kMedium;
                 break;
 
             default:
