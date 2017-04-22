@@ -32,7 +32,7 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Market").transform.position; } }
 
     // $52 a year for food per person
-    public override float CostToPerform { get { return 31980 * ChildManager.ChildCount; } }
+    public override int CostToPerform { get { return 31980 * ChildManager.ChildCount; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear * 0.25f; } }
 
     protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }

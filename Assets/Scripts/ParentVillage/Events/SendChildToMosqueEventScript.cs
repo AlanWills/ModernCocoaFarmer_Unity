@@ -35,7 +35,7 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     protected override bool YesButtonEnabledImpl { get { return true; } }
     protected override string NoButtonTextImpl { get { return "Leave"; } }
 
-    public override float CostToPerform { get { return 0; } }
+    public override int CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear * 0.25f; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Mosque"; } }
 

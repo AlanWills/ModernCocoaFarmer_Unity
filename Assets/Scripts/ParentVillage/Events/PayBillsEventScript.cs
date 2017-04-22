@@ -33,7 +33,7 @@ public class PayBillsEventScript : EventScript
     public override string NoButtonText { get { return IncomeManager.Money >= Cost ? "No" : "OK"; } }
     protected override string OnYesAudioClipPath { get { return "Audio/Money"; } }
 
-    public float Cost { get { return 430500 + 31980 * ChildManager.ChildCount; } }
+    public int Cost { get { return 430500 + 31980 * ChildManager.ChildCount; } }
 
     protected override void OnYes()
     {

@@ -26,7 +26,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     // 5% are actually paid - see how this fits with the game
     // Child locked in for a year
 
-    private const float Salary = 116850;
+    private const int Salary = 116850;
 
     // Every 20 times, the player is guaranteed a pay out
     private static int numberOfTimesSent = 0;
@@ -34,7 +34,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
     protected override bool YesButtonEnabledImpl { get { return true; } }
     protected override string NoButtonTextImpl { get { return "No"; } }
-    public override float CostToPerform { get { return 0; } }
+    public override int CostToPerform { get { return 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Work"; } }
 

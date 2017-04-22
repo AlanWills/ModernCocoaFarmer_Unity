@@ -48,7 +48,7 @@ public abstract class InteractableBuildingEventScript : EventScript
 
     protected abstract string NoButtonTextImpl { get; }
 
-    public abstract float CostToPerform { get; }
+    public abstract int CostToPerform { get; }
     public abstract BuildingType BuildingType { get; }
     protected abstract Vector3 BuildingLocation { get; }
 

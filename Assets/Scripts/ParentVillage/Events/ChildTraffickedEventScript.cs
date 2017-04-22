@@ -26,7 +26,7 @@ public class ChildTraffickedEventScript : EventScript
     protected override string OnYesAudioClipPath { get { return "Audio/Money"; } }
     protected override string OnNoAudioClipPath { get { return "Audio/Death"; } }
 
-    private const float Cost = 615000;
+    private const int Cost = 615000;
     private Child childThatWillBeTaken;
 
     private static int childrenTrafficked = 0;

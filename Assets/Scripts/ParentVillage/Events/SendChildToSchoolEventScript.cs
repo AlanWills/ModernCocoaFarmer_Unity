@@ -38,7 +38,7 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }
     protected override string NoButtonTextImpl { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
 
-    public override float CostToPerform { get { return 3075; } }
+    public override int CostToPerform { get { return 3075; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear; } }
     protected override string OnShowAudioClipPath { get { return "Audio/School"; } }
 

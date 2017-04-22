@@ -8,10 +8,10 @@
         kExcellent
     }
 
-    public const float StartingMoney = 61500;
-    public static float Money { get; private set; }
+    public const int StartingMoney = 61500;
+    public static int Money { get; private set; }
     public static IncomeLevel CurrentIncomeLevel { get; private set; }
-    public static float CurrentIncome
+    public static int CurrentIncome
     {
         get
         {
@@ -35,7 +35,7 @@
 
         }
     }
-    public static float IncomeFromChildren { get { return 615000 * ChildManager.ChildrenGraduated; } }
+    public static int IncomeFromChildren { get { return 615000 * ChildManager.ChildrenGraduated; } }
 
     static IncomeManager()
     {
@@ -43,7 +43,7 @@
         Money = StartingMoney;
     }
 
-    public static void AddMoney(float money)
+    public static void AddMoney(int money)
     {
         Money += money;
     }
