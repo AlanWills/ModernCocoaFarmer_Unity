@@ -27,6 +27,7 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
         }
     }
 
+    public override float TimeOut { get { return IncomeManager.Money >= CostToPerform ? float.MaxValue : 4; } }
     public override BuildingType BuildingType { get { return BuildingType.Market; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Market").transform.position; } }
 

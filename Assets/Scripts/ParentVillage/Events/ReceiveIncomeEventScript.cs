@@ -19,6 +19,8 @@
         }
     }
 
+    public override float TimeOut { get { return 4; } }
+
     protected override string OnShowAudioClipPath { get { return "Audio/Money"; } }
 
     protected override void OnNo()

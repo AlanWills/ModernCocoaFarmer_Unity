@@ -21,6 +21,8 @@ public class EventDialogScript : MonoBehaviour
 
     private Queue<EventScript> events = new Queue<EventScript>();
 
+    private float currentTimer = 0;
+
     public void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -41,9 +43,18 @@ public class EventDialogScript : MonoBehaviour
     
     public void Update()
     {
-        if (CurrentEvent == null && events.Count > 0)
+        if (CurrentEvent == null)
         {
             ShowEvent();
+        }
+        else
+        {
+            currentTimer += Time.deltaTime;
+            if (currentTimer > CurrentEvent.TimeOut)
+            {
+                CurrentEvent.No();
+                Hide();
+            }
         }
     }
 
@@ -71,11 +82,14 @@ public class EventDialogScript : MonoBehaviour
             eventDialogUI.SetActive(true);
             yesButton.SetActive(CurrentEvent.YesButtonEnabled);
             noButton.SetActive(CurrentEvent.NoButtonEnabled);
+
+            currentTimer = 0;
         }
     }
 
     private void Hide()
     {
+        currentTimer = 0;
         CurrentEvent = null;
         eventDialogUI.SetActive(false);
     }

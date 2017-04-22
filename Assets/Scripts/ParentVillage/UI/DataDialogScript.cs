@@ -45,7 +45,7 @@ public class DataDialogScript : MonoBehaviour
         if (currentSelectedChild != null)
         {
             childName.text = currentSelectedChild.Name;
-            childLocation.text = currentSelectedChild.BuildingType.ToString();
+            childLocation.text = currentSelectedChild.BuildingType == BuildingType.Idle ? "" : currentSelectedChild.BuildingType.ToString();
             healthBar.Value = currentSelectedChild.Health;
             safetyBar.Value = currentSelectedChild.Safety;
             educationBar.Value = currentSelectedChild.Education;
@@ -65,7 +65,7 @@ public class DataDialogScript : MonoBehaviour
     public void Show(Child child)
     { 
         childName.text = child.Name;
-        childLocation.text = child.BuildingType.ToString();
+        childLocation.text = child.BuildingType == BuildingType.Idle ? "" : child.BuildingType.ToString();
         healthBar.Value = child.Health;
         safetyBar.Value = child.Safety;
         educationBar.Value = child.Education;

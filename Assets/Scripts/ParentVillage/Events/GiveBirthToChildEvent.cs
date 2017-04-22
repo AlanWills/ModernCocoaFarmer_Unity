@@ -2,16 +2,18 @@
 
 public class GiveBirthToChildEvent : EventScript
 {
+    private const int Threshold = 3;
+
     public override string Name
     {
-        get { return ChildManager.ChildCount <= 5 ? "Birth" : "Pregnancy"; }
+        get { return ChildManager.ChildCount <= Threshold ? "Birth" : "Pregnancy"; }
     }
 
     public override string Description
     {
         get
         {
-            if (ChildManager.ChildCount <= 5)
+            if (ChildManager.ChildCount <= Threshold)
             {
                 return "You've had a baby.";
             }
@@ -20,11 +22,12 @@ public class GiveBirthToChildEvent : EventScript
         }
     }
 
-    public override bool YesButtonEnabled { get { return ChildManager.ChildCount > 5; } }
-    public override string NoButtonText { get { return ChildManager.ChildCount > 5 ? "No" : "OK"; } }
-    protected override string OnShowAudioClipPath { get { return ChildManager.ChildCount <= 5 ? "Audio/Birth" : null; } }
+    public override float TimeOut { get { return ChildManager.ChildCount > Threshold ? float.MaxValue : 4; } }
+    public override bool YesButtonEnabled { get { return ChildManager.ChildCount > Threshold; } }
+    public override string NoButtonText { get { return ChildManager.ChildCount > Threshold ? "No" : "OK"; } }
+    protected override string OnShowAudioClipPath { get { return ChildManager.ChildCount <= Threshold ? "Audio/Birth" : null; } }
     protected override string OnYesAudioClipPath { get { return "Audio/Birth"; } }
-    protected override string OnNoAudioClipPath { get { return ChildManager.ChildCount > 5 ? "Audio/Death" : null; } }
+    protected override string OnNoAudioClipPath { get { return ChildManager.ChildCount > Threshold ? "Audio/Death" : null; } }
 
     protected override void OnYes()
     {

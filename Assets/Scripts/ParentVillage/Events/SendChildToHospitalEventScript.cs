@@ -49,15 +49,17 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     private const float Cost = 135300;
     public const float HealthThreshold = 10;
 
+    public override float TimeOut { get { return (ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? float.MaxValue : 4; } }
+
     protected override string NoButtonTextImpl
     {
         get
         {
-            return IncomeManager.Money >= Cost ? "No" : "OK";
+            return (ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? "No" : "OK";
         }
     }
-    protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= Cost; } }
-    public override float CostToPerform { get { return IncomeManager.Money >= Cost ? Cost : 0; } }
+    protected override bool YesButtonEnabledImpl { get { return ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost; } }
+    public override float CostToPerform { get { return ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
 

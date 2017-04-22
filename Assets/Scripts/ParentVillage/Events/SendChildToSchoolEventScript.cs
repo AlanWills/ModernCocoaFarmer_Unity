@@ -34,6 +34,7 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     // Child locked in for an entire year
     // 70 children in class per average
 
+    public override float TimeOut { get { return IncomeManager.Money >= CostToPerform ? float.MaxValue : 4; } }
     protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }
     protected override string NoButtonTextImpl { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
 

@@ -20,7 +20,11 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Would you like to upgrade your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+            if (IncomeManager.Money >= CostToPerform)
+            {
+                return "Would you like to upgrade your house? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+            }
+            return "You do not have enough money to perform an upgrade to your house.";
         }
     }
 
@@ -30,8 +34,9 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     // House upgrade = $75?
 
-    protected override bool YesButtonEnabledImpl { get { return true; } }
-    protected override string NoButtonTextImpl { get { return "No"; } }
+    public override float TimeOut { get { return IncomeManager.Money >= CostToPerform ? float.MaxValue : 4; } }
+    protected override bool YesButtonEnabledImpl { get { return IncomeManager.Money >= CostToPerform; } }
+    protected override string NoButtonTextImpl { get { return IncomeManager.Money >= CostToPerform ? "No" : "OK"; } }
     public override float CostToPerform { get { return 46125; } }
     protected override float LockTime { get { return 40; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Home"; } }

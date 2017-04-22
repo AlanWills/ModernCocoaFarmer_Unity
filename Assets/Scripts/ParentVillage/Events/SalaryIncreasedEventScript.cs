@@ -18,9 +18,11 @@ public class SalaryIncreasedEventScript : EventScript
         }
     }
 
-    protected override void OnYes()
+    public override float TimeOut { get { return 4; } }
+
+    protected override void OnNo()
     {
-        base.OnYes();
+        base.OnNo();
 
         IncomeManager.IncreaseIncomeLevel();
     }

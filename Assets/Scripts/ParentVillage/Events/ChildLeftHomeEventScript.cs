@@ -15,6 +15,8 @@ public class ChildLeftHomeEventScript : EventScript
         }
     }
 
+    public override float TimeOut { get { return 4; } }
+
     private Child childThatWillLeave;
 
     public ChildLeftHomeEventScript()
@@ -24,9 +26,9 @@ public class ChildLeftHomeEventScript : EventScript
         childThatWillLeave = ChildManager.GetChild(random.Next(0, ChildManager.MaxChildCount - 1));
     }
 
-    protected override void OnYes()
+    protected override void OnNo()
     {
-        base.OnYes();
+        base.OnNo();
 
         ChildManager.RemoveChild(childThatWillLeave);
     }
