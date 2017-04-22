@@ -14,6 +14,7 @@ public class DataDialogScript : MonoBehaviour
     private BarScript educationBar;
     private BarScript happinessBar;
 
+    private EventDialogScript eventDialog;
     private GameObject dataDialogUI;
 
     private const float Timer = 4;
@@ -23,6 +24,7 @@ public class DataDialogScript : MonoBehaviour
     // Use this for initialization
     void Awake ()
     {
+        eventDialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
         dataDialogUI = GameObject.Find(DataDialogName + "UI");
         childName = GameObject.Find("ChildName").GetComponent<Text>();
         childLocation = GameObject.Find("ChildLocation").GetComponent<Text>();
@@ -52,11 +54,12 @@ public class DataDialogScript : MonoBehaviour
             happinessBar.Value = currentSelectedChild.Happiness;
         }
 
-        if (shown)
+        if (shown && !eventDialog.DialogOpen)
         {
             currentTimer += Time.deltaTime;
             if (currentTimer > Timer)
             {
+                ChildManager.DeselectChild(ChildManager.SelectedChild);
                 Hide();
             }
         }
