@@ -46,7 +46,10 @@ public class ShowEventDialogScript : MonoBehaviour {
             }
             else
             {
-                dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+                if (eventScript.ConfirmEventQueued())
+                {
+                    dialog.GetComponent<EventDialogScript>().QueueEvent(eventScript);
+                }
             }
         }
     }

@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RandomEventGenerator : MonoBehaviour {
 
-    private EventDialogScript dialog;
-
-    private List<Type> events = new List<Type>()
-    {
-        typeof(ChildTraffickedEventScript),
-        typeof(SalaryDecreasedEventScript),
-        typeof(SalaryIncreasedEventScript),
-    };
-
+    private static EventDialogScript dialog;
+    
 	// Use this for initialization
 	void Awake ()
     {
@@ -23,15 +13,35 @@ public class RandomEventGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (!dialog.DialogOpen && UnityEngine.Random.Range(0.0f, 1.0f) > 1)
+		if (!dialog.DialogOpen)
         {
-            CreateEventDialog();
+            // Only trial income random events if no dialog is open
+            if (IncomeManager.CurrentIncomeLevel == IncomeManager.IncomeLevel.kExcellent)
+            {
+                if (Random.Range(0, 1) > 0.995f)
+                {
+                    dialog.QueueEvent(new SalaryDecreasedEventScript());
+                }
+            }
+            else if (IncomeManager.CurrentIncomeLevel == IncomeManager.IncomeLevel.kLow)
+            {
+                if (Random.Range(0, 1) > 0.995f)
+                {
+                    dialog.QueueEvent(new SalaryIncreasedEventScript());
+                }
+            }
         }
 	}
-
-    private void CreateEventDialog()
+    
+    public static bool IsChildTrafficked(Child child)
     {
-        int eventIndex = UnityEngine.Random.Range(0, events.Count);
-        dialog.QueueEvent(Activator.CreateInstance(events[eventIndex]) as EventScript);
+        float value = Random.Range(0, 100);
+        if (child.Safety + child.Happiness < value)
+        {
+            dialog.QueueEvent(new ChildTraffickedEventScript(child));
+            return true;
+        }
+
+        return false;
     }
 }

@@ -29,6 +29,17 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.Well; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Well").transform.position; } }
 
+    public override bool ConfirmEventQueued()
+    {
+        // Always perform a trafficking check here
+        if (RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
+        {
+            return false;
+        }
+
+        return base.ConfirmEventQueued();
+    }
+
     public override string GetOnCompleteDescription(Child child)
     {
         return child.Name + " collects water for your family.";

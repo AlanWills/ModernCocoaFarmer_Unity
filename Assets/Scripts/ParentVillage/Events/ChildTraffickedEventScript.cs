@@ -31,10 +31,9 @@ public class ChildTraffickedEventScript : EventScript
     // Yes = pay income for die-roll chance of recovering child; mention income cost in description
     // No = no-op
 
-    public ChildTraffickedEventScript()
+    public ChildTraffickedEventScript(Child child)
     {
-        Random random = new Random();
-        childThatWillBeTaken = ChildManager.GetChild(random.Next(0, ChildManager.ChildCount));
+        childThatWillBeTaken = child;
     }
 
     protected override void OnYes()

@@ -41,6 +41,17 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.Work; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Farm").transform.position; } }
 
+    public override bool ConfirmEventQueued()
+    {
+        // 1 in 4 chance to perform a trafficking check
+        if (UnityEngine.Random.Range(0, 1) > 0.75f && RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
+        {
+            return false;
+        }
+
+        return base.ConfirmEventQueued();
+    }
+
     public override string GetOnCompleteDescription(Child child)
     {
         if (childPaid)
