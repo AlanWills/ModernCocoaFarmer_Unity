@@ -65,9 +65,9 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         return new DataPacket(
             0, 
-            -Math.Min(50, child.Health) / LockTime, 
-            -Math.Min(50, child.Safety) / LockTime, 
-            -Math.Min(50, child.Happiness) / LockTime);
+            -50 / LockTime, 
+            -50 / LockTime, 
+            -50 / LockTime);
     }
 
     protected override void OnTimeComplete(Child child)

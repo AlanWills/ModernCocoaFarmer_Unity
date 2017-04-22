@@ -50,10 +50,10 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
-            Math.Min(2, child.Education) / LockTime,
+            2 / LockTime,
             0,
-            Math.Min(3, child.Safety) / LockTime,
-            Math.Min(5, child.Happiness) / LockTime);
+            3 / LockTime,
+            5 / LockTime);
     }
 
     protected override void OnTimeComplete(Child child)

@@ -57,9 +57,19 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
-            Math.Min(50, Child.MaxEducation - child.Education) / LockTime,
-            Math.Min(10, child.Health) / LockTime,
-            Math.Min(10, child.Safety) / LockTime,
-            Math.Min(25, child.Happiness) / LockTime);
+            50 / LockTime,
+            10 / LockTime,
+            10 / LockTime,
+            25 / LockTime);
+    }
+
+    protected override void OnTimeComplete(Child child)
+    {
+        base.OnTimeComplete(child);
+
+        if (child.Happiness <= 10 && UnityEngine.Random.Range(0, 1) > 0.75f)
+        {
+             GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new ChildExpelledEventScript(child));
+        }
     }
 }
