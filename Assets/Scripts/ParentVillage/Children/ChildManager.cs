@@ -15,6 +15,7 @@ public static class ChildManager
     public static event ChildEventHandler ChildGraduated;
 
     public const int MaxChildCount = 7;
+    public static float ChildDegredation = 5;
     public static int ChildCount { get { return Children.Count; } }
     public static int ChildrenGraduated { get; private set; }
     public static Child SelectedChild { get { return Children.Find(x => x.IsSelected); } }

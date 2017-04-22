@@ -21,6 +21,7 @@ public class RandomEventGenerator : MonoBehaviour {
                 if (Random.Range(0, 1) > 0.995f)
                 {
                     dialog.QueueEvent(new SalaryDecreasedEventScript());
+                    return;
                 }
             }
             else if (IncomeManager.CurrentIncomeLevel == IncomeManager.IncomeLevel.kLow)
@@ -28,6 +29,7 @@ public class RandomEventGenerator : MonoBehaviour {
                 if (Random.Range(0, 1) > 0.995f)
                 {
                     dialog.QueueEvent(new SalaryIncreasedEventScript());
+                    return;
                 }
             }
         }

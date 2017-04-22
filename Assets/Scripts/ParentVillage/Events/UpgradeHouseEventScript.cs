@@ -56,6 +56,7 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     protected override void OnTimeComplete(Child child)
     {
-        // Upgrade house somehow?
+        // Remove degredation
+        ChildManager.ChildDegredation -= 5;
     }
 }

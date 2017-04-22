@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
@@ -13,6 +14,7 @@ public class ChildUIScript : MonoBehaviour
 
     private Animator animator;
     private static DataDialogScript dataDialog;
+    private float secondTimer = 0;
 
     public Child Child { get; set; }
 
@@ -31,6 +33,23 @@ public class ChildUIScript : MonoBehaviour
         ChildManager.ChildDeselected += ChildManager_ChildDeselected;
         animator = GetComponent<Animator>();
 	}
+
+    private void Update()
+    {
+        secondTimer += Time.deltaTime;
+
+        if (secondTimer >= 1)
+        {
+            Child.Apply(
+                new DataPacket(
+                0,
+                -ChildManager.ChildDegredation / TimeManager.SecondsPerYear,
+                0,
+                -ChildManager.ChildDegredation / TimeManager.SecondsPerYear));
+
+            secondTimer = 0;
+        }
+    }
 
     public void ToggleSelect()
     {

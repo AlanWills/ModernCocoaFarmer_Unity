@@ -16,7 +16,7 @@ public class DataDialogScript : MonoBehaviour
 
     private GameObject dataDialogUI;
 
-    private const float Timer = 2;
+    private const float Timer = 4;
     private float currentTimer = 0;
     private bool shown = false;
 
