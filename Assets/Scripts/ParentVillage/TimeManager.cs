@@ -6,7 +6,10 @@ public class TimeManager : MonoBehaviour
 {
     public const float SecondsPerYear = 60;
 
-    public float CurrentTimeInYear { get; private set; }
+    public static float CurrentTimeInYear { get; private set; }
+    public static float DeltaTime { get; private set; }
+    public static bool Paused { get; set; }
+
     bool midYearReached = false;
     private EventDialogScript dialogScript;
 
@@ -20,7 +23,17 @@ public class TimeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        CurrentTimeInYear += Time.deltaTime;
+        if (!Paused)
+        {
+            DeltaTime = Time.deltaTime;
+        }
+        else
+        {
+            DeltaTime = 0;
+        }
+
+        CurrentTimeInYear += DeltaTime;
+
         if (CurrentTimeInYear > SecondsPerYear)
         {
             CurrentTimeInYear = 0;

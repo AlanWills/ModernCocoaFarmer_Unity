@@ -49,7 +49,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     private const int Cost = 135300;
     public const float HealthThreshold = 10;
 
-    public override float TimeOut { get { return (ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? float.MaxValue : 4; } }
+    public override float TimeOut { get { return (ChildManager.SelectedChild != null && ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? float.MaxValue : 4; } }
 
     protected override string NoButtonTextImpl
     {

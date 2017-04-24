@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TimeTextScript : MonoBehaviour
 {
-    private TimeManager timeManager;
     private Text monthText;
     private List<string> months = new List<string>()
     {
@@ -23,13 +22,13 @@ public class TimeTextScript : MonoBehaviour
     };
 
 	// Use this for initialization
-	void Start () {
-        timeManager = GetComponent<TimeManager>();
+	void Start ()
+    {
         monthText = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        monthText.text = months[(int)(timeManager.CurrentTimeInYear / 12)];
+        monthText.text = months[(int)(TimeManager.CurrentTimeInYear / 12)];
 	}
 }

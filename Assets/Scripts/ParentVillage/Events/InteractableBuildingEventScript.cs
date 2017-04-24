@@ -89,8 +89,8 @@ public abstract class InteractableBuildingEventScript : EventScript
         // Go through and update children locked in time
         for (int i = 0; i < Timers.Count; ++i)
         {
-            Timers[i] += Time.deltaTime;
-            Tickers[i] += Time.deltaTime;
+            Timers[i] += TimeManager.DeltaTime;
+            Tickers[i] += TimeManager.DeltaTime;
 
             if (Tickers[i] >= 1)
             {

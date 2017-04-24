@@ -49,7 +49,7 @@ public class EventDialogScript : MonoBehaviour
         }
         else
         {
-            currentTimer += Time.deltaTime;
+            currentTimer += TimeManager.DeltaTime;
             if (currentTimer > CurrentEvent.TimeOut)
             {
                 CurrentEvent.No();

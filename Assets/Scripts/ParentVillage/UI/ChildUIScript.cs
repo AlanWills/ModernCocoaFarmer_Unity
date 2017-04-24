@@ -36,7 +36,7 @@ public class ChildUIScript : MonoBehaviour
 
     private void Update()
     {
-        secondTimer += Time.deltaTime;
+        secondTimer += TimeManager.DeltaTime;
 
         if (secondTimer >= 1)
         {

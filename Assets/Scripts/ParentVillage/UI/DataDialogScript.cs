@@ -56,7 +56,7 @@ public class DataDialogScript : MonoBehaviour
 
         if (shown && !eventDialog.DialogOpen)
         {
-            currentTimer += Time.deltaTime;
+            currentTimer += TimeManager.DeltaTime;
             if (currentTimer > Timer)
             {
                 ChildManager.DeselectChild(ChildManager.SelectedChild);
