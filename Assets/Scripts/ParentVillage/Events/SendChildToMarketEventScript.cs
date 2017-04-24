@@ -40,15 +40,15 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
 
     protected override string OnShowAudioClipPath { get { return "Audio/Market"; } }
 
-    public override bool ConfirmEventQueued()
+    public override bool ConfirmEventQueued(Child selectedChild)
     {
         // 1 in 4 chance to perform a trafficking check
-        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.75f && RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
+        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.75f && RandomEventGenerator.IsChildTrafficked(selectedChild))
         {
             return false;
         }
 
-        return base.ConfirmEventQueued();
+        return base.ConfirmEventQueued(selectedChild);
     }
 
     public override string GetOnCompleteDescription(Child child)

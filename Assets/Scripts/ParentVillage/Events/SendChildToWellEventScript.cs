@@ -28,16 +28,17 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
 
     public override BuildingType BuildingType { get { return BuildingType.Well; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Well").transform.position; } }
+    protected override string OnShowAudioClipPath { get { return "Audio/Well"; } }
 
-    public override bool ConfirmEventQueued()
+    public override bool ConfirmEventQueued(Child child)
     {
         // Always perform a trafficking check here
-        if (RandomEventGenerator.IsChildTrafficked(ChildManager.SelectedChild))
+        if (RandomEventGenerator.IsChildTrafficked(child))
         {
             return false;
         }
 
-        return base.ConfirmEventQueued();
+        return base.ConfirmEventQueued(child);
     }
 
     public override string GetOnCompleteDescription(Child child)

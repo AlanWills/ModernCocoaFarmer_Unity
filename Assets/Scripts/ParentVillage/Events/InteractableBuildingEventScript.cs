@@ -61,7 +61,7 @@ public abstract class InteractableBuildingEventScript : EventScript
     protected abstract DataPacket GetDataPacketPerSecond(Child child);
     protected virtual void OnTimeComplete(Child child) { }
 
-    public virtual bool ConfirmEventQueued()
+    public virtual bool ConfirmEventQueued(Child selectedChild)
     {
         return true;
     }
