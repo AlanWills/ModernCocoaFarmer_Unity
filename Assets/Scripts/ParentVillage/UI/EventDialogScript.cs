@@ -49,7 +49,8 @@ public class EventDialogScript : MonoBehaviour
         }
         else
         {
-            currentTimer += TimeManager.DeltaTime;
+            // Dont use time manager as it will be paused
+            currentTimer += Time.deltaTime;
             if (currentTimer > CurrentEvent.TimeOut)
             {
                 CurrentEvent.No();
@@ -67,6 +68,7 @@ public class EventDialogScript : MonoBehaviour
     {
         if (events.Count > 0)
         {
+            TimeManager.Paused = true;
             CurrentEvent = events.Dequeue();
 
             if (CurrentEvent.OnShowAudioClip != null)
@@ -92,6 +94,7 @@ public class EventDialogScript : MonoBehaviour
         currentTimer = 0;
         CurrentEvent = null;
         eventDialogUI.SetActive(false);
+        TimeManager.Paused = false;
     }
 
     public void Yes()

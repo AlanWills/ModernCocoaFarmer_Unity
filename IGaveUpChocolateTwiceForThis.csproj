@@ -110,6 +110,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\FightingBreaksOutEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\GiveBirthToChildEvent.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\InstructionEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\InteractableBuildingEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PayBillsEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PlagueOfBlackPodEventScript.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\UI\DonateDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\EventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\ShowDonateDialogScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\UI\TimeTextScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\TimeUIScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\ToolTipScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />

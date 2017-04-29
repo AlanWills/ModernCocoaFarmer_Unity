@@ -20,7 +20,7 @@ public class RandomEventGenerator : MonoBehaviour {
             // Only trial income random events if no dialog is open
             if (IncomeManager.CurrentIncomeLevel != IncomeManager.IncomeLevel.kExcellent)
             {
-                if (value > 9.995f)
+                if (value > 9.998f)
                 {
                     dialog.QueueEvent(new SalaryIncreasedEventScript());
                     return;
@@ -28,14 +28,14 @@ public class RandomEventGenerator : MonoBehaviour {
             }
             else if (IncomeManager.CurrentIncomeLevel != IncomeManager.IncomeLevel.kLow)
             {
-                if (value > 9.995f)
+                if (value > 9.998f)
                 {
                     dialog.QueueEvent(new SalaryDecreasedEventScript());
                     return;
                 }
             }
 
-            if (value > 9.99f)
+            if (value > 9.999f)
             {
                 dialog.QueueEvent(new FightingBreaksOutEventScript());
                 return;
@@ -45,7 +45,7 @@ public class RandomEventGenerator : MonoBehaviour {
     
     public static bool IsChildTrafficked(Child child)
     {
-        float value = Random.Range(0.0f, 100.0f);
+        float value = Random.Range(0.0f, 150.0f);
         if (child.Safety + child.Happiness < value)
         {
             dialog.QueueEvent(new ChildTraffickedEventScript(child));

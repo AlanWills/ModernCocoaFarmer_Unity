@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public const float SecondsPerYear = 60;
+    public const float SecondsPerYear = 90;
 
     public static float CurrentTimeInYear { get; private set; }
     public static float DeltaTime { get; private set; }
@@ -17,7 +17,8 @@ public class TimeManager : MonoBehaviour
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-        CurrentTimeInYear = SecondsPerYear;
+        dialogScript.QueueEvent(new InstructionEventScript());
+        CurrentTimeInYear = 0;
     }
 	
 	// Update is called once per frame

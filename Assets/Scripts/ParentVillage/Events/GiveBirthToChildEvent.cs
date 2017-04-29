@@ -18,7 +18,7 @@ public class GiveBirthToChildEvent : EventScript
                 return "You've had a baby.";
             }
 
-            return "You have become pregnant, do you wish to keep the child?";
+            return "You have become pregnant again, do you wish to keep the child?";
         }
     }
 

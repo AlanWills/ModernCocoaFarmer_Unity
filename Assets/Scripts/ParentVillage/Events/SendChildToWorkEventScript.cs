@@ -17,7 +17,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     {
         get
         {
-            return "Do you wish to send " + ChildManager.SelectedChild.Name + " to work to earn money for the family?";
+            return "Do you wish to send " + ChildManager.SelectedChild.Name + " to the Ivory Coast to earn vital money for the family?";
         }
     }
 
