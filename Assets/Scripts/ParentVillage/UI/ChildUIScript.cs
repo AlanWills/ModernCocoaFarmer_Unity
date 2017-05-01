@@ -5,13 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 public class ChildUIScript : MonoBehaviour
 {
-    public Sprite HomeIcon;
-    public Sprite SchoolIcon;
-    public Sprite WorkIcon;
-    public Sprite MosqueIcon;
-    public Sprite HospitalIcon;
-    public Sprite MarketIcon;
-
     private Animator animator;
     private static DataDialogScript dataDialog;
     private float secondTimer = 0;
@@ -32,6 +25,7 @@ public class ChildUIScript : MonoBehaviour
         ChildManager.ChildSelected += ChildManager_ChildSelected;
         ChildManager.ChildDeselected += ChildManager_ChildDeselected;
         animator = GetComponent<Animator>();
+        GetComponentInChildren<Text>().text = Child.Name;
 	}
 
     private void Update()
