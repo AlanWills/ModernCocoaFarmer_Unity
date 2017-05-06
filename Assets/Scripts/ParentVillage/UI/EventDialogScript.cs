@@ -28,7 +28,7 @@ public class EventDialogScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         eventDialogUI = GameObject.Find("EventDialogUI");
         nameUI = GameObject.Find("EventName").GetComponent<Text>();
-        descriptionUI = GameObject.Find("Description").GetComponent<Text>();
+        descriptionUI = GameObject.Find("EventDescription").GetComponent<Text>();
         yesButton = GameObject.Find("YesButton");
         noButton = GameObject.Find("NoButton");
         yesText = GameObject.Find("YesText").GetComponent<Text>();

@@ -1,6 +1,6 @@
-﻿public class ReceiveIncomeEventScript : EventScript
+﻿public class ReceiveIncomeNotificationScript : NotificationScript
 {
-    public override string Name
+    public override string Title
     {
         get { return "Income Received"; }
     }
@@ -19,15 +19,9 @@
         }
     }
 
-    public override bool NoButtonEnabled { get { return false; } }
-
-    public override float TimeOut { get { return 4; } }
-
-    protected override string OnShowAudioClipPath { get { return "Audio/Money"; } }
-
-    protected override void OnNo()
+    public override void OnShow()
     {
-        base.OnNo();
+        base.OnShow();
 
         // It's weird I know, but No is used for OK
         IncomeManager.AddMoney(IncomeManager.CurrentIncome + IncomeManager.IncomeFromChildren);

@@ -80,6 +80,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
             return;
         }
 
+        childPaid = true;
         IncomeManager.AddMoney((int)(Salary * (1 + (child.Education * 0.01f))));
     }
 }

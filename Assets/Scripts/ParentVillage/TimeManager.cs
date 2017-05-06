@@ -12,11 +12,13 @@ public class TimeManager : MonoBehaviour
 
     bool midYearReached = false;
     private EventDialogScript dialogScript;
+    private NotificationDialogScript notificationScript;
 
 	// Use this for initialization
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
+        notificationScript = GameObject.Find(NotificationDialogScript.NotificationDialogName).GetComponent<NotificationDialogScript>();
         dialogScript.QueueEvent(new InstructionEventScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
         CurrentTimeInYear = 0;
@@ -49,7 +51,7 @@ public class TimeManager : MonoBehaviour
 
     private void NewYear()
     {
-        dialogScript.QueueEvent(new ReceiveIncomeEventScript());
+        notificationScript.QueueNotification(new ReceiveIncomeNotificationScript());
         dialogScript.QueueEvent(new GiveBirthToChildEvent());
         midYearReached = false;
     }
