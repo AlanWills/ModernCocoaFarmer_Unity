@@ -140,6 +140,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\UI\NotificationDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\ShowDonateDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\TimeUIScript.cs" />
+    <Compile Include="Assets\Scripts\PinchZoomScript.cs" />
     <Compile Include="Assets\Scripts\PlayVideoScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\ToolTipScript.cs" />
