@@ -26,12 +26,12 @@ public static class ChildManager
     {
         "Adama",
         "Oumar",
-        "Mohamed",
-        "Ousmane",
-        "Mamadou",
-        "Bintou",
-        "Mariam",
         "Salif",
+        "Maria",
+        "Kilia",
+        "Sekou",
+        "Siaka",
+        "Jacob",
     };
 
     public static void AddChild()
