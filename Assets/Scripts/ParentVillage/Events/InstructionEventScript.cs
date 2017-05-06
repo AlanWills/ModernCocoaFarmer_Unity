@@ -9,7 +9,7 @@ public class InstructionEventScript : EventScript
     {
         get
         {
-            return "Click on the buildings to find out more about them.";
+            return "Click on the icons to find out more about the buildings in Zeguoa.";
         }
     }
 
