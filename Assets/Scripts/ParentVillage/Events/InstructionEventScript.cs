@@ -14,5 +14,4 @@ public class InstructionEventScript : EventScript
     }
 
     public override string Name { get { return "Tip"; } }
-    public override float TimeOut { get { return 4; } }
 }

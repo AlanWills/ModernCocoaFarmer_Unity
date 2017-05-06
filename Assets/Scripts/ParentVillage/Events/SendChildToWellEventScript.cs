@@ -10,7 +10,7 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
 
     protected override string BuildingDescription
     {
-        get { return "The well is a rare source of water."; }
+        get { return "A rare source of water."; }
     }
 
     protected override string ChildSelectedDescription
