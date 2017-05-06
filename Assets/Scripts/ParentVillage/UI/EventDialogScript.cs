@@ -77,13 +77,16 @@ public class EventDialogScript : MonoBehaviour
                 audioSource.Play();
             }
 
+            bool yesButtonEnabled = CurrentEvent.YesButtonEnabled;
+            bool noButtonEnabled = CurrentEvent.NoButtonEnabled;
+
             nameUI.text = CurrentEvent.Name;
             descriptionUI.text = CurrentEvent.Description;
-            yesText.text = CurrentEvent.YesButtonText;
-            noText.text = CurrentEvent.NoButtonText;
+            yesButton.SetActive(yesButtonEnabled);
+            noButton.SetActive(noButtonEnabled);
+            yesText.text = yesButtonEnabled ? CurrentEvent.YesButtonText : "";
+            noText.text = noButtonEnabled ? CurrentEvent.NoButtonText : "";
             eventDialogUI.SetActive(true);
-            yesButton.SetActive(CurrentEvent.YesButtonEnabled);
-            noButton.SetActive(CurrentEvent.NoButtonEnabled);
 
             currentTimer = 0;
         }
