@@ -27,10 +27,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     // Child locked in for a year
 
     private const int Salary = 116850;
-
-    // Every 20 times, the player is guaranteed a pay out
-    private static int numberOfTimesSent = 0;
-    private static bool childPaid = false;
+    private static bool childPaid = true;
 
     protected override bool YesButtonEnabledImpl { get { return true; } }
     protected override string NoButtonTextImpl { get { return "No"; } }
@@ -54,11 +51,12 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
     public override string GetOnCompleteDescription(Child child)
     {
-        if (childPaid)
+        if (!childPaid)
         {
-            return child.Name + " completes a hard year at the cocoa farm and is paid CFA " + ((int)(Salary * (1 + (child.Education * 0.01f)))).ToString() + ".";
+            return child.Name + " completes a hard year at the cocoa farm, but is not paid.";
         }
-        return child.Name + " completes a hard year at the cocoa farm, but receives no money.  Not all children get paid.";
+
+        return child.Name + " completes a hard year at the cocoa farm and is paid CFA " + ((int)(Salary * (1 + (child.Education * 0.01f)))).ToString() + ".  In real life, only 5% of children are paid for their work...";
     }
 
     protected override DataPacket GetDataPacketPerSecond(Child child)
@@ -82,19 +80,6 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
             return;
         }
 
-        numberOfTimesSent++;
-
-        childPaid = UnityEngine.Random.Range(0.0f, 1.0f) >= 0.95f;
-
-        if (numberOfTimesSent == 20)
-        {
-            childPaid = true;
-            numberOfTimesSent = 0;
-        }
-
-        if (childPaid)
-        {
-            IncomeManager.AddMoney((int)(Salary * (1 + (child.Education * 0.01f))));
-        }
+        IncomeManager.AddMoney((int)(Salary * (1 + (child.Education * 0.01f))));
     }
 }
