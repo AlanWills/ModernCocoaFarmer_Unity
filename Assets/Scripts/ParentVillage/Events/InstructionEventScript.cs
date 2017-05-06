@@ -11,7 +11,7 @@ public class InstructionEventScript : EventScript
     {
         get
         {
-            return "Click on the icons to find out more about the buildings in Zeguoa.";
+            return "Welcome to Zeguoa!  Click on the icons to find out more about the buildings.";
         }
     }
 }

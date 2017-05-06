@@ -13,19 +13,27 @@ public class TimeManager : MonoBehaviour
     bool midYearReached = false;
     private EventDialogScript dialogScript;
     private NotificationDialogScript notificationScript;
+    private bool levelStarted = false;
 
 	// Use this for initialization
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
         notificationScript = GameObject.Find(NotificationDialogScript.NotificationDialogName).GetComponent<NotificationDialogScript>();
-        dialogScript.QueueEvent(new InstructionEventScript());
         CurrentTimeInYear = 0;
+        Paused = true;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (!levelStarted && Time.timeSinceLevelLoad > 2)
+        {
+            levelStarted = true;
+            Paused = false;
+            dialogScript.QueueEvent(new InstructionEventScript());
+        }
+
         if (!Paused)
         {
             DeltaTime = Time.deltaTime;
