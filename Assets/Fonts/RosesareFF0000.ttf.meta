@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4c397d5233c73e84fa7b390264ae5c0e
-timeCreated: 1486901418
+timeCreated: 1494105348
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Roses are FF0000
+  fontName: Comfortaa
   fontNames:
   - Roses are FF0000
   fallbackFontReferences: []
