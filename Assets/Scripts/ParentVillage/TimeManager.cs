@@ -20,7 +20,6 @@ public class TimeManager : MonoBehaviour
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
         notificationScript = GameObject.Find(NotificationDialogScript.NotificationDialogName).GetComponent<NotificationDialogScript>();
         dialogScript.QueueEvent(new InstructionEventScript());
-        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         CurrentTimeInYear = 0;
     }
 	
