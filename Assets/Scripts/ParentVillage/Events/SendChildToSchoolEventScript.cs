@@ -43,7 +43,7 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override string OnShowAudioClipPath { get { return "Audio/School"; } }
 
     public override BuildingType BuildingType { get { return BuildingType.School; } }
-    protected override Vector3 BuildingLocation { get { return GameObject.Find("School").transform.position; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("SchoolDestination").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

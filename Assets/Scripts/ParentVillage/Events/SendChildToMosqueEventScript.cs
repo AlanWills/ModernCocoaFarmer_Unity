@@ -40,7 +40,7 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     protected override string OnShowAudioClipPath { get { return "Audio/Mosque"; } }
 
     public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
-    protected override Vector3 BuildingLocation { get { return GameObject.Find("Mosque").transform.position; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("MosqueDestination").transform.position; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

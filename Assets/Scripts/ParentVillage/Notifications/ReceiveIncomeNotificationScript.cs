@@ -1,4 +1,6 @@
-﻿public class ReceiveIncomeNotificationScript : NotificationScript
+﻿using UnityEngine;
+
+public class ReceiveIncomeNotificationScript : NotificationScript
 {
     public override string Title
     {
@@ -19,7 +21,9 @@
         }
     }
 
-    public override void OnShow()
+    public override AudioClip OnShowAudioClip { get { return Resources.Load<AudioClip>("Audio/Money"); } }
+
+    protected override void OnShow()
     {
         base.OnShow();
 

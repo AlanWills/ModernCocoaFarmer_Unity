@@ -18,6 +18,7 @@ public class NotificationDialogScript : MonoBehaviour
 
     private Text title;
     private Text description;
+    private AudioSource audioSource;
     
     enum Direction
     {
@@ -33,7 +34,8 @@ public class NotificationDialogScript : MonoBehaviour
         width = gameObject.GetComponent<RectTransform>().rect.width;
         title = GameObject.Find("NotificationTitle").GetComponent<Text>();
         description = GameObject.Find("NotificationDescription").GetComponent<Text>();
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -59,9 +61,15 @@ public class NotificationDialogScript : MonoBehaviour
             currentNotification = notifications.Dequeue();
             title.text = currentNotification.Title;
             description.text = currentNotification.Description;
-            currentNotification.OnShow();
+            currentNotification.Show();
             direction = Direction.kIn;
             timeShownFor = 0;
+
+            if (currentNotification.OnShowAudioClip != null)
+            {
+                audioSource.clip = currentNotification.OnShowAudioClip;
+                audioSource.Play();
+            }
         }
     }
 
