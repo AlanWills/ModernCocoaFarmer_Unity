@@ -52,12 +52,12 @@ public class TimeManager : MonoBehaviour
     private void NewYear()
     {
         notificationScript.QueueNotification(new ReceiveIncomeNotificationScript());
-        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         midYearReached = false;
     }
 
     private void MidYear()
     {
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new PayBillsEventScript());
         midYearReached = true;
     }

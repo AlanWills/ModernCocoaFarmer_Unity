@@ -5,6 +5,8 @@ using System.Text;
 
 public class InstructionEventScript : EventScript
 {
+    public override string Name { get { return ""; } }
+
     public override string Description
     {
         get
@@ -12,6 +14,4 @@ public class InstructionEventScript : EventScript
             return "Click on the icons to find out more about the buildings in Zeguoa.";
         }
     }
-
-    public override string Name { get { return "Tip"; } }
 }

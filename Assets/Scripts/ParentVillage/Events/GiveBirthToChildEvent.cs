@@ -6,7 +6,7 @@ public class GiveBirthToChildEvent : EventScript
 
     public override string Name
     {
-        get { return ChildManager.ChildCount <= Threshold ? "Birth" : "Pregnancy"; }
+        get { return ""; }
     }
 
     public override string Description
