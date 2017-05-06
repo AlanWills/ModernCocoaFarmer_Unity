@@ -39,7 +39,7 @@
 
     static IncomeManager()
     {
-        CurrentIncomeLevel = IncomeLevel.kHigh;
+        CurrentIncomeLevel = IncomeLevel.kLow;
         Money = StartingMoney;
     }
 
