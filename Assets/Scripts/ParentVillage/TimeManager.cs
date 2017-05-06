@@ -10,7 +10,8 @@ public class TimeManager : MonoBehaviour
     public static float DeltaTime { get; private set; }
     public static bool Paused { get; set; }
 
-    bool midYearReached = false;
+    private bool midYearReached = false;
+    private bool quarterYearReached = false;
     private EventDialogScript dialogScript;
     private NotificationDialogScript notificationScript;
     private bool levelStarted = false;
@@ -50,6 +51,10 @@ public class TimeManager : MonoBehaviour
             CurrentTimeInYear = 0;
             NewYear();
         }
+        else if (!quarterYearReached && CurrentTimeInYear > SecondsPerYear * 0.25f)
+        {
+            QuarterYear();
+        }
         else if (!midYearReached && CurrentTimeInYear > SecondsPerYear * 0.5f)
         {
             MidYear();
@@ -60,11 +65,17 @@ public class TimeManager : MonoBehaviour
     {
         notificationScript.QueueNotification(new ReceiveIncomeNotificationScript());
         midYearReached = false;
+        quarterYearReached = false;
+    }
+
+    private void QuarterYear()
+    {
+        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        quarterYearReached = true;
     }
 
     private void MidYear()
     {
-        dialogScript.QueueEvent(new GiveBirthToChildEvent());
         dialogScript.QueueEvent(new PayBillsEventScript());
         midYearReached = true;
     }
