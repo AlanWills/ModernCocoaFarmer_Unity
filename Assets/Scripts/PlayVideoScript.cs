@@ -10,7 +10,7 @@ public class PlayVideoScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        Handheld.PlayFullScreenMovie("IntroMovie.mp4");
+        Handheld.PlayFullScreenMovie("IntroMovie.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
         SceneManager.LoadSceneAsync(SceneName);
     }
 	
