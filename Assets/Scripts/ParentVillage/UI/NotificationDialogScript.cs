@@ -9,7 +9,7 @@ public class NotificationDialogScript : MonoBehaviour
     
     private Vector3 resetPosition;
     private float width;
-    private const float ShownTime = 6;
+    private const float ShownTime = 4;
     private float timeShownFor;
     private Direction direction = Direction.kStopped;
 
