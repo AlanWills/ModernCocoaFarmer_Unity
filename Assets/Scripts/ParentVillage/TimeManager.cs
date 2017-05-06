@@ -28,11 +28,14 @@ public class TimeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!levelStarted && Time.timeSinceLevelLoad > 2)
+        if (!levelStarted)
         {
-            levelStarted = true;
-            Paused = false;
-            dialogScript.QueueEvent(new InstructionEventScript());
+            if (Time.timeSinceLevelLoad > 2)
+            {
+                levelStarted = true;
+                Paused = false;
+                dialogScript.QueueEvent(new InstructionEventScript());
+            }
         }
 
         if (!Paused)
