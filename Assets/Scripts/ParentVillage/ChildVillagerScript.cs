@@ -18,6 +18,6 @@ public class ChildVillagerScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        transform.position += diff.normalized * 5 * TimeManager.DeltaTime;
+        transform.position += diff.normalized * Speed * TimeManager.DeltaTime;
 	}
 }

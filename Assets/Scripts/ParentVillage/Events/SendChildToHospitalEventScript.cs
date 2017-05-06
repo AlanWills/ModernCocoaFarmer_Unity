@@ -25,16 +25,16 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         {
             Child selectedChild = ChildManager.SelectedChild;
 
-            if (selectedChild.Health == Child.MaxHealth)
+            if (selectedChild.Health > 0.5f * Child.MaxHealth)
             {
-                return selectedChild.Name + " is perfectly healthy";
+                return selectedChild.Name + " is not seriously ill.";
             }
             else if (IncomeManager.Money >= Cost)
             {
-                return selectedChild.Name + " is ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+                return selectedChild.Name + " is seriously ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
             }
 
-            return selectedChild.Name + " is ill.";
+            return selectedChild.Name + " is seriously ill and in need of immediate care.";
         }
     }
 
