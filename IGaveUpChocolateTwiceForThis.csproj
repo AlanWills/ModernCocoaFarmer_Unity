@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -114,7 +112,6 @@
     <Compile Include="Assets\Scripts\ParentVillage\Events\InteractableBuildingEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PayBillsEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\PlagueOfBlackPodEventScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\Notifications\ReceiveIncomeNotificationScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SalaryDecreasedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SalaryIncreasedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\SendChildToHospitalEventScript.cs" />
@@ -130,6 +127,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\IncomeManager.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\MoneyScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Notifications\NotificationScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Notifications\ReceiveIncomeNotificationScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\RandomEventGenerator.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\ShowEventDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\TileMapScript.cs" />
@@ -142,6 +140,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\UI\NotificationDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\ShowDonateDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\TimeUIScript.cs" />
+    <Compile Include="Assets\Scripts\PlayVideoScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\ToolTipScript.cs" />
     <Compile Include="Assets\Scripts\TransitionToSceneScript.cs" />
