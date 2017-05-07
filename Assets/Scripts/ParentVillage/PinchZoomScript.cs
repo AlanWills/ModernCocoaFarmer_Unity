@@ -2,7 +2,7 @@
 
 public class PinchZoomScript : MonoBehaviour
 {
-    private const float orthoZoomSpeed = 0.005f;        // The rate of change of the orthographic size in orthographic mode.
+    private const float orthoZoomSpeed = 0.01f;        // The rate of change of the orthographic size in orthographic mode.
 
     private Camera attachedCamera;
 
