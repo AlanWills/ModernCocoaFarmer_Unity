@@ -11,13 +11,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         get { return "Hospital"; }
     }
 
-    protected override string BuildingDescription
-    {
-        get
-        {
-            return "A place of healing if you can pay.";
-        }
-    }
+    protected override string BuildingDescription { get { return "A place of healing if you can pay."; } }
 
     protected override string ChildSelectedDescription
     {
@@ -64,7 +58,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
 
     public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
-    protected override Vector3 BuildingLocation { get { return GameObject.Find("Hospital").transform.position; } }
+    protected override Vector3 BuildingLocation { get { return GameObject.Find("HospitalDestination").transform.position; } }
 
     public override bool DataImplemented { get { return true; } }
     public override string HealthDeltaText { get { return "No change"; } }
