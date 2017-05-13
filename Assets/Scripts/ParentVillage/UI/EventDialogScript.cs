@@ -9,6 +9,7 @@ public class EventDialogScript : MonoBehaviour
 
     public bool DialogOpen { get { return eventDialogUI.activeSelf; } }
 
+    private bool timePausedOnEventShow;
     private AudioSource audioSource;
     private GameObject eventDialogUI;
     private Text nameUI;
@@ -68,6 +69,7 @@ public class EventDialogScript : MonoBehaviour
     {
         if (events.Count > 0)
         {
+            timePausedOnEventShow = TimeManager.Paused;
             TimeManager.Paused = true;
             CurrentEvent = events.Dequeue();
 
@@ -97,6 +99,7 @@ public class EventDialogScript : MonoBehaviour
         currentTimer = 0;
         CurrentEvent = null;
         eventDialogUI.SetActive(false);
+        TimeManager.Paused = timePausedOnEventShow;
     }
 
     public void Yes()
