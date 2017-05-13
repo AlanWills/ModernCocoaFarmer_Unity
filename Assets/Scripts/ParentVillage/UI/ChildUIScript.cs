@@ -8,6 +8,7 @@ public class ChildUIScript : MonoBehaviour
     private Animator animator;
     private static DataDialogScript dataDialog;
     private float secondTimer = 0;
+    private float timeSinceLastClicked = 0;
 
     public Child Child { get; set; }
 
@@ -31,6 +32,7 @@ public class ChildUIScript : MonoBehaviour
     private void Update()
     {
         secondTimer += TimeManager.DeltaTime;
+        timeSinceLastClicked += TimeManager.DeltaTime;
 
         if (secondTimer >= 1)
         {
@@ -45,30 +47,32 @@ public class ChildUIScript : MonoBehaviour
         }
     }
 
-    public void ToggleSelect()
+    public void Click()
     {
-        if (Child.IsSelected)
+        bool doubleClicked = timeSinceLastClicked < 0.5f;
+
+        if (Child.IsSelected && !doubleClicked)
         {
+            // If we double click, we must always select the child otherwise the data dialog will have nothing to show 
             ChildManager.DeselectChild(Child);
         }
         else
         {
             ChildManager.SelectChild(Child);
         }
+
+        if (doubleClicked)
+        {
+            dataDialog.Show(Child);
+        }
+        
+        timeSinceLastClicked = 0;
     }
     
     private void ChildManager_ChildSelected(Child child)
     {
         // Only deal with the data dialog if this ChildUI's child is the selected one
-        if (child == Child)
-        {
-            dataDialog.Show(Child);
-            animator.SetBool("Animate", true);
-        }
-        else
-        {
-            animator.SetBool("Animate", false);
-        }
+        animator.SetBool("Animate", child == Child);
     }
 
     private void ChildManager_ChildDeselected(Child child)
