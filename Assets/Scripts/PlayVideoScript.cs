@@ -13,9 +13,4 @@ public class PlayVideoScript : MonoBehaviour
         Handheld.PlayFullScreenMovie("IntroMovie.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
         SceneManager.LoadSceneAsync(SceneName);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
