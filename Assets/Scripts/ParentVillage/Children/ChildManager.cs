@@ -16,7 +16,7 @@ public static class ChildManager
 
     public const int MaxChildCount = 7;
     public static float ChildDegredation = 10;
-    public static int ChildCount { get { return Children.Count; } }
+    public static int ChildCount { get; private set; }
     public static int ChildrenGraduated { get; private set; }
     public static Child SelectedChild { get { return Children.Find(x => x.IsSelected); } }
 
@@ -61,6 +61,7 @@ public static class ChildManager
         string freeName = allFreeNames[random.Next(0, allFreeNames.Count)];
 
         Child child = new Child(freeName);
+        ChildCount++;
 
         ChildrenToAdd.Add(child);
     }
@@ -82,6 +83,7 @@ public static class ChildManager
 
     public static void RemoveChild(Child child)
     {
+        ChildCount--;
         ChildrenToRemove.Add(child);
     }
 

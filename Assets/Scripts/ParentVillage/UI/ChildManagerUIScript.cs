@@ -33,7 +33,10 @@ public class ChildManagerUIScript : MonoBehaviour {
 
     private void ChildManager_ChildRemoved(Child child)
     {
-        GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new ChildDiedEventScript(child));
+        if (child.Health <= 0)
+        {
+            GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>().QueueEvent(new ChildDiedEventScript(child));
+        }
 
         RemoveChildUI(child);
     }

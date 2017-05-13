@@ -3,17 +3,26 @@
 public class RandomEventGenerator : MonoBehaviour {
 
     private static EventDialogScript dialog;
+    public static bool EventsEnabled { get; set; }
+    public float TimeUntilEventsStart = TimeManager.SecondsPerYear;
     
 	// Use this for initialization
 	void Awake ()
     {
+        EventsEnabled = false;
         dialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if (!dialog.DialogOpen)
+        if (TimeManager.TotalGameTimePassed > TimeUntilEventsStart)
+        {
+            // Turn on events after a year has passed
+            EventsEnabled = true;
+        }
+
+		if (EventsEnabled && !dialog.DialogOpen)
         {
             float value = Random.Range(0.0f, 10.0f);
 

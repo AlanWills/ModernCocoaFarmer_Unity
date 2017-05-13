@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public const float SecondsPerYear = 90;
+    public const float SecondsPerYear = 120;
 
+    public static float TotalGameTimePassed { get; private set; }
     public static float CurrentTimeInYear { get; private set; }
     public static float DeltaTime { get; private set; }
     public static bool Paused { get; set; }
@@ -47,6 +48,7 @@ public class TimeManager : MonoBehaviour
             DeltaTime = 0;
         }
 
+        TotalGameTimePassed += DeltaTime;
         CurrentTimeInYear += DeltaTime;
 
         if (CurrentTimeInYear > SecondsPerYear)
