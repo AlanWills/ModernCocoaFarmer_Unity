@@ -116,10 +116,11 @@ public class EventDialogScript : MonoBehaviour
             noButton.SetActive(noButtonEnabled);
             yesText.text = yesButtonEnabled ? CurrentEvent.YesButtonText : "";
             noText.text = noButtonEnabled ? CurrentEvent.NoButtonText : "";
+            yesData.SetActive(CurrentEvent.YesDataImplemented);
+            noData.SetActive(CurrentEvent.NoDataImplemented);
 
             if (CurrentEvent.YesDataImplemented)
             {
-                yesData.SetActive(true);
                 healthDeltaYesText.text = CurrentEvent.HealthDeltaYesText;
                 safetyDeltaYesText.text = CurrentEvent.SafetyDeltaYesText;
                 educationDeltaYesText.text = CurrentEvent.EducationDeltaYesText;
@@ -128,7 +129,6 @@ public class EventDialogScript : MonoBehaviour
 
             if (CurrentEvent.NoDataImplemented)
             {
-                noData.SetActive(true);
                 healthDeltaNoText.text = CurrentEvent.HealthDeltaNoText;
                 safetyDeltaNoText.text = CurrentEvent.SafetyDeltaNoText;
                 educationDeltaNoText.text = CurrentEvent.EducationDeltaNoText;
