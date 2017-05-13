@@ -34,7 +34,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
                 return selectedChild.Name + " is seriously ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
             }
 
-            return selectedChild.Name + " is seriously ill and in need of immediate care.";
+            return selectedChild.Name + " is seriously ill, but can cannot afford to get them treated ( CFA " + Math.Abs(CostToPerform).ToString() + " ).";
         }
     }
 

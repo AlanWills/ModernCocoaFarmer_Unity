@@ -6,6 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     public const float SecondsPerYear = 120;
 
+    public static int CurrentYearNumber { get { return (int)(TotalGameTimePassed / SecondsPerYear) + 1; } }
     public static float TotalGameTimePassed { get; private set; }
     public static float CurrentTimeInYear { get; private set; }
     public static float DeltaTime { get; private set; }

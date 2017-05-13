@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeUIScript : MonoBehaviour
+public class TimeManagerUIScript : MonoBehaviour
 {
     public Sprite PlayTexture;
     public Sprite PausedTexture;
 
     private Text monthText;
+    private Text yearText;
     private Image timeStateImage;
     private List<string> months = new List<string>()
     {
@@ -29,7 +30,8 @@ public class TimeUIScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        monthText = GetComponent<Text>();
+        monthText = GameObject.Find("MonthText").GetComponent<Text>();
+        yearText = GameObject.Find("YearText").GetComponent<Text>();
         timeStateImage = GetComponentInChildren<Image>();
     }
 	
@@ -45,6 +47,7 @@ public class TimeUIScript : MonoBehaviour
             timeStateImage.sprite = PlayTexture;
         }
 
+        yearText.text = "Year  " + TimeManager.CurrentYearNumber;
         monthText.text = months[(int)(months.Count * TimeManager.CurrentTimeInYear / TimeManager.SecondsPerYear)];
 	}
 } 

@@ -4,7 +4,7 @@ public class ChildDiedEventScript : EventScript
 {
     public override string Name
     {
-        get { return "Child Died"; }
+        get { return ""; }
     }
 
     public override string Description

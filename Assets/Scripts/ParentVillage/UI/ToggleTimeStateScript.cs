@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeStateButtonUIScript : MonoBehaviour
+public class ToggleTimeStateScript : MonoBehaviour
 {
-    public Sprite PlayingSprite;
-    public Sprite PausedSprite;
-
     private Image imageUI;
 
 	// Use this for initialization
@@ -15,12 +12,6 @@ public class TimeStateButtonUIScript : MonoBehaviour
     {
         imageUI = GetComponent<Image>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        imageUI.sprite = TimeManager.Paused ? PausedSprite : PlayingSprite;
-    }
 
     public void ToggleTimeState()
     {
