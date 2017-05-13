@@ -19,6 +19,6 @@ public class UNPeaceKeepersArriveEventScript : EventScript
     {
         base.OnNo();
 
-        ChildManager.ApplyEventToAllChildren(new DataPacket(0, 0, 80, 0));
+        ChildManager.ApplyEventToAllChildren(new DataPacket(0, 80, 0, 0));
     }
 }

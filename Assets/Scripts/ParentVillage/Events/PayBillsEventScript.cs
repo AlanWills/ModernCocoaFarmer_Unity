@@ -35,6 +35,12 @@ public class PayBillsEventScript : EventScript
 
     public int Cost { get { return 430500 + 31980 * ChildManager.ChildCount; } }
 
+    public override bool NoDataImplemented { get { return true; } }
+    public override string HealthDeltaNoText { get { return "-30% for all children"; } }
+    public override string SafetyDeltaNoText { get { return "-20% for all children"; } }
+    public override string EducationDeltaNoText { get { return "No change"; } }
+    public override string HappinessDeltaNoText { get { return "-50% for all children"; } }
+
     protected override void OnYes()
     {
         base.OnYes();
@@ -49,6 +55,6 @@ public class PayBillsEventScript : EventScript
     {
         base.OnNo();
 
-        ChildManager.ApplyEventToAllChildren(new DataPacket(0, -30, -20, -50));
+        ChildManager.ApplyEventToAllChildren(new DataPacket(-30, -20, 0, -50));
     }
 }

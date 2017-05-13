@@ -5,8 +5,8 @@ using System.Text;
 
 public interface IData
 {
-    float Education { get; }
     float Health { get; }
     float Safety { get; }
+    float Education { get; }
     float Happiness { get; }
 }

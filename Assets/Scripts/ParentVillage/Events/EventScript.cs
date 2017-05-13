@@ -12,6 +12,18 @@ public abstract class EventScript
     public virtual bool YesButtonEnabled { get { return false; } }
     public virtual bool NoButtonEnabled { get { return true; } }
 
+    public virtual bool YesDataImplemented { get { return false; } }
+    public virtual string HealthDeltaYesText { get { return ""; } }
+    public virtual string SafetyDeltaYesText { get { return ""; } }
+    public virtual string EducationDeltaYesText { get { return ""; } }
+    public virtual string HappinessDeltaYesText { get { return ""; } }
+
+    public virtual bool NoDataImplemented { get { return false; } }
+    public virtual string HealthDeltaNoText { get { return ""; } }
+    public virtual string SafetyDeltaNoText { get { return ""; } }
+    public virtual string EducationDeltaNoText { get { return ""; } }
+    public virtual string HappinessDeltaNoText { get { return ""; } }
+
     private AudioClip onShowAudio;
     public AudioClip OnShowAudioClip
     {

@@ -25,7 +25,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         {
             Child selectedChild = ChildManager.SelectedChild;
 
-            if (selectedChild.Health > 0.5f * Child.MaxHealth)
+            if (selectedChild.Health > HealthThreshold)
             {
                 return selectedChild.Name + " is not seriously ill.";
             }
@@ -47,19 +47,19 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
     // $200 to get treated
 
     private const int Cost = 135300;
-    public const float HealthThreshold = 10;
+    public const float HealthThreshold = 0.5f * Child.MaxHealth;
 
-    public override float TimeOut { get { return (ChildManager.SelectedChild != null && ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? float.MaxValue : 4; } }
+    public override float TimeOut { get { return (ChildManager.SelectedChild != null && ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost) ? float.MaxValue : 4; } }
 
     protected override string NoButtonTextImpl
     {
         get
         {
-            return (ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost) ? "No" : "OK";
+            return (ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost) ? "No" : "OK";
         }
     }
-    protected override bool YesButtonEnabledImpl { get { return ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost; } }
-    public override int CostToPerform { get { return ChildManager.SelectedChild.Health != Child.MaxHealth && IncomeManager.Money >= Cost ? Cost : 0; } }
+    protected override bool YesButtonEnabledImpl { get { return ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost; } }
+    public override int CostToPerform { get { return ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost ? Cost : 0; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
 

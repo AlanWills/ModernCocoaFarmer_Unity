@@ -22,6 +22,6 @@ public class ChildExpelledEventScript : EventScript
     {
         base.OnNo();
 
-        childToBeExpelledChild.Apply(new DataPacket(-childToBeExpelledChild.Education, 0, 0, 0));
+        childToBeExpelledChild.Apply(new DataPacket(0, 0, -childToBeExpelledChild.Education, 0));
     }
 }

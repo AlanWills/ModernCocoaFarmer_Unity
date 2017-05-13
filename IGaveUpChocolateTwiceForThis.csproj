@@ -104,7 +104,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\DragCameraScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildAlreadyLockedInEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildDiedEventScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildExpelledeventScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Events\ChildExpelledEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildLeftHomeEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildTraffickedEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\EventScript.cs" />

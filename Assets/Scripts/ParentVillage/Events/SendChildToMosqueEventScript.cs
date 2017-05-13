@@ -50,16 +50,16 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
-            2 / LockTime,
             0,
             3 / LockTime,
+            2 / LockTime,
             5 / LockTime);
     }
 
     protected override void OnTimeComplete(Child child)
     {
         // Undo the incremental changes on this child
-        child.Apply(new DataPacket(-2, 0, -3, -5));
-        ChildManager.ApplyEventToAllChildren(new DataPacket(2, 0, 3, 5));
+        child.Apply(new DataPacket(0, -3, -2, -5));
+        ChildManager.ApplyEventToAllChildren(new DataPacket(0, 3, 2, 5));
     }
 }

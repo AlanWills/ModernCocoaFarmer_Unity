@@ -55,6 +55,6 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
     {
         base.OnTimeComplete(child);
 
-        ChildManager.ApplyEventToAllChildren(new DataPacket(0, 10, 0, 10));
+        ChildManager.ApplyEventToAllChildren(new DataPacket(10, 0, 0, 10));
     }
 }

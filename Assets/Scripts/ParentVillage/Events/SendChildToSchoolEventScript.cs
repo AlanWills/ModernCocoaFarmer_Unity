@@ -57,9 +57,9 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
+            10 / LockTime,
+            10 / LockTime,
             50 / LockTime,
-            10 / LockTime,
-            10 / LockTime,
             25 / LockTime);
     }
 

@@ -62,9 +62,9 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
+            -50 / LockTime, 
+            -50 / LockTime, 
             0, 
-            -50 / LockTime, 
-            -50 / LockTime, 
             -50 / LockTime);
     }
 
