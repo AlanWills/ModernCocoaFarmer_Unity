@@ -40,6 +40,12 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
 
     protected override string OnShowAudioClipPath { get { return "Audio/Market"; } }
 
+    public override bool YesDataImplemented { get { return true; } }
+    public override string HealthDeltaYesText { get { return "+10% for all children"; } }
+    public override string SafetyDeltaYesText { get { return "No change"; } }
+    public override string EducationDeltaYesText { get { return "No change"; } }
+    public override string HappinessDeltaYesText { get { return "+20% for all children"; } }
+
     public override bool ConfirmEventQueued(Child selectedChild)
     {
         // 1 in 4 chance to perform a trafficking check

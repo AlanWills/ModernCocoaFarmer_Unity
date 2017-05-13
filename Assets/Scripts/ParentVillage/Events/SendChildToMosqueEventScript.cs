@@ -42,6 +42,12 @@ public class SendChildToMosqueEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.Mosque; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("MosqueDestination").transform.position; } }
 
+    public override bool YesDataImplemented { get { return true; } }
+    public override string HealthDeltaYesText { get { return "No change"; } }
+    public override string SafetyDeltaYesText { get { return "+3% for all children"; } }
+    public override string EducationDeltaYesText { get { return "+2% for all children"; } }
+    public override string HappinessDeltaYesText { get { return "+5% for all children"; } }
+
     public override string GetOnCompleteDescription(Child child)
     {
         return child.Name + " leaves the mosque and spreads happiness and wisdom to your family.";

@@ -100,6 +100,7 @@ public class EventDialogScript : MonoBehaviour
             timePausedOnEventShow = TimeManager.Paused;
             TimeManager.Paused = true;
             CurrentEvent = events.Dequeue();
+            Child selectedChild = ChildManager.SelectedChild;
 
             if (CurrentEvent.OnShowAudioClip != null)
             {
@@ -116,10 +117,10 @@ public class EventDialogScript : MonoBehaviour
             noButton.SetActive(noButtonEnabled);
             yesText.text = yesButtonEnabled ? CurrentEvent.YesButtonText : "";
             noText.text = noButtonEnabled ? CurrentEvent.NoButtonText : "";
-            yesData.SetActive(CurrentEvent.YesDataImplemented);
-            noData.SetActive(CurrentEvent.NoDataImplemented);
+            yesData.SetActive(selectedChild != null && CurrentEvent.YesDataImplemented);
+            noData.SetActive(selectedChild != null && CurrentEvent.NoDataImplemented);
 
-            if (CurrentEvent.YesDataImplemented)
+            if (selectedChild != null && CurrentEvent.YesDataImplemented)
             {
                 healthDeltaYesText.text = CurrentEvent.HealthDeltaYesText;
                 safetyDeltaYesText.text = CurrentEvent.SafetyDeltaYesText;
@@ -127,7 +128,7 @@ public class EventDialogScript : MonoBehaviour
                 happinessDeltaYesText.text = CurrentEvent.HappinessDeltaYesText;
             }
 
-            if (CurrentEvent.NoDataImplemented)
+            if (selectedChild!= null && CurrentEvent.NoDataImplemented)
             {
                 healthDeltaNoText.text = CurrentEvent.HealthDeltaNoText;
                 safetyDeltaNoText.text = CurrentEvent.SafetyDeltaNoText;

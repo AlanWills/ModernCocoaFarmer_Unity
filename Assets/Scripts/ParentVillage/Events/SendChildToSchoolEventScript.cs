@@ -45,6 +45,12 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.School; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("SchoolDestination").transform.position; } }
 
+    public override bool YesDataImplemented { get { return true; } }
+    public override string HealthDeltaYesText { get { return "+10%"; } }
+    public override string SafetyDeltaYesText { get { return "+10%"; } }
+    public override string EducationDeltaYesText { get { return "+50%"; } }
+    public override string HappinessDeltaYesText { get { return "+25%"; } }
+
     public override string GetOnCompleteDescription(Child child)
     {
         if (child.Education == Child.MaxEducation)

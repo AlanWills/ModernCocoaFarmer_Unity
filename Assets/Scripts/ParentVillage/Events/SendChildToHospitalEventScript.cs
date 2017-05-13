@@ -65,7 +65,13 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
 
     public override BuildingType BuildingType { get { return BuildingType.Hospital; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Hospital").transform.position; } }
-    
+
+    public override bool YesDataImplemented { get { return true; } }
+    public override string HealthDeltaYesText { get { return "No change"; } }
+    public override string SafetyDeltaYesText { get { return "Restored to 100%"; } }
+    public override string EducationDeltaYesText { get { return "No change"; } }
+    public override string HappinessDeltaYesText { get { return "No change"; } }
+
     public override string GetOnCompleteDescription(Child child)
     {
         return child.Name + " has been completely cured.";
