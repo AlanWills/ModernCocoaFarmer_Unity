@@ -14,5 +14,6 @@ public abstract class NotificationScript
 
     public void Show()
     {
+        OnShow();
     }
 }

@@ -27,7 +27,6 @@ public class ReceiveIncomeNotificationScript : NotificationScript
     {
         base.OnShow();
 
-        // It's weird I know, but No is used for OK
         IncomeManager.AddMoney(IncomeManager.CurrentIncome + IncomeManager.IncomeFromChildren);
     }
 }

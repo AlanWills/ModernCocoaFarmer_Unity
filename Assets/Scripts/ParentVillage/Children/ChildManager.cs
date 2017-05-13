@@ -62,7 +62,7 @@ public static class ChildManager
 
         Child child = new Child(freeName);
         ChildCount++;
-
+        
         ChildrenToAdd.Add(child);
     }
 
