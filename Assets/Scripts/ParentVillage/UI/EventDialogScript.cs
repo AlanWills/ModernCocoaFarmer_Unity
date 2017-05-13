@@ -97,7 +97,6 @@ public class EventDialogScript : MonoBehaviour
         currentTimer = 0;
         CurrentEvent = null;
         eventDialogUI.SetActive(false);
-        TimeManager.Paused = false;
     }
 
     public void Yes()
