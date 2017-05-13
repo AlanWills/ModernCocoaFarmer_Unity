@@ -141,6 +141,7 @@
     <Compile Include="Assets\Scripts\ParentVillage\UI\MenuDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\NotificationDialogScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\ShowGameObjectScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\UI\TimeStateButtonUIScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\UI\TimeUIScript.cs" />
     <Compile Include="Assets\Scripts\PlayVideoScript.cs" />
     <Compile Include="Assets\Scripts\QuitGameScript.cs" />
