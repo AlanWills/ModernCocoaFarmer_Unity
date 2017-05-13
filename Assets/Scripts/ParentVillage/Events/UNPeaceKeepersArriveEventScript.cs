@@ -15,11 +15,12 @@ public class UNPeaceKeepersArriveEventScript : EventScript
 
     public override string Name { get { return "UN Peace Keepers Arrive"; } }
 
-    public override bool NoDataImplemented { get { return true; } }
-    public override string HealthDeltaNoText { get { return "No change"; } }
-    public override string SafetyDeltaNoText { get { return "+80% for all children"; } }
-    public override string EducationDeltaNoText { get { return "No change"; } }
-    public override string HappinessDeltaNoText { get { return "No change"; } }
+    public override bool DataImplemented { get { return true; } }
+    public override DataType EventDataType { get { return DataType.kNo; } }
+    public override string HealthDeltaText { get { return "No change"; } }
+    public override string SafetyDeltaText { get { return "+80% for all children"; } }
+    public override string EducationDeltaText { get { return "No change"; } }
+    public override string HappinessDeltaText { get { return "No change"; } }
 
     protected override void OnNo()
     {

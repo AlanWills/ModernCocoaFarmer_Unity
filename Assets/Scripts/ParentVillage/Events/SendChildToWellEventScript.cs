@@ -30,11 +30,11 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Well").transform.position; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Well"; } }
 
-    public override bool YesDataImplemented { get { return true; } }
-    public override string HealthDeltaYesText { get { return "+10% for all children"; } }
-    public override string SafetyDeltaYesText { get { return "No change"; } }
-    public override string EducationDeltaYesText { get { return "No change"; } }
-    public override string HappinessDeltaYesText { get { return "+10% for all children"; } }
+    public override bool DataImplemented { get { return true; } }
+    public override string HealthDeltaText { get { return "+10% for all children"; } }
+    public override string SafetyDeltaText { get { return "No change"; } }
+    public override string EducationDeltaText { get { return "No change"; } }
+    public override string HappinessDeltaText { get { return "+10% for all children"; } }
 
     public override bool ConfirmEventQueued(Child child)
     {

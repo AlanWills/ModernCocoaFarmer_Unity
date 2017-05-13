@@ -22,18 +22,14 @@ public class EventDialogScript : MonoBehaviour
 
     #region Data UI
 
-    private GameObject yesData;
-    private Text healthDeltaYesText;
-    private Text safetyDeltaYesText;
-    private Text educationDeltaYesText;
-    private Text happinessDeltaYesText;
-
-    private GameObject noData;
-    private Text healthDeltaNoText;
-    private Text safetyDeltaNoText;
-    private Text educationDeltaNoText;
-    private Text happinessDeltaNoText;
-
+    private GameObject buttonEffects;
+    private Vector3 buttonEffectPosition;
+    private float buttonEffectOffset = 225;
+    private Text healthDeltaText;
+    private Text safetyDeltaText;
+    private Text educationDeltaText;
+    private Text happinessDeltaText;
+    
     #endregion
 
     private Queue<EventScript> events = new Queue<EventScript>();
@@ -51,17 +47,12 @@ public class EventDialogScript : MonoBehaviour
         yesText = GameObject.Find("YesText").GetComponent<Text>();
         noText = GameObject.Find("NoText").GetComponent<Text>();
 
-        yesData = GameObject.Find("YesButtonEffects");
-        healthDeltaYesText = GameObject.Find("HealthDeltaYesText").GetComponent<Text>();
-        safetyDeltaYesText = GameObject.Find("SafetyDeltaYesText").GetComponent<Text>();
-        educationDeltaYesText = GameObject.Find("EducationDeltaYesText").GetComponent<Text>();
-        happinessDeltaYesText = GameObject.Find("HappinessDeltaYesText").GetComponent<Text>();
-
-        noData = GameObject.Find("NoButtonEffects");
-        healthDeltaNoText = GameObject.Find("HealthDeltaNoText").GetComponent<Text>();
-        safetyDeltaNoText = GameObject.Find("SafetyDeltaNoText").GetComponent<Text>();
-        educationDeltaNoText = GameObject.Find("EducationDeltaNoText").GetComponent<Text>();
-        happinessDeltaNoText = GameObject.Find("HappinessDeltaNoText").GetComponent<Text>();
+        buttonEffects = GameObject.Find("ButtonEffects");
+        buttonEffectPosition = buttonEffects.transform.localPosition;
+        healthDeltaText = GameObject.Find("HealthDeltaText").GetComponent<Text>();
+        safetyDeltaText = GameObject.Find("SafetyDeltaText").GetComponent<Text>();
+        educationDeltaText = GameObject.Find("EducationDeltaText").GetComponent<Text>();
+        happinessDeltaText = GameObject.Find("HappinessDeltaText").GetComponent<Text>();
     }
 
     public void Start()
@@ -117,25 +108,18 @@ public class EventDialogScript : MonoBehaviour
             noButton.SetActive(noButtonEnabled);
             yesText.text = yesButtonEnabled ? CurrentEvent.YesButtonText : "";
             noText.text = noButtonEnabled ? CurrentEvent.NoButtonText : "";
-            yesData.SetActive(selectedChild != null && CurrentEvent.YesDataImplemented);
-            noData.SetActive(selectedChild != null && CurrentEvent.NoDataImplemented);
+            buttonEffects.SetActive(CurrentEvent.DataImplemented);
 
-            if (selectedChild != null && CurrentEvent.YesDataImplemented)
+            if (CurrentEvent.DataImplemented)
             {
-                healthDeltaYesText.text = CurrentEvent.HealthDeltaYesText;
-                safetyDeltaYesText.text = CurrentEvent.SafetyDeltaYesText;
-                educationDeltaYesText.text = CurrentEvent.EducationDeltaYesText;
-                happinessDeltaYesText.text = CurrentEvent.HappinessDeltaYesText;
+                int multiplier = CurrentEvent.EventDataType == EventScript.DataType.kYes ? -1 : 1;
+                buttonEffects.transform.localPosition = new Vector3(multiplier * buttonEffectOffset, buttonEffectPosition.y, buttonEffectPosition.z);
+                healthDeltaText.text = CurrentEvent.HealthDeltaText;
+                safetyDeltaText.text = CurrentEvent.SafetyDeltaText;
+                educationDeltaText.text = CurrentEvent.EducationDeltaText;
+                happinessDeltaText.text = CurrentEvent.HappinessDeltaText;
             }
-
-            if (selectedChild!= null && CurrentEvent.NoDataImplemented)
-            {
-                healthDeltaNoText.text = CurrentEvent.HealthDeltaNoText;
-                safetyDeltaNoText.text = CurrentEvent.SafetyDeltaNoText;
-                educationDeltaNoText.text = CurrentEvent.EducationDeltaNoText;
-                happinessDeltaNoText.text = CurrentEvent.HappinessDeltaNoText;
-            }
-
+            
             eventDialogUI.SetActive(true);
 
             currentTimer = 0;

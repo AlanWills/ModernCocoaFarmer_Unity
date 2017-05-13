@@ -44,11 +44,11 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.Home; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Home").transform.position; } }
 
-    public override bool YesDataImplemented { get { return true; } }
-    public override string HealthDeltaYesText { get { return "+5% per year for all children"; } }
-    public override string SafetyDeltaYesText { get { return "+5% per year for all children"; } }
-    public override string EducationDeltaYesText { get { return "+5% per year for all children"; } }
-    public override string HappinessDeltaYesText { get { return "+5% per year for all children"; } }
+    public override bool DataImplemented { get { return true; } }
+    public override string HealthDeltaText { get { return "+5% per year for all children"; } }
+    public override string SafetyDeltaText { get { return "+5% per year for all children"; } }
+    public override string EducationDeltaText { get { return "+5% per year for all children"; } }
+    public override string HappinessDeltaText { get { return "+5% per year for all children"; } }
 
     public override string GetOnCompleteDescription(Child child)
     {

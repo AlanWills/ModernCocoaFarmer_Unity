@@ -4,6 +4,12 @@ using UnityEngine;
 
 public abstract class EventScript
 {
+    public enum DataType
+    {
+        kYes,
+        kNo
+    }
+
     public abstract string Name { get; }
     public abstract string Description { get; }
     public virtual float TimeOut { get { return float.MaxValue; } }
@@ -12,18 +18,13 @@ public abstract class EventScript
     public virtual bool YesButtonEnabled { get { return false; } }
     public virtual bool NoButtonEnabled { get { return true; } }
 
-    public virtual bool YesDataImplemented { get { return false; } }
-    public virtual string HealthDeltaYesText { get { return ""; } }
-    public virtual string SafetyDeltaYesText { get { return ""; } }
-    public virtual string EducationDeltaYesText { get { return ""; } }
-    public virtual string HappinessDeltaYesText { get { return ""; } }
-
-    public virtual bool NoDataImplemented { get { return false; } }
-    public virtual string HealthDeltaNoText { get { return ""; } }
-    public virtual string SafetyDeltaNoText { get { return ""; } }
-    public virtual string EducationDeltaNoText { get { return ""; } }
-    public virtual string HappinessDeltaNoText { get { return ""; } }
-
+    public virtual bool DataImplemented { get { return false; } }
+    public virtual DataType EventDataType { get { return DataType.kYes; } }
+    public virtual string HealthDeltaText { get { return ""; } }
+    public virtual string SafetyDeltaText { get { return ""; } }
+    public virtual string EducationDeltaText { get { return ""; } }
+    public virtual string HappinessDeltaText { get { return ""; } }
+    
     private AudioClip onShowAudio;
     public AudioClip OnShowAudioClip
     {
