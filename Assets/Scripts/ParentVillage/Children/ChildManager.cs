@@ -20,6 +20,8 @@ public static class ChildManager
     public static int ChildrenGraduated { get; private set; }
     public static Child SelectedChild { get { return Children.Find(x => x.IsSelected); } }
 
+    private static List<Child> ChildrenToAdd = new List<Child>();
+    private static List<Child> ChildrenToRemove = new List<Child>();
     private static List<Child> Children = new List<Child>();
 
     private static List<string> names = new List<string>()
@@ -34,6 +36,23 @@ public static class ChildManager
         "Jacob",
     };
 
+    public static void Update()
+    {
+        foreach (Child child in ChildrenToAdd)
+        {
+            AddChildImpl(child);
+        }
+
+        ChildrenToAdd.Clear();
+
+        foreach (Child child in ChildrenToRemove)
+        {
+            RemoveChildImpl(child);
+        }
+
+        ChildrenToRemove.Clear();
+    }
+
     public static void AddChild()
     {
         List<string> allFreeNames = names.Where(x => !Children.Exists(y => y.Name == x)).ToList();
@@ -42,6 +61,12 @@ public static class ChildManager
         string freeName = allFreeNames[random.Next(0, allFreeNames.Count)];
 
         Child child = new Child(freeName);
+
+        ChildrenToAdd.Add(child);
+    }
+
+    private static void AddChildImpl(Child child)
+    {
         Children.Add(child);
 
         if (ChildAdded != null)
@@ -56,6 +81,11 @@ public static class ChildManager
     }
 
     public static void RemoveChild(Child child)
+    {
+        ChildrenToRemove.Add(child);
+    }
+
+    private static void RemoveChildImpl(Child child)
     {
         DeselectChild(child);
         Children.Remove(child);

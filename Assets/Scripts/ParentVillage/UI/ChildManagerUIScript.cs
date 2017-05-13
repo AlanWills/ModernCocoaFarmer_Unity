@@ -17,6 +17,11 @@ public class ChildManagerUIScript : MonoBehaviour {
         ChildManager.ChildGraduated += ChildManager_ChildGraduated;
     }
 
+    void Update()
+    {
+        ChildManager.Update();
+    }
+
     private void ChildManager_ChildAdded(Child child)
     {
         GameObject ui = Instantiate(ChildUI, transform, false);
