@@ -30,8 +30,8 @@ public class TimeManagerUIScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        monthText = GameObject.Find("MonthText").GetComponent<Text>();
-        yearText = GameObject.Find("YearText").GetComponent<Text>();
+        monthText = transform.Find("MonthText").GetComponent<Text>();
+        yearText = transform.Find("YearText").GetComponent<Text>();
         timeStateImage = GetComponentInChildren<Image>();
     }
 	

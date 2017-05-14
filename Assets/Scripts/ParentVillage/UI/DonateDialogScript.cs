@@ -20,7 +20,7 @@ public class DonateDialogScript : MonoBehaviour {
 
     public void SetAmountToPay()
     {
-        amountToPay = GameObject.Find("AmountDropdown").GetComponent<Dropdown>().value;
+        amountToPay = transform.Find("AmountDropdown").GetComponent<Dropdown>().value;
     }
 
     public void CloseAndPay()
@@ -36,7 +36,7 @@ public class DonateDialogScript : MonoBehaviour {
 
     public void Close()
     {
-        GameObject.Find("DonateDialogUI").SetActive(false);
+        transform.Find("DonateDialogUI").gameObject.SetActive(false);
         TimeManager.Paused = false;
     }
 }

@@ -17,7 +17,7 @@ public class DataDialogScript : MonoBehaviour
     private EventDialogScript eventDialog;
     private GameObject dataDialogUI;
 
-    private const float Timer = 4;
+    private const float Timer = float.MaxValue;
     private float currentTimer = 0;
     private bool shown = false;
 
@@ -25,13 +25,17 @@ public class DataDialogScript : MonoBehaviour
     void Awake ()
     {
         eventDialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-        dataDialogUI = GameObject.Find(DataDialogName + "UI");
-        childName = GameObject.Find("ChildName").GetComponent<Text>();
-        childLocation = GameObject.Find("ChildLocation").GetComponent<Text>();
-        healthBar = GameObject.Find("HealthBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
-        safetyBar = GameObject.Find("SafetyBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
-        educationBar = GameObject.Find("EducationBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
-        happinessBar = GameObject.Find("HappinessBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
+        dataDialogUI = transform.Find(DataDialogName + "UI").gameObject;
+
+        Transform textGrouper = dataDialogUI.transform.FindChild("TextGrouper");
+        childName = textGrouper.FindChild("ChildName").GetComponent<Text>();
+        childLocation = textGrouper.FindChild("ChildLocation").GetComponent<Text>();
+
+        Transform barGrouper = dataDialogUI.transform.FindChild("BarGrouper");
+        healthBar = barGrouper.FindChild("HealthBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
+        safetyBar = barGrouper.FindChild("SafetyBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
+        educationBar = barGrouper.FindChild("EducationBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
+        happinessBar = barGrouper.FindChild("HappinessBar").GetComponentInChildren(typeof(BarScript)) as BarScript;
     }
 
     private void Start()

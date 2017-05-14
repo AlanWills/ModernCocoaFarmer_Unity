@@ -48,8 +48,7 @@ public class SendChildToMarketEventScript : InteractableBuildingEventScript
 
     public override bool ConfirmEventQueued(Child selectedChild)
     {
-        // 1 in 4 chance to perform a trafficking check
-        if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.75f && RandomEventGenerator.IsChildTrafficked(selectedChild))
+        if (RandomEventGenerator.IsChildTrafficked(selectedChild))
         {
             return false;
         }

@@ -39,20 +39,20 @@ public class EventDialogScript : MonoBehaviour
     public void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        eventDialogUI = GameObject.Find("EventDialogUI");
-        nameUI = GameObject.Find("EventName").GetComponent<Text>();
-        descriptionUI = GameObject.Find("EventDescription").GetComponent<Text>();
-        yesButton = GameObject.Find("YesButton");
-        noButton = GameObject.Find("NoButton");
-        yesText = GameObject.Find("YesText").GetComponent<Text>();
-        noText = GameObject.Find("NoText").GetComponent<Text>();
+        eventDialogUI = transform.Find("EventDialogUI").gameObject;
+        nameUI = eventDialogUI.transform.Find("EventName").GetComponent<Text>();
+        descriptionUI = eventDialogUI.transform.Find("EventDescription").GetComponent<Text>();
+        yesButton = eventDialogUI.transform.Find("YesButton").gameObject;
+        noButton = eventDialogUI.transform.Find("NoButton").gameObject;
+        yesText = yesButton.transform.Find("YesText").GetComponent<Text>();
+        noText = noButton.transform.Find("NoText").GetComponent<Text>();
 
-        buttonEffects = GameObject.Find("ButtonEffects");
+        buttonEffects = eventDialogUI.transform.Find("ButtonEffects").gameObject;
         buttonEffectPosition = buttonEffects.transform.localPosition;
-        healthDeltaText = GameObject.Find("HealthDeltaText").GetComponent<Text>();
-        safetyDeltaText = GameObject.Find("SafetyDeltaText").GetComponent<Text>();
-        educationDeltaText = GameObject.Find("EducationDeltaText").GetComponent<Text>();
-        happinessDeltaText = GameObject.Find("HappinessDeltaText").GetComponent<Text>();
+        healthDeltaText = buttonEffects.transform.FindChild("Health").FindChild("HealthDeltaText").GetComponent<Text>();
+        safetyDeltaText = buttonEffects.transform.FindChild("Safety").FindChild("SafetyDeltaText").GetComponent<Text>();
+        educationDeltaText = buttonEffects.transform.FindChild("Education").FindChild("EducationDeltaText").GetComponent<Text>();
+        happinessDeltaText = buttonEffects.transform.FindChild("Happiness").FindChild("HappinessDeltaText").GetComponent<Text>();
     }
 
     public void Start()

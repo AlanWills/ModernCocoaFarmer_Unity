@@ -38,7 +38,6 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
 
     public override bool ConfirmEventQueued(Child child)
     {
-        // Always perform a trafficking check here
         if (RandomEventGenerator.IsChildTrafficked(child))
         {
             return false;

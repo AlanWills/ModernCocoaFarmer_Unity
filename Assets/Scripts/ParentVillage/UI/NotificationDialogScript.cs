@@ -32,8 +32,10 @@ public class NotificationDialogScript : MonoBehaviour
     {
         resetPosition = transform.localPosition;
         width = gameObject.GetComponent<RectTransform>().rect.width;
-        title = GameObject.Find("NotificationTitle").GetComponent<Text>();
-        description = GameObject.Find("NotificationDescription").GetComponent<Text>();
+
+        Transform notificationUI = transform.FindChild("NotificationDialogUI");
+        title = notificationUI.FindChild("NotificationTitle").GetComponent<Text>();
+        description = notificationUI.FindChild("NotificationDescription").GetComponent<Text>();
         audioSource = GetComponent<AudioSource>();
     }
 	
@@ -75,18 +77,19 @@ public class NotificationDialogScript : MonoBehaviour
 
     private void Lerp()
     {
+        float distanceToCover = 1.1f * width;
         if (direction == Direction.kIn)
         {
-            transform.localPosition += new Vector3(width * Time.deltaTime, 0, 0);
+            transform.localPosition += new Vector3(distanceToCover * Time.deltaTime, 0, 0);
 
-            if (transform.localPosition.x >= resetPosition.x + width)
+            if (transform.localPosition.x >= resetPosition.x + distanceToCover)
             {
                 direction = Direction.kStopped;
             }
         }
         else if (direction == Direction.kOut)
         {
-            transform.localPosition -= new Vector3(width * Time.deltaTime, 0, 0);
+            transform.localPosition -= new Vector3(distanceToCover * Time.deltaTime, 0, 0);
 
             if (transform.localPosition.x <= resetPosition.x)
             {
