@@ -14,6 +14,7 @@ public class MenuDialogScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        AudioListener.pause = false;
         menuDialogUI = GameObject.Find("MenuDialogUI");
         menuDialogUI.SetActive(false);
         audioButton = menuDialogUI.transform.FindChild("Buttons").FindChild("AudioButton").GetComponent<Button>();
