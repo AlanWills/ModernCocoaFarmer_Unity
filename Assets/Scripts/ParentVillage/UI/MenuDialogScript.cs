@@ -23,8 +23,8 @@ public class MenuDialogScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        audioButton.image.sprite = AudioListener.pause ? AudioMuted : AudioPlaying;
+    }
 
     public void Show()
     {
@@ -41,6 +41,5 @@ public class MenuDialogScript : MonoBehaviour
     public void ToggleAudio()
     {
         AudioListener.pause = !AudioListener.pause;
-        audioButton.image.sprite = AudioListener.pause ? AudioMuted : AudioPlaying;
     }
 }
