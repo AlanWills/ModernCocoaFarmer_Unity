@@ -16,12 +16,12 @@ public class TimeManager : MonoBehaviour
     private bool quarterYearReached = false;
     private EventDialogScript dialogScript;
     private NotificationDialogScript notificationScript;
-    private bool levelStarted = false;
 
 	// Use this for initialization
 	void Start ()
     {
         dialogScript = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
+        dialogScript.QueueEvent(new InstructionEventScript());
         notificationScript = GameObject.Find(NotificationDialogScript.NotificationDialogName).GetComponent<NotificationDialogScript>();
         CurrentTimeInYear = 0;
         Paused = true;
@@ -30,16 +30,6 @@ public class TimeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!levelStarted)
-        {
-            if (Time.timeSinceLevelLoad > 2)
-            {
-                levelStarted = true;
-                Paused = false;
-                dialogScript.QueueEvent(new InstructionEventScript());
-            }
-        }
-
         if (!Paused)
         {
             DeltaTime = Time.deltaTime;
