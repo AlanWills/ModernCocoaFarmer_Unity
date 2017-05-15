@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
         dialogScript.QueueEvent(new InstructionEventScript());
         notificationScript = GameObject.Find(NotificationDialogScript.NotificationDialogName).GetComponent<NotificationDialogScript>();
         CurrentTimeInYear = 0;
-        Paused = true;
+        Paused = false; // Instruction event will keep game paused otherwise when it launches on startup
     }
 	
 	// Update is called once per frame
