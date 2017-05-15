@@ -12,11 +12,11 @@ public class DragCameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        Vector3 totalSize = GameObject.Find("VillageBackground").GetComponent<SpriteRenderer>().bounds.extents * 2;
-        Vector3 screenDimensionsInWorldSpace = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)) * 2;
+        Vector3 totalSize = GameObject.Find("VillageBackground").GetComponent<SpriteRenderer>().bounds.extents;
+        Vector3 screenDimensionsInWorldSpace = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
-        maxXTranslation = (totalSize.x - screenDimensionsInWorldSpace.x) * 0.5f;
-        maxYTranslation = (totalSize.y - screenDimensionsInWorldSpace.y) * 0.5f;
+        maxXTranslation = totalSize.x - screenDimensionsInWorldSpace.x;
+        maxYTranslation = totalSize.y - screenDimensionsInWorldSpace.y;
 	}
 	
 	// Update is called once per frame
