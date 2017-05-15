@@ -40,7 +40,7 @@ public class ShowEventDialogScript : MonoBehaviour {
             click.Play();
 
             Child selectedChild = ChildManager.SelectedChild;
-            if (selectedChild != null && selectedChild.BuildingType != BuildingType.Idle)
+            if (selectedChild != null)
             {
                 if (selectedChild.BuildingType != BuildingType.Idle)
                 {
