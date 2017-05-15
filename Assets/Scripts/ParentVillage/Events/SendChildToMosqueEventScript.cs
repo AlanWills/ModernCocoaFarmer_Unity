@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class SendChildToMosqueEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name
     {
         get { return "Mosque"; }
     }
 
-    protected override string BuildingDescription { get { return "A spiritual place."; } }
+    protected override string BuildingDescription { get { ClickedOn = true; return "A spiritual place."; } }
 
     protected override string ChildSelectedDescription
     {

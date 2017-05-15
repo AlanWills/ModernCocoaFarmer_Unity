@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name
     {
         get { return "School"; }
@@ -13,7 +14,7 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
 
     protected override string BuildingDescription
     {
-        get { return "1 x 5 is 5.  2 x 5 is 10.  3 x 5 is..."; }
+        get { ClickedOn = true; return "1 x 5 is 5.  2 x 5 is 10.  3 x 5 is..."; }
     }
 
     protected override string ChildSelectedDescription

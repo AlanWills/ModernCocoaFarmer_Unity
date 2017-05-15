@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class SendChildToHospitalEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
+
     public override string Name
     {
         get { return "Hospital"; }
     }
 
-    protected override string BuildingDescription { get { return "A place of healing if you can pay."; } }
+    protected override string BuildingDescription { get { ClickedOn = true; return "A place of healing if you can pay."; } }
 
     protected override string ChildSelectedDescription
     {

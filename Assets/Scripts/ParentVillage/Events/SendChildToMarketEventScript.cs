@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class SendChildToMarketEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name { get { return "Market"; } }
 
     protected override string BuildingDescription
     {
         get
         {
+            ClickedOn = true;
             return "All manner of food can be bought here.";
         }
     }

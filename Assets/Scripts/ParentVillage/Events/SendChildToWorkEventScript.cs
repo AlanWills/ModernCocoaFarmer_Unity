@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SendChildToWorkEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name
     {
         get { return "Cocoa Farm"; }
@@ -10,7 +11,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
 
     protected override string BuildingDescription
     {
-        get { return "The fields stretch for miles under the burning sun."; }
+        get { ClickedOn = true; return "The fields stretch for miles under the burning sun."; }
     }
 
     protected override string ChildSelectedDescription

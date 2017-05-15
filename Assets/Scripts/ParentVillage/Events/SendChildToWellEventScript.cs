@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SendChildToWellEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name
     {
         get { return "Well"; }
@@ -10,7 +11,7 @@ public class SendChildToWellEventScript : InteractableBuildingEventScript
 
     protected override string BuildingDescription
     {
-        get { return "A rare source of water."; }
+        get { ClickedOn = true; return "A rare source of water."; }
     }
 
     protected override string ChildSelectedDescription

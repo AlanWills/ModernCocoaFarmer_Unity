@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class UpgradeHouseEventScript : InteractableBuildingEventScript
 {
+    public static bool ClickedOn = false;
     public override string Name
     {
         get { return "Home"; }
@@ -13,7 +14,7 @@ public class UpgradeHouseEventScript : InteractableBuildingEventScript
 
     protected override string BuildingDescription
     {
-        get { return "No place like it."; }
+        get { ClickedOn = true; return "No place like it."; }
     }
 
     protected override string ChildSelectedDescription

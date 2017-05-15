@@ -16,11 +16,11 @@ public class RandomEventGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (TimeManager.TotalGameTimePassed > TimeUntilEventsStart)
-        {
-            // Turn on events after a year has passed
-            EventsEnabled = true;
-        }
+        //if (TimeManager.TotalGameTimePassed > TimeUntilEventsStart)
+        //{
+        //    // Turn on events after a year has passed
+        //    EventsEnabled = true;
+        //}
 
 		if (EventsEnabled && !dialog.DialogOpen)
         {
