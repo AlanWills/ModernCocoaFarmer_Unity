@@ -38,7 +38,7 @@ public class SendChildToWorkEventScript : InteractableBuildingEventScript
     public override BuildingType BuildingType { get { return BuildingType.Work; } }
     protected override Vector3 BuildingLocation { get { return GameObject.Find("Farm").transform.position; } }
 
-    public override bool DataImplemented { get { return true; } }
+    public override bool DataImplemented { get { return false; } }
     public override string HealthDeltaText { get { return "-50%"; } }
     public override string SafetyDeltaText { get { return "-50%"; } }
     public override string EducationDeltaText { get { return "No change"; } }

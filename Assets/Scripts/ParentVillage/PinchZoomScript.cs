@@ -36,7 +36,7 @@ public class PinchZoomScript : MonoBehaviour
             attachedCamera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
             // Make sure the orthographic size never drops below zero.
-            attachedCamera.orthographicSize = Mathf.Clamp(attachedCamera.orthographicSize, 0.1f, maxZoom);
+            attachedCamera.orthographicSize = Mathf.Clamp(attachedCamera.orthographicSize, 1f, maxZoom);
         }
     }
 }

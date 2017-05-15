@@ -7,6 +7,7 @@ public class ChildUIScript : MonoBehaviour
 {
     private Animator animator;
     private Text childName;
+    private Text childLocation;
     private GameObject border;
     private static DataDialogScript dataDialog;
     private float secondTimer = 0;
@@ -28,8 +29,10 @@ public class ChildUIScript : MonoBehaviour
         ChildManager.ChildSelected += ChildManager_ChildSelected;
         ChildManager.ChildDeselected += ChildManager_ChildDeselected;
         animator = GetComponent<Animator>();
-        childName = GetComponentInChildren<Text>();
+        childName = transform.FindChild("Name").GetComponent<Text>();
         childName.text = Child.Name;
+        childLocation = transform.FindChild("Location").GetComponent<Text>();
+        childLocation.text = "";
         border = transform.FindChild("Border").gameObject;
         border.SetActive(false);
 	}
@@ -50,6 +53,8 @@ public class ChildUIScript : MonoBehaviour
 
             secondTimer = 0;
         }
+
+        childLocation.text = childLocation.text = Child.BuildingType == BuildingType.Idle ? "" : Child.BuildingType.ToString();
     }
 
     public void Click()
@@ -76,20 +81,26 @@ public class ChildUIScript : MonoBehaviour
     
     private void ChildManager_ChildSelected(Child child)
     {
-        // Only deal with the data dialog if this ChildUI's child is the selected one
-        animator.SetBool("Animate", child == Child);
-        childName.color = new Color(0, 0.5f, 0);
-        border.SetActive(true);
+        // This is called when we call the ChildManager.SelectChild, NOT when the Child's IsSelected flag is changed
+        // Since each UI subscribes we have to set the UI based on whether this UI's child was selected
+        bool isThisChild = child == Child;
+        childName.color = isThisChild ? new Color(0, 0.5f, 0) : Color.black;
+        childLocation.color = childName.color;
+        border.SetActive(isThisChild);
+        animator.SetBool("Animate", isThisChild);
     }
 
     private void ChildManager_ChildDeselected(Child child)
     {
-        // Only deal with the data dialog if this ChildUI's child is the selected one
+        // This is called when we call the ChildManager.DeselectChild, NOT when the Child's IsSelected flag is changed
+        // Since each Child UI subscribes, we have to check the deselected child is this UI's child
         if (child == Child)
         {
+            // Reset UI
             dataDialog.Hide();
             animator.SetBool("Animate", false);
             childName.color = Color.black;
+            childLocation.color = childName.color;
             border.SetActive(false);
         }
     }
