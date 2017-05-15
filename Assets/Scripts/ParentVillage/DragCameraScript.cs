@@ -8,6 +8,7 @@ public class DragCameraScript : MonoBehaviour {
     private Vector3 lastPosition;
     private float maxXTranslation = 0;
     private float maxYTranslation = 0;
+    private float maxCameraSize;
 
 	// Use this for initialization
 	void Start ()
@@ -17,12 +18,15 @@ public class DragCameraScript : MonoBehaviour {
 
         maxXTranslation = totalSize.x - screenDimensionsInWorldSpace.x;
         maxYTranslation = totalSize.y - screenDimensionsInWorldSpace.y;
+        maxCameraSize = Camera.main.orthographicSize;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.touchCount == 1 && Input.GetMouseButton(0))
+        float ratio = maxCameraSize / Camera.main.orthographicSize;
+
+        if ((Input.touchCount < 2) && Input.GetMouseButton(0))
         {
             if (!mouseDownLastFrame)
             {
@@ -30,10 +34,7 @@ public class DragCameraScript : MonoBehaviour {
             }
             else
             {
-                Vector3 newPosition = transform.localPosition - (Input.mousePosition - lastPosition) * 0.01f;
-                newPosition.x = Mathf.Clamp(newPosition.x, -maxXTranslation, maxXTranslation);
-                newPosition.y = Mathf.Clamp(newPosition.y, -maxYTranslation, maxYTranslation);
-                transform.localPosition = newPosition;
+                transform.localPosition -= (Input.mousePosition - lastPosition) * 0.01f / ratio;
             }
 
             lastPosition = Input.mousePosition;
@@ -42,5 +43,13 @@ public class DragCameraScript : MonoBehaviour {
         {
             mouseDownLastFrame = false;
         }
-	}
+
+        float maxXTranslationScaledWithCamera = maxXTranslation * ratio;
+        float maxYTranslationScaledWithCamera = maxYTranslation * ratio;
+
+        Vector3 newPosition = transform.localPosition;
+        newPosition.x = Mathf.Clamp(newPosition.x, -maxXTranslationScaledWithCamera, maxXTranslationScaledWithCamera);
+        newPosition.y = Mathf.Clamp(newPosition.y, -maxYTranslationScaledWithCamera, maxYTranslationScaledWithCamera);
+        transform.localPosition = newPosition;
+    }
 }

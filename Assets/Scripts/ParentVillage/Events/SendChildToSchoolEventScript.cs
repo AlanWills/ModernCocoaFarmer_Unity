@@ -46,10 +46,10 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override Vector3 BuildingLocation { get { return GameObject.Find("SchoolDestination").transform.position; } }
 
     public override bool DataImplemented { get { return true; } }
-    public override string HealthDeltaText { get { return "+10%"; } }
+    public override string HealthDeltaText { get { return "No change"; } }
     public override string SafetyDeltaText { get { return "+10%"; } }
-    public override string EducationDeltaText { get { return "+50%"; } }
-    public override string HappinessDeltaText { get { return "+25%"; } }
+    public override string EducationDeltaText { get { return "+30%"; } }
+    public override string HappinessDeltaText { get { return "+10%"; } }
 
     public override string GetOnCompleteDescription(Child child)
     {
@@ -63,10 +63,10 @@ public class SendChildToSchoolEventScript : InteractableBuildingEventScript
     protected override DataPacket GetDataPacketPerSecond(Child child)
     {
         return new DataPacket(
+            0 / LockTime,
             10 / LockTime,
-            10 / LockTime,
-            50 / LockTime,
-            25 / LockTime);
+            30 / LockTime,
+            10 / LockTime);
     }
 
     protected override void OnTimeComplete(Child child)
