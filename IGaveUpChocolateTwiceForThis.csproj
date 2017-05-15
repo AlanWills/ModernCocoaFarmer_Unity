@@ -102,7 +102,8 @@
     <Compile Include="Assets\Scripts\ParentVillage\Children\DataPacket.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Children\IData.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Demo\CheckAllBuildingsClickedOnScript.cs" />
-    <Compile Include="Assets\Scripts\ParentVillage\Demo\GiveBirthToSecondChildScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Demo\GiveBirthToChildrenScript.cs" />
+    <Compile Include="Assets\Scripts\ParentVillage\Demo\TriggerBillsScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\DragCameraScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildAlreadyLockedInEventScript.cs" />
     <Compile Include="Assets\Scripts\ParentVillage\Events\ChildDiedEventScript.cs" />

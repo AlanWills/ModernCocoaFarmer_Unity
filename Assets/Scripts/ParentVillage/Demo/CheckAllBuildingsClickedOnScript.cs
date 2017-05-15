@@ -5,14 +5,14 @@ using UnityEngine;
 public class CheckAllBuildingsClickedOnScript : MonoBehaviour
 {
     private EventDialogScript eventDialog;
-    private GiveBirthToSecondChildScript giveBirthToSecondChild;
+    private GiveBirthToChildrenScript giveBirthToChildren;
 
 	// Use this for initialization
 	void Start ()
     {
         eventDialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-        giveBirthToSecondChild = GetComponent<GiveBirthToSecondChildScript>();
-        giveBirthToSecondChild.enabled = false;
+        giveBirthToChildren = GetComponent<GiveBirthToChildrenScript>();
+        giveBirthToChildren.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -27,8 +27,8 @@ public class CheckAllBuildingsClickedOnScript : MonoBehaviour
             UpgradeHouseEventScript.ClickedOn &&
             !eventDialog.DialogOpen)
         {
-            eventDialog.QueueEvent(new GiveBirthToChildEvent());
-            giveBirthToSecondChild.enabled = true;
+            giveBirthToChildren.enabled = true;
+            enabled = false;
         }
 	}
 }

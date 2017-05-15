@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiveBirthToSecondChildScript : MonoBehaviour
+public class GiveBirthToChildrenScript : MonoBehaviour
 {
     private EventDialogScript eventDialog;
+    private TriggerBillsScript billsScript;
     private float timeSinceEnabled = 0;
+    private const float TimeToWait = 3;
+    private int numberOfChildren = 0;
 
 	// Use this for initialization
 	void Start ()
     {
         eventDialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
+        billsScript = GetComponent<TriggerBillsScript>();
+        billsScript.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -18,9 +23,12 @@ public class GiveBirthToSecondChildScript : MonoBehaviour
     {
         timeSinceEnabled += TimeManager.DeltaTime;
         
-        if (timeSinceEnabled > 3)
+        if (timeSinceEnabled > TimeToWait)
         {
             eventDialog.QueueEvent(new GiveBirthToChildEvent());
+            billsScript.enabled = numberOfChildren == 2;
+            enabled = !billsScript.enabled;
+            numberOfChildren++;
         }
 	}
 }
