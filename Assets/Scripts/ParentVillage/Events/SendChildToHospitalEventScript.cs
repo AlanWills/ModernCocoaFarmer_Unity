@@ -21,16 +21,18 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         {
             Child selectedChild = ChildManager.SelectedChild;
 
-            if (selectedChild.Health > HealthThreshold)
-            {
-                return selectedChild.Name + " is not seriously ill.";
-            }
-            else if (IncomeManager.Money >= Cost)
-            {
-                return selectedChild.Name + " is seriously ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
-            }
+            return "You cannot afford to send " + selectedChild.Name + " to the hospital - CFA " + Math.Abs(CostToPerform).ToString() + " needed.";
 
-            return selectedChild.Name + " is seriously ill, but can cannot afford to get them treated ( CFA " + Math.Abs(CostToPerform).ToString() + " ).";
+            //if (selectedChild.Health > HealthThreshold)
+            //{
+            //    return selectedChild.Name + " is not seriously ill.";
+            //}
+            //else if (IncomeManager.Money >= Cost)
+            //{
+            //    return selectedChild.Name + " is seriously ill.  Do you wish to pay for treatment? ( CFA " + Math.Abs(CostToPerform).ToString() + " )";
+            //}
+            //
+            //return selectedChild.Name + " is seriously ill, but can cannot afford to get them treated ( CFA " + Math.Abs(CostToPerform).ToString() + " ).";
         }
     }
 
