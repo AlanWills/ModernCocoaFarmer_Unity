@@ -54,13 +54,7 @@ public class RandomEventGenerator : MonoBehaviour {
     
     public static bool IsChildTrafficked(Child child)
     {
-        float value = Random.Range(0.0f, 150.0f);
-        if (child.Safety + child.Happiness < value)
-        {
-            dialog.QueueEvent(new ChildTraffickedEventScript(child));
-            return true;
-        }
-
-        return false;
+        dialog.QueueEvent(new ChildTraffickedEventScript(child));
+        return true;
     }
 }

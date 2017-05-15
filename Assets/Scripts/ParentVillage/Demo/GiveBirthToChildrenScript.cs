@@ -5,7 +5,7 @@ using UnityEngine;
 public class GiveBirthToChildrenScript : MonoBehaviour
 {
     private EventDialogScript eventDialog;
-    private TriggerBillsScript billsScript;
+    private GameObject billsScript;
     private float timeSinceEnabled = 0;
     private const float TimeToWait = 3;
     private int numberOfChildren = 0;
@@ -14,8 +14,8 @@ public class GiveBirthToChildrenScript : MonoBehaviour
 	void Start ()
     {
         eventDialog = GameObject.Find(EventDialogScript.EventDialogName).GetComponent<EventDialogScript>();
-        billsScript = GetComponent<TriggerBillsScript>();
-        billsScript.enabled = false;
+        billsScript = transform.FindChild("TriggerBills").gameObject;
+        billsScript.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -25,10 +25,11 @@ public class GiveBirthToChildrenScript : MonoBehaviour
         
         if (timeSinceEnabled > TimeToWait)
         {
-            eventDialog.QueueEvent(new GiveBirthToChildEvent());
-            billsScript.enabled = numberOfChildren == 2;
-            enabled = !billsScript.enabled;
             numberOfChildren++;
+            eventDialog.QueueEvent(new GiveBirthToChildEvent());
+            billsScript.SetActive(numberOfChildren == 2);
+            enabled = numberOfChildren != 2;
+            timeSinceEnabled = 0;
         }
 	}
 }

@@ -17,7 +17,7 @@ public class DataDialogScript : MonoBehaviour
     private EventDialogScript eventDialog;
     private GameObject dataDialogUI;
 
-    private const float Timer = float.MaxValue;
+    private const float Timer = 6;
     private float currentTimer = 0;
     private bool shown = false;
 

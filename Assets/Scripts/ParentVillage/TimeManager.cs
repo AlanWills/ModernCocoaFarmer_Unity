@@ -45,34 +45,34 @@ public class TimeManager : MonoBehaviour
         if (CurrentTimeInYear > SecondsPerYear)
         {
             CurrentTimeInYear = 0;
-            //NewYear();
+            NewYear();
         }
         else if (!quarterYearReached && CurrentTimeInYear > SecondsPerYear * 0.25f)
         {
-            //QuarterYear();
+            QuarterYear();
         }
         else if (!midYearReached && CurrentTimeInYear > SecondsPerYear * 0.5f)
         {
-            //MidYear();
+            MidYear();
         }
 	}
 
     public void NewYear()
     {
-        notificationScript.QueueNotification(new ReceiveIncomeNotificationScript());
+        //notificationScript.QueueNotification(new ReceiveIncomeNotificationScript());
         midYearReached = false;
         quarterYearReached = false;
     }
 
     public void QuarterYear()
     {
-        dialogScript.QueueEvent(new GiveBirthToChildEvent());
+        //dialogScript.QueueEvent(new GiveBirthToChildEvent());
         quarterYearReached = true;
     }
 
     public void MidYear()
     {
-        dialogScript.QueueEvent(new PayBillsEventScript());
+        //dialogScript.QueueEvent(new PayBillsEventScript());
         midYearReached = true;
     }
 }
