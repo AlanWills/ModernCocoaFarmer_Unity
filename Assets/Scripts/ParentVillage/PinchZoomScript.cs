@@ -3,12 +3,13 @@
 public class PinchZoomScript : MonoBehaviour
 {
     private const float orthoZoomSpeed = 0.01f;        // The rate of change of the orthographic size in orthographic mode.
-
+    private float maxZoom;
     private Camera attachedCamera;
 
     void Start()
     {
         attachedCamera = GetComponent<Camera>();
+        maxZoom = attachedCamera.orthographicSize;
     }
 
     void Update()
@@ -35,7 +36,7 @@ public class PinchZoomScript : MonoBehaviour
             attachedCamera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
 
             // Make sure the orthographic size never drops below zero.
-            attachedCamera.orthographicSize = Mathf.Max(attachedCamera.orthographicSize, 0.1f);
+            attachedCamera.orthographicSize = Mathf.Clamp(attachedCamera.orthographicSize, 0.1f, maxZoom);
         }
     }
 }
