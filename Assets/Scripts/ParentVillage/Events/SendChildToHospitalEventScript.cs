@@ -57,7 +57,7 @@ public class SendChildToHospitalEventScript : InteractableBuildingEventScript
         }
     }
     protected override bool YesButtonEnabledImpl { get { return ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost; } }
-    public override int CostToPerform { get { return ChildManager.SelectedChild.Health <= HealthThreshold && IncomeManager.Money >= Cost ? Cost : 0; } }
+    public override int CostToPerform { get { return Cost; } }
     protected override float LockTime { get { return TimeManager.SecondsPerYear / 3; } }
     protected override string OnShowAudioClipPath { get { return "Audio/Hospital"; } }
 
